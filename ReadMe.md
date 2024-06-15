@@ -1,6 +1,7 @@
 1. I don't care, I'm unhinged here.
 2. mostly learning myself and so-ever-slowly picking up stuff from work.
-  - (i need better mentors / get into uni)
+3. i want good mentors
+4. i want to get into university 
 
 ---
 
