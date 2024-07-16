@@ -2,6 +2,8 @@ I'm losing the amount of fucks I can give for front-end frameworks & libs. Once 
 
 **goal**
 1. work in a real tech-oriented/tech-first place
+2. not where im currently at
+3. this is not a cry for help
 
 ---
 
