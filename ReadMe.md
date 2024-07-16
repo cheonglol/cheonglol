@@ -3,6 +3,19 @@ I'm losing the amount of fucks I can give for front-end frameworks & libs. Once 
 ---
 
 <!--START_SECTION:waka-->
+
+```txt
+From: 15 June 2024 - To: 16 July 2024
+
+Total Time: 25 hrs 40 mins
+
+TypeScript        13 hrs 57 mins  >>>>>>>>>>>>>------------   52.93 %
+Java              8 hrs 3 mins    >>>>>>>>-----------------   30.53 %
+XML               57 mins         >------------------------   03.64 %
+Java Properties   56 mins         >------------------------   03.58 %
+Other             42 mins         >------------------------   02.69 %
+```
+
 <!--END_SECTION:waka-->
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=cheonglol&show_icons=true&hide_border=true&theme=material-palenight&rank_icon=github)
