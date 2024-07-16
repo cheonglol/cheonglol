@@ -5,6 +5,10 @@ I'm losing the amount of fucks I can give for front-end frameworks & libs. Once 
 2. not where im currently at
 3. this is not a cry for help
 
+**facts**
+1. im tired
+2. even meritocracy has inflation - _"meritocracy in singapore my ass"_
+
 ---
 
 <!--START_SECTION:waka-->
