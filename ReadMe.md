@@ -1,5 +1,8 @@
 I'm losing the amount of fucks I can give for front-end frameworks & libs. Once I'm ready, it's cloud (i need fucking money for this one) + devops, after backend patterns and shit (long way)
 
+**goal**
+1. work in a real tech-oriented/tech-first place
+
 ---
 
 <!--START_SECTION:waka-->
