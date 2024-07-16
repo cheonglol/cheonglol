@@ -7,7 +7,7 @@ I'm losing the amount of fucks I can give for front-end frameworks & libs. Once 
 
 **facts**
 1. im tired
-2. even meritocracy has inflation - _"meritocracy in singapore my ass"_
+2. even meritocracy has inflation - _"meritocracy? in singapore? my ass"_
 
 ---
 
