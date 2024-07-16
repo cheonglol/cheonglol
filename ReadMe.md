@@ -11,7 +11,7 @@ Once I'm ready, it's cloud (i need fucking money for this one) + devops, after b
 1. im tired
 2. even meritocracy has inflation - _"meritocracy? in singapore? my ass"_
 
-**wisdom (validity debatable)**
+**[wisdom](https://pi.ai/s/GNDiYWMHXqawjY5WjRHaF) (validity debatable)**
 1. be a prick to weed out the pricks
 2. be a kind prick for those who stuck by while you were being a prick
 3. repeat `2.` but better
