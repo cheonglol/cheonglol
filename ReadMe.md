@@ -1,14 +1,20 @@
 ### I'm losing the amount of fucks I can give for front-end frameworks & libs. 
 Once I'm ready, it's cloud (i need fucking money for this one) + devops, after backend patterns and shit (long way)
 
-**dream**
+**dreams**
 1. work in a real tech-oriented/tech-first place
 2. not where im currently at
 3. this is not a cry for help
+4. cat & money
 
 **facts**
 1. im tired
 2. even meritocracy has inflation - _"meritocracy? in singapore? my ass"_
+
+**validity debatable wisdom**
+1. be a prick to weed out the pricks
+2. be a kind prick for those who stuck by while you were being a prick
+3. repeat `2.` but better
 
 ---
 
