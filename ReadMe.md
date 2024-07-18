@@ -21,7 +21,7 @@ Once I'm ready, it's cloud (i need fucking money for this one) + devops, after b
 <!--START_SECTION:waka-->
 
 ```txt
-From: 15 June 2024 - To: 16 July 2024
+From: 15 June 2024 - To: 17 July 2024
 
 Total Time: 25 hrs 40 mins
 
