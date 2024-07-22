@@ -1,5 +1,7 @@
 everyday i do this shit i just realize how much I don't know.
-i hope knowing something I don't fucking know is a good thing - at the very least its a step.. ?
+
+i hope knowing something I don't fucking know is a good thing - at the very least its a step.. ? <br/>
+
 
 ---
 
