@@ -6,7 +6,7 @@ wait, I don't fucking need a blogsite. who even cares about my god damn git comm
 <!--START_SECTION:waka-->
 
 ```txt
-From: 15 June 2024 - To: 28 July 2024
+From: 15 June 2024 - To: 29 July 2024
 
 Total Time: 39 hrs 20 mins
 
