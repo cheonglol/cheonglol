@@ -1,5 +1,4 @@
-wait, I don't fucking need a blogsite. who even cares about my god damn git commmits here.
-
+cooked
 
 ---
 
