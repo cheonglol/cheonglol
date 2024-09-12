@@ -5,7 +5,7 @@ cooked
 <!--START_SECTION:waka-->
 
 ```txt
-From: 15 June 2024 - To: 09 September 2024
+From: 15 June 2024 - To: 10 September 2024
 
 Total Time: 106 hrs 19 mins
 
