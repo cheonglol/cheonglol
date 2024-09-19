@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkepub_mass_reader=self.webpackChunkepub_mass_reader||[]).push([[824],{161:(e,s,r)=>{r.r(s),r.d(s,{allPathsLoader:()=>t});var n=r(326),t=function(e,s){return(0,n.sH)(void 0,void 0,void 0,(function(){return(0,n.YH)(this,(function(n){switch(n.label){case 0:return[4,Promise.all([r.e(783),r.e(672),r.e(860)]).then(r.bind(r,780))];case 1:return[2,(0,n.sent().getIconPaths)(e,s)]}}))}))}}}]);
+//# sourceMappingURL=blueprint-icons-all-paths-loader.6b788eeb.chunk.js.map
