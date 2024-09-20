@@ -4,6 +4,9 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      "kalam": ["Kalam"]
+    }
   },
   plugins: [],
 }
