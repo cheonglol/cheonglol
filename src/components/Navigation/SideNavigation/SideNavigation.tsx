@@ -23,6 +23,9 @@ const SideNavigation = () => {
           className={`transition-all cursor-pointer py-2 hover:font-bold ${location.pathname == route.routeObject.path ? "text-blue-200 font-bold" : "text-gray-300"}`}
           to={route.routeObject.path as string}
           key={route.title}
+          onClick={() => {
+            document.title = `cheonglol - ${route.title}`;
+          }}
         >
           {route.title}
         </Link>

@@ -21,7 +21,7 @@ export interface ExtendedRouteObject {
 
 export const routes: ExtendedRouteObject[] = [
   {
-    title: "cheonglol",
+    title: "Home",
     logicType: undefined,
     routeObject: {
       path: `${ROOT_PATH}/`,
