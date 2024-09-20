@@ -3,6 +3,8 @@ import ProtectedRoute from "./logic/ProtectedRouteLogic";
 import ErrorBoundaryPage from "../pages/ErrorBoundaryPage";
 import LandingPage from "../pages/LandingPage";
 import { ReactElement } from "react";
+import Blog from "../pages/Blog";
+import Thoughts from "../pages/Thoughts";
 
 const ROOT_PATH = "/cheonglol";
 
@@ -19,7 +21,7 @@ export interface ExtendedRouteObject {
 
 export const routes: ExtendedRouteObject[] = [
   {
-    title: "Home",
+    title: "cheonglol",
     logicType: undefined,
     routeObject: {
       path: `${ROOT_PATH}/`,
@@ -28,11 +30,20 @@ export const routes: ExtendedRouteObject[] = [
     },
   },
   {
-    title: "another link",
+    title: "Blog",
     logicType: undefined,
     routeObject: {
-      path: `${ROOT_PATH}/another`,
-      element: <>blank</>,
+      path: `${ROOT_PATH}/blog`,
+      element: <Blog />,
+      errorElement: <ErrorBoundaryPage />, // Applies to all
+    },
+  },
+  {
+    title: "Thoughts",
+    logicType: undefined,
+    routeObject: {
+      path: `${ROOT_PATH}/thoughts`,
+      element: <Thoughts />,
       errorElement: <ErrorBoundaryPage />, // Applies to all
     },
   },

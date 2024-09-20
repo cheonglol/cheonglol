@@ -20,7 +20,7 @@ const SideNavigation = () => {
     return routes.map((route) => {
       return (
         <Link
-          className={`transition-all cursor-pointer p-2 hover:font-bold ${location.pathname == route.routeObject.path ? "text-blue-200 font-bold" : "text-gray-300"}`}
+          className={`transition-all cursor-pointer py-2 hover:font-bold ${location.pathname == route.routeObject.path ? "text-blue-200 font-bold" : "text-gray-300"}`}
           to={route.routeObject.path as string}
           key={route.title}
         >

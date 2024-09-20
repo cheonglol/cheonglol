@@ -5,7 +5,7 @@ const LandingPage = () => {
     <BaseLayout
       content={
         <>
-          <h3 className="mb-5">work in progress</h3>
+          <h1 className="mb-5">work in progress</h1>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus ante felis, ac
           interdum lacus commodo vitae. Proin convallis suscipit tortor, eget elementum dolor
           lacinia nec. Fusce laoreet justo eu tincidunt aliquet. Etiam in nulla et augue porttitor
