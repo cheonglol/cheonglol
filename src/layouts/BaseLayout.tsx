@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   assignCollapseState,
-  toggleCollapseState,
+  // toggleCollapseState,
 } from "../store/reducers/sideNavigation/sideNavigationSlice";
 import {
   selectIsSideNavigationCollapsed,
@@ -39,7 +39,7 @@ export const BaseLayout = ({ content, contentSnap, backgroundURL }: Props) => {
           `}
           onClick={() => {
             if (keepMenuOpen && !isSideNavigationCollapsed) return;
-            dispatch(toggleCollapseState());
+            dispatch(assignCollapseState(false));
           }}
         >
           <SideNavigation />
