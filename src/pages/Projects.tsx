@@ -1,13 +1,13 @@
 import { BaseLayout } from "../layouts/BaseLayout";
 
-const Thoughts = () => {
+const Projects = () => {
   return BaseLayout({
     content: (
       <>
-        <h1>Thoughts</h1>
+        <h1>Projects</h1>
       </>
     ),
   });
 };
 
-export default Thoughts;
+export default Projects;

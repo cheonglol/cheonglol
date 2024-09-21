@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import ProtectedRoute from "./logic/ProtectedRouteLogic";
 import ErrorBoundaryPage from "../pages/ErrorBoundaryPage";
-import LandingPage from "../pages/LandingPage";
+import LandingPage from "../pages/LandingPage/LandingPage";
 import { ReactElement } from "react";
 import Blog from "../pages/Blog";
-import Thoughts from "../pages/Thoughts";
+import Projects from "../pages/Projects";
 
 const ROOT_PATH = "/cheonglol";
 
@@ -39,11 +39,11 @@ export const routes: ExtendedRouteObject[] = [
     },
   },
   {
-    title: "Thoughts",
+    title: "Projects",
     logicType: undefined,
     routeObject: {
       path: `${ROOT_PATH}/thoughts`,
-      element: <Thoughts />,
+      element: <Projects />,
       errorElement: <ErrorBoundaryPage />, // Applies to all
     },
   },
