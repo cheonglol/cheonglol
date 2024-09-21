@@ -9,9 +9,10 @@ import {
   selectKeepMenuOpen,
 } from "../../../store/selectors/sidebarSelector";
 import { routes } from "../../../router/router";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SideNavigation = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const isSideNavigationCollapsed = useSelector(selectIsSideNavigationCollapsed);
   const keepMenuOpen = useSelector(selectKeepMenuOpen);
@@ -20,7 +21,9 @@ const SideNavigation = () => {
     return routes.map((route) => {
       return (
         <Link
-          className={`transition-all cursor-pointer py-2 hover:font-bold ${location.pathname == route.routeObject.path ? "text-blue-200 font-bold" : "text-gray-300"}`}
+          className={`text-white transition-all cursor-pointer p-2 m-1 mr-0 pr-0 outline-1 ${location.pathname == route.routeObject.path ? "text-blue-800 font-bold bg-white" : ""}
+           hover:outline-dashed hover:bg-none hover:font-bold 
+          `}
           to={route.routeObject.path as string}
           key={route.title}
           onClick={() => {
@@ -49,7 +52,9 @@ const SideNavigation = () => {
           }}
         />
       </Tooltip>
-      <div className={`mx-4 animate-[fade-in] ${isSideNavigationCollapsed ? "hidden" : "block"}`}>
+      <div
+        className={`mx-4 mr-0 animate-[fade-in] ${isSideNavigationCollapsed ? "hidden" : "block"}`}
+      >
         <Checkbox
           className="mt-4"
           label="keep menu opened"
