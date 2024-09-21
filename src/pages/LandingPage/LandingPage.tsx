@@ -8,7 +8,7 @@ const LandingPage = () => {
       contentSnap
       content={
         <>
-          <div className="h-screen w-[80%] bg-yellow-200 snap-always snap-start">
+          <div className="h-screen w-full snap-always snap-start">
             <div className="pt-[20vh] h-screen">
               <h1 className="font-DM_Mono mb-4 text-5xl">hello,</h1>
               <div className="text-2xl">welcome to my page</div>
