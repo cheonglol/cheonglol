@@ -5,7 +5,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      "kalam": ["Kalam"]
+      "kalam": ["Kalam"],
+      "DM_Mono": ["DM Mono"]
     }
   },
   plugins: [],
