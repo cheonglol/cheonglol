@@ -1,0 +1,29 @@
+@keyframes cycleText {
+  0% {
+    content: "...";
+  }
+
+  33% {
+    content: "loves cats";
+  }
+
+  66% {
+    content: "plays streetfighter";
+  }
+
+  100% {
+    content: "writes code";
+  }
+}
+
+.cycling-text::before {
+  content: "";
+  animation: cycleText 8s linear infinite;
+}
+
+.cycling-text {
+  /* Adjust width as needed */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  white-space: nowrap;
+}

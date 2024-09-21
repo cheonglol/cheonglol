@@ -46,8 +46,8 @@ export const BaseLayout = ({ content, contentSnap, backgroundURL }: Props) => {
         </div>
         {/* Content Container */}
         <div
-          className={`transition-all overflow-auto truncate pl-4 
-          ${isSideNavigationCollapsed ? "flex-[1]" : "flex-[0.25] md:flex-[0.75] lg:flex-[0.80] "}
+          className={`transition-all overflow-y-auto overflow-x-clip 
+          ${isSideNavigationCollapsed ? "flex-[1]" : "flex-[0.25] md:flex-[0.75] lg:flex-[0.80]"}
           ${contentSnap ? "snap-y snap-mandatory" : ""}
           `}
           onClick={() => {
@@ -59,7 +59,9 @@ export const BaseLayout = ({ content, contentSnap, backgroundURL }: Props) => {
             style={{ backgroundImage: `url('${backgroundURL}')` }}
             className={`flex bg-no-repeat bg-cover bg-center max-h-screen`}
           >
-            <div className="py-12 px-4 md:px-10 lg:px-[12vw] h-full">{content}</div>
+            <div className="h-full">
+              {<div className="min-w-full py-12 px-8 md:px-10 lg:px-[12vw]">{content}</div>}
+            </div>
           </section>
         </div>
       </div>
