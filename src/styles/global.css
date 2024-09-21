@@ -19,3 +19,39 @@ a:hover {
   text-decoration: none !important;
   color: inherit;
 }
+
+/* START | Basic Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 5px;
+  /* Adjust width as needed */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Track background color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Thumb background color */
+  border-radius: 4px;
+  /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Darker thumb on hover */
+}
+
+/* Optional: Hide scrollbar until needed */
+::-webkit-scrollbar {
+  display: none;
+  /* Hide by default */
+}
+
+body:hover ::-webkit-scrollbar {
+  display: block;
+  /* Show on hover */
+}
+
+/* END | Basic Scrollbar Styling */
