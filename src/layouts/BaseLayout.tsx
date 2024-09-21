@@ -14,6 +14,7 @@ import SideNavigation from "../components/Navigation/SideNavigation/SideNavigati
 interface Props {
   // headerContent?: ReactNode;
   content: ReactNode;
+  contentSnap?: boolean; // applies `snap-y snap-mandatory` to content container
   // contentPadding?: boolean;
   // footerContent?: ReactNode;
   // deadCenterChildDOM?: boolean;
@@ -22,7 +23,7 @@ interface Props {
 }
 
 // export const BaseLayout = ({ headerContent, mainContent, footerContent, backgroundURL }: Props) => {
-export const BaseLayout = ({ content, backgroundURL }: Props) => {
+export const BaseLayout = ({ content, contentSnap, backgroundURL }: Props) => {
   const dispatch = useDispatch();
 
   const isSideNavigationCollapsed = useSelector(selectIsSideNavigationCollapsed);
@@ -33,7 +34,9 @@ export const BaseLayout = ({ content, backgroundURL }: Props) => {
       <div className="flex flex-row h-[100vh]">
         {/* Side Navigation Container */}
         <div
-          className={`transition-all cursor-pointer bg-blue-800 text-white overflow-auto ${isSideNavigationCollapsed ? "flex-[0] min-w-fit" : "flex-[0.75] md:flex-[0.25] lg:flex-[0.20]"}`}
+          className={`transition-all cursor-pointer bg-blue-800 text-white overflow-auto 
+          ${isSideNavigationCollapsed ? "flex-[0] min-w-fit" : "flex-[0.75] md:flex-[0.25] lg:flex-[0.20]"}
+          `}
           onClick={() => {
             if (keepMenuOpen && !isSideNavigationCollapsed) return;
             dispatch(toggleCollapseState());
@@ -43,7 +46,10 @@ export const BaseLayout = ({ content, backgroundURL }: Props) => {
         </div>
         {/* Content Container */}
         <div
-          className={`transition-all overflow-auto pl-4 ${isSideNavigationCollapsed ? "flex-[1]" : "flex-[0.25] md:flex-[0.75] lg:flex-[0.80]"}`}
+          className={`transition-all overflow-auto pl-4 
+          ${isSideNavigationCollapsed ? "flex-[1]" : "flex-[0.25] md:flex-[0.75] lg:flex-[0.80] "}
+          ${contentSnap ? "snap-y snap-mandatory" : ""}
+          `}
           onClick={() => {
             if (keepMenuOpen) return;
             dispatch(assignCollapseState(true));
@@ -51,7 +57,7 @@ export const BaseLayout = ({ content, backgroundURL }: Props) => {
         >
           <section
             style={{ backgroundImage: `url('${backgroundURL}')` }}
-            className={`flex bg-no-repeat bg-cover bg-center min-h-[100vh]`}
+            className={`flex bg-no-repeat bg-cover bg-center max-h-screen`}
           >
             <div className="py-12 px-4 md:px-10 lg:px-[12vw] h-full">{content}</div>
           </section>
