@@ -46,7 +46,7 @@ export const BaseLayout = ({ content, contentSnap, backgroundURL }: Props) => {
         </div>
         {/* Content Container */}
         <div
-          className={`transition-all overflow-auto pl-4 
+          className={`transition-all overflow-auto truncate pl-4 
           ${isSideNavigationCollapsed ? "flex-[1]" : "flex-[0.25] md:flex-[0.75] lg:flex-[0.80] "}
           ${contentSnap ? "snap-y snap-mandatory" : ""}
           `}
