@@ -15,7 +15,7 @@ interface Props {
   // headerContent?: ReactNode;
   content: ReactNode;
   contentSnap?: boolean; // applies `snap-y snap-mandatory` to content container
-  // contentPadding?: boolean;
+  contentPadding?: boolean;
   // footerContent?: ReactNode;
   // deadCenterChildDOM?: boolean;
   backgroundURL?: string;
@@ -23,7 +23,12 @@ interface Props {
 }
 
 // export const BaseLayout = ({ headerContent, mainContent, footerContent, backgroundURL }: Props) => {
-export const BaseLayout = ({ content, contentSnap, backgroundURL }: Props) => {
+export const BaseLayout = ({
+  content,
+  contentSnap,
+  contentPadding = true,
+  backgroundURL,
+}: Props) => {
   const dispatch = useDispatch();
 
   const isSideNavigationCollapsed = useSelector(selectIsSideNavigationCollapsed);
@@ -38,7 +43,7 @@ export const BaseLayout = ({ content, contentSnap, backgroundURL }: Props) => {
           ${isSideNavigationCollapsed ? "flex-[0] min-w-fit" : "flex-[0.75] md:flex-[0.25] lg:flex-[0.20]"}
           `}
           onClick={() => {
-            if (keepMenuOpen && !isSideNavigationCollapsed) return;
+            if (keepMenuOpen || !isSideNavigationCollapsed) return;
             dispatch(assignCollapseState(false));
           }}
         >
@@ -60,7 +65,13 @@ export const BaseLayout = ({ content, contentSnap, backgroundURL }: Props) => {
             className={`flex bg-no-repeat bg-cover bg-center max-h-screen`}
           >
             <div className="h-full">
-              {<div className="min-w-full py-12 px-8 md:px-10 lg:px-[12vw]">{content}</div>}
+              {
+                <div
+                  className={`min-w-full ${contentPadding ? "py-12 px-8 md:px-10 lg:px-[12vw]" : ""}`}
+                >
+                  {content}
+                </div>
+              }
             </div>
           </section>
         </div>
