@@ -9,31 +9,33 @@ const LandingPage = () => {
       content={
         <div>
           <div className="h-screen w-full snap-always snap-start">
-            <div className="pt-[20vh] h-screen">
-              <h1 className="font-DM_Mono mb-4 text-5xl">hello,</h1>
-              <div className="text-2xl">welcome to my page</div>
+            <div className="pt-[40vh] h-screen">
+              <h1 className="font-DM_Mono mb-4 text-7xl">hello,</h1>
+              <div className="text-3xl">welcome to my page</div>
             </div>
-            <span className="mt-[-20vh] text-blue-600 animate-bounce float-left flex flex-col">
-              <span className="font-kalam ml-1">Go on, scroll!</span>
-              <Icon className="ml-2" size={24} icon="chevron-down" />
+            <span className="mt-[-20vh] text-blue-600 animate-bounce flex flex-col content-center items-center">
+              <span className="font-kalam">Go on, scroll!</span>
+              <Icon size={22} icon="chevron-down" />
             </span>
           </div>
           <div className="h-screen snap-always snap-start">
             <div className="pt-[20vh]">
               <h1 className="font-DM_Mono mb-4 text-5xl">whoami?</h1>
               <div className="text-xl">
-                I'm someone who
+                I'm someone who{" "}
                 <span
                   className={
                     styles["cycling-text"] +
-                    " bg-blue-700 text-white px-2 py-1 font-DM_Mono font-bold"
+                    " bg-blue-700 text-white px-2 py-1 font-DM_Mono font-bold mt-4 block w-fit rounded-lg"
                   }
                 />
               </div>
             </div>
           </div>
           <div className="h-screen snap-always snap-start">
-            <div className="pt-[20vh]">It's pretty empty now. Updates will come in time.</div>
+            <div className="text-xl pt-[40vh] font-kalam">
+              It's pretty empty for now, but there will be updates soon.
+            </div>
           </div>
         </div>
       }

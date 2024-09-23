@@ -36,11 +36,12 @@ export const BaseLayout = ({
   return (
     <>
       {/* <section className="min-h-[5vh]">{!headerContent ? <Header /> : headerContent}</section> */}
-      <div className="flex flex-row h-[100vh]">
+      <div className="flex flex-row h-screen">
         {/* Side Navigation Container */}
         <div
-          className={`transition-all cursor-pointer bg-blue-800 text-white overflow-auto 
-          ${isSideNavigationCollapsed ? "flex-[0] min-w-fit" : "flex-[0.75] md:flex-[0.25] lg:flex-[0.20]"}
+          style={{ transitionDuration: "0.25s" }}
+          className={`transition-all cursor-pointer bg-blue-800 text-white overflow-auto z-10 shadow
+          ${isSideNavigationCollapsed ? "flex-[0] min-w-fit h-fit overflow-clip m-2 rounded-lg absolute" : "pt-2 pl-4 flex-[0.75] md:flex-[0.25] lg:flex-[0.20]"}
           `}
           onClick={() => {
             if (keepMenuOpen || !isSideNavigationCollapsed) return;
@@ -51,7 +52,7 @@ export const BaseLayout = ({
         </div>
         {/* Content Container */}
         <div
-          className={`transition-all overflow-y-auto overflow-x-clip 
+          className={`overflow-y-auto overflow-x-clip 
           ${isSideNavigationCollapsed ? "flex-[1]" : "flex-[0.25] md:flex-[0.75] lg:flex-[0.80]"}
           ${contentSnap ? "snap-y snap-mandatory" : ""}
           `}
@@ -67,7 +68,7 @@ export const BaseLayout = ({
             <div className="h-full">
               {
                 <div
-                  className={`min-w-full ${contentPadding ? "py-12 px-8 md:px-10 lg:px-[12vw]" : ""}`}
+                  className={`min-w-full ${contentPadding ? "py-[64pt] px-8 md:px-10 lg:px-[12vw]" : ""}`}
                 >
                   {content}
                 </div>

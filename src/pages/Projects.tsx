@@ -4,7 +4,7 @@ const Projects = () => {
   return BaseLayout({
     content: (
       <>
-        <h1>Projects</h1>
+        <h1 className="font-kalam">Projects</h1>
       </>
     ),
   });
