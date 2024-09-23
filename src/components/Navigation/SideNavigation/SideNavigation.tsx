@@ -32,7 +32,7 @@ const SideNavigation = () => {
           key={route.title}
           onClick={() => {
             document.title = `cheonglol - ${route.title}`;
-            dispatch(assignCollapseState(true));
+            keepMenuOpen ? null : dispatch(assignCollapseState(true));
           }}
         >
           {route.title}
