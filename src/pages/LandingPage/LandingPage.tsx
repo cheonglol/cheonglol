@@ -13,9 +13,11 @@ const LandingPage = () => {
               <h1 className="font-DM_Mono mb-4 text-7xl">hello,</h1>
               <div className="text-3xl">welcome to my page</div>
             </div>
-            <span className="mt-[-20vh] text-blue-600 animate-bounce flex flex-col content-center items-center">
-              <span className="font-kalam">Go on, scroll!</span>
-              <Icon size={22} icon="chevron-down" />
+            <span className="mt-[-20vh] text-blue-600 animate-bounce flex flex-col">
+              <span className="font-kalam">
+                Go on, scroll!
+                <Icon className="inline-block" size={22} icon="caret-down" />
+              </span>
             </span>
           </div>
           <div className="h-screen snap-always snap-start">
