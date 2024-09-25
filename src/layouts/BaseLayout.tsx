@@ -58,6 +58,7 @@ export const BaseLayout = ({
           `}
           onClick={() => {
             if (keepMenuOpen) return;
+            if (isSideNavigationCollapsed) return;
             dispatch(assignCollapseState(true));
           }}
         >
