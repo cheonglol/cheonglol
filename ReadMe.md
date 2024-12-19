@@ -1,5 +1,3 @@
-# [🔗 cheonglol.github.io - visit my SPA♨️ maybe?](https://cheonglol.github.io/cheonglol/)
-
 <!--START_SECTION:waka-->
 
 ```txt
