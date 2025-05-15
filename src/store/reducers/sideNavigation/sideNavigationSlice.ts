@@ -1,6 +1,6 @@
 // sample reducer
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { isMobileDevice } from "../../../helper";
+import { isMobileDevice } from "../../../utils";
 
 interface SideNavigationState {
   isSideNavigationCollapsed: boolean;

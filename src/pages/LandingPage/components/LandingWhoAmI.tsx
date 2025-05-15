@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import styles from "../LandingePage.module.css";
-import { shuffleArray } from "../../../helper";
+import { shuffleArray } from "../../../utils";
 
 const cyclingTextPhrases = [
   "loves felines (+other animals, but felines are the best)",

@@ -1,7 +1,7 @@
 import { Checkbox, Icon, Tooltip } from "@blueprintjs/core";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { isMobileDevice } from "../../../helper";
+import { isMobileDevice } from "../../../utils";
 import { routes } from "../../../router/router";
 import {
   assignCollapseState,
