@@ -14,64 +14,63 @@ import {
 
 const SideNavigation = () => {
   const ICON_SIZE = isMobileDevice() ? 20 : 18;
-
   const location = useLocation();
   const dispatch = useDispatch();
   const isSideNavigationCollapsed = useSelector(selectIsSideNavigationCollapsed);
   const keepMenuOpen = useSelector(selectKeepMenuOpen);
 
-  const LinksFromRouter = () => {
-    return routes.map((route) => {
-      return (
-        <Link
-          className={`transition-all cursor-pointer p-4 pb-3 m-1 mr-0 pr-0 outline-1 rounded-l-lg
-          hover:outline-dashed hover:bg-blue-900 hover:text-blue-100
-           ${location.pathname == route.routeObject.path ? "font-bold bg-white text-blue-900 text-2xl md:text-xl my-4 ml-4" : "text-white"}
-          `}
-          to={route.routeObject.path as string}
-          key={route.title}
-          onClick={() => {
-            document.title = `cheonglol - ${route.title}`;
-            keepMenuOpen ? null : dispatch(assignCollapseState(true));
-          }}
-        >
-          {route.title}
-        </Link>
-      );
-    });
+  const handleMenuIconClick = () => {
+    if (keepMenuOpen) dispatch(toggleKeepMenuOpenState());
+    dispatch(assignCollapseState(true));
+  };
+
+  const handleCheckboxClick = () => {
+    dispatch(toggleKeepMenuOpenState());
   };
 
   return (
     <div className="font-kalam text-xl sm:text-base flex flex-col">
       <Tooltip
         className="flex"
-        content={`${isSideNavigationCollapsed ? "Expand Menu" : "Collapse Menu"}`}
+        content={isSideNavigationCollapsed ? "Expand Menu" : "Collapse Menu"}
       >
         <Icon
           size={ICON_SIZE}
-          icon={`${isSideNavigationCollapsed ? "menu-open" : "menu-closed"}`}
+          icon={isSideNavigationCollapsed ? "menu-open" : "menu-closed"}
           className="my-auto p-4 md:p-3"
-          onClick={() => {
-            if (keepMenuOpen) dispatch(toggleKeepMenuOpenState());
-            dispatch(assignCollapseState(true));
-          }}
+          onClick={handleMenuIconClick}
         />
       </Tooltip>
       <div className={`mx-4 mr-0 ${isSideNavigationCollapsed ? "hidden" : "visible"}`}>
-        {isMobileDevice() ? null : (
+        {!isMobileDevice() && (
           <div className="opacity-65">
             <Checkbox
               className="mt-4 hidden md:visible"
               label="keep menu opened"
               checked={keepMenuOpen}
-              onClick={() => {
-                dispatch(toggleKeepMenuOpenState());
-              }}
+              onClick={handleCheckboxClick}
             />
             <hr />
           </div>
         )}
-        <div className="mt-4 flex flex-col truncate">{LinksFromRouter()}</div>
+        <div className="mt-4 flex flex-col truncate">
+          {routes.map((route) => (
+            <Link
+              className={`transition-all cursor-pointer p-4 pb-3 m-1 mr-0 pr-0 outline-1 rounded-l-lg
+                hover:outline-dashed hover:bg-blue-900 hover:text-blue-100
+                ${location.pathname === route.routeObject.path ? "font-bold bg-white text-blue-900 text-2xl md:text-xl my-4 ml-4" : "text-white"}
+              `}
+              to={route.routeObject.path as string}
+              key={route.title}
+              onClick={() => {
+                document.title = `cheonglol - ${route.title}`;
+                if (!keepMenuOpen) dispatch(assignCollapseState(true));
+              }}
+            >
+              {route.title}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
