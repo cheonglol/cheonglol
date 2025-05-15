@@ -1,4 +1,4 @@
-# [Portfolio Website](https://cheonglol.github.io/cheonglol/)
+# [👉🏻 my portfolio site btw](https://cheonglol.github.io/cheonglol/)
 
 <!--START_SECTION:waka-->
 
