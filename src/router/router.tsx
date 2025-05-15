@@ -4,6 +4,7 @@ import ErrorBoundaryPage from "../pages/ErrorBoundaryPage";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import { ReactElement } from "react";
 import Blog from "../pages/Blog";
+import BlogIndex from "../pages/BlogIndex";
 import Projects from "../pages/Projects";
 
 const ROOT_PATH = "/cheonglol";
@@ -13,6 +14,7 @@ enum ROUTE_LOGIC_TYPE {
 }
 
 export interface ExtendedRouteObject {
+  hidden?: boolean;
   title: string;
   logicType: ROUTE_LOGIC_TYPE | undefined;
   routeObject: RouteObject;
@@ -34,8 +36,18 @@ export const routes: ExtendedRouteObject[] = [
     logicType: undefined,
     routeObject: {
       path: `${ROOT_PATH}/blog`,
+      element: <BlogIndex />,
+      errorElement: <ErrorBoundaryPage />,
+    },
+  },
+  {
+    hidden: true,
+    title: "BlogPost",
+    logicType: undefined,
+    routeObject: {
+      path: `${ROOT_PATH}/blog/:filename`,
       element: <Blog />,
-      errorElement: <ErrorBoundaryPage />, // Applies to all
+      errorElement: <ErrorBoundaryPage />,
     },
   },
   {

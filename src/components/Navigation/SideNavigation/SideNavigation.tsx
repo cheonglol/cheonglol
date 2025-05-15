@@ -54,22 +54,24 @@ const SideNavigation = () => {
           </div>
         )}
         <div className="mt-4 flex flex-col truncate">
-          {routes.map((route) => (
-            <Link
-              className={`transition-all cursor-pointer p-4 pb-3 m-1 mr-0 pr-0 outline-1 rounded-l-lg
+          {routes
+            .filter((route) => !route.hidden)
+            .map((route) => (
+              <Link
+                className={`transition-all cursor-pointer p-4 pb-3 m-1 mr-0 pr-0 outline-1 rounded-l-lg
                 hover:outline-dashed hover:bg-blue-900 hover:text-blue-100
                 ${location.pathname === route.routeObject.path ? "font-bold bg-white text-blue-900 text-2xl md:text-xl my-4 ml-4" : "text-white"}
               `}
-              to={route.routeObject.path as string}
-              key={route.title}
-              onClick={() => {
-                document.title = `cheonglol - ${route.title}`;
-                if (!keepMenuOpen) dispatch(assignCollapseState(true));
-              }}
-            >
-              {route.title}
-            </Link>
-          ))}
+                to={route.routeObject.path as string}
+                key={route.title}
+                onClick={() => {
+                  document.title = `cheonglol - ${route.title}`;
+                  if (!keepMenuOpen) dispatch(assignCollapseState(true));
+                }}
+              >
+                {route.title}
+              </Link>
+            ))}
         </div>
       </div>
     </div>
