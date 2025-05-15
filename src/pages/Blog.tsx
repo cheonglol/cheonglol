@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ReactMarkdown, { Components } from "react-markdown";
 import { useNavigate, useParams } from "react-router-dom";
 import { BaseLayout } from "../layouts/BaseLayout";
@@ -14,6 +14,116 @@ const Blog: React.FC = () => {
   const [notFound, setNotFound] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [postMeta, setPostMeta] = useState<{ title: string; date: string } | null>(null);
+  // Text-to-speech state
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+  const speechSynthRef = useRef<SpeechSynthesis | null>(null);
+  const speechSupportedRef = useRef<boolean>(false);
+
+  // Initialize speech synthesis
+  useEffect(() => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      speechSynthRef.current = window.speechSynthesis;
+      speechSupportedRef.current = true;
+    }
+
+    // Cleanup speech synthesis on unmount
+    return () => {
+      if (speechSynthRef.current) {
+        speechSynthRef.current.cancel();
+      }
+    };
+  }, []);
+
+  // Text-to-speech functions
+  const extractTextFromMarkdown = (markdown: string): string => {
+    // Simple regex to remove most markdown syntax for reading
+    return markdown
+      .replace(/#{1,6}\s+/g, "") // Remove headings
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // Replace links with just text
+      .replace(/\*\*([^*]+)\*\*/g, "$1") // Remove bold
+      .replace(/\*([^*]+)\*/g, "$1") // Remove italic
+      .replace(/`([^`]+)`/g, "$1") // Remove inline code
+      .replace(/```[\s\S]*?```/g, "") // Remove code blocks
+      .replace(/!\[([^\]]+)\]\([^)]+\)/g, "Image: $1") // Replace images with description
+      .replace(/\n/g, " ")
+      .replace(/\s+/g, " "); // Normalize whitespace
+  };
+
+  const startSpeech = () => {
+    if (!speechSupportedRef.current || !speechSynthRef.current || !content) return;
+
+    // Cancel any ongoing speech
+    speechSynthRef.current.cancel();
+
+    // Extract readable text
+    const textToRead = extractTextFromMarkdown(content);
+
+    // Create utterance
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+
+    // Set speech properties
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+
+    // Handle speech events
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    // Start speaking
+    speechSynthRef.current.speak(utterance);
+  };
+
+  const stopSpeech = () => {
+    if (speechSynthRef.current) {
+      speechSynthRef.current.cancel();
+      setIsSpeaking(false);
+    }
+  };
+
+  // Speech control component
+  const SpeechControls = () => {
+    if (!speechSupportedRef.current) {
+      return null;
+    }
+
+    return (
+      <div className="my-4 flex items-center">
+        {isSpeaking ? (
+          <button
+            onClick={stopSpeech}
+            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded flex items-center"
+          >
+            <span className="mr-2">Stop Reading</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <rect x="6" y="6" width="8" height="8" />
+            </svg>
+          </button>
+        ) : (
+          <button
+            onClick={startSpeech}
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded flex items-center"
+            disabled={loading || notFound || !content}
+          >
+            <span className="mr-2">Read Aloud</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path d="M10 15a1 1 0 0 1-1-1V6a1 1 0 0 1 1.5-.86l6 4a1 1 0 0 1 0 1.72l-6 4A1 1 0 0 1 10 15z" />
+            </svg>
+          </button>
+        )}
+      </div>
+    );
+  };
 
   // DRY: Back to Blog Index button
   const BackToIndexButton = (
@@ -174,6 +284,7 @@ const Blog: React.FC = () => {
       )}
       {!loading && !notFound && (
         <div className="prose mx-auto my-8">
+          {!content.trimStart().toLowerCase().startsWith("<!doctype html>") && <SpeechControls />}
           {content.trimStart().toLowerCase().startsWith("<!doctype html>") &&
             (content.includes("You need to enable JavaScript to run this app.") ? (
               <div className="text-red-600 font-semibold my-8">Failed to display contents.</div>
@@ -199,17 +310,17 @@ const Blog: React.FC = () => {
     <BaseLayout
       contentPadding={false}
       content={
-        <div className="pl mx-[1.5em] md:mx-[4em] my-[8em] py-8 sm:px-8 sm:py-12 md:px-16 md:py-20 lg:px-32 lg:py-24">
-          <div className="mb-6">{BackToIndexButton}</div>
+        <div className="flex flex-col items-center mx-[1.5em] md:mx-[4em] my-[8em] py-8 sm:px-8 sm:py-12 md:px-16 md:py-20 lg:px-32 lg:py-24">
+          <div className="mb-6 w-full flex justify-center">{BackToIndexButton}</div>
           {/* Show date posted if available */}
           {postMeta && postMeta.date && (
-            <div className="mb-4 text-gray-500 dark:text-gray-400 text-sm font-DM_Mono">
+            <div className="mb-4 text-gray-500 dark:text-gray-400 text-sm font-DM_Mono text-center w-full">
               Posted: {formatBlogDate(postMeta.date)}
             </div>
           )}
-          {pageContent}
+          <div className="w-full flex justify-center">{pageContent}</div>
           {content && content.trim().length > 200 && (
-            <div className="mt-8">{BackToIndexButton}</div>
+            <div className="mt-[200px] w-full flex justify-center">{BackToIndexButton}</div>
           )}
         </div>
       }
