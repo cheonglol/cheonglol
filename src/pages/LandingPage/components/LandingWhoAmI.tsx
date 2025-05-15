@@ -98,9 +98,15 @@ const LandingWhoAmI = () => {
           <span
             className={
               styles["cycling-text"] +
-              " bg-blue-700 text-white px-2 py-1 font-DM_Mono font-bold mt-4 block w-fit rounded-lg"
+              " bg-blue-700 text-white px-2 py-1 font-DM_Mono font-bold mt-4 block rounded-lg " +
+              "text-sm sm:text-base md:text-lg w-full sm:w-auto max-w-full"
             }
-            style={{ display: "inline-block", minWidth: 120 }}
+            style={{
+              display: "inline-block",
+              whiteSpace: "normal",
+              wordWrap: "break-word",
+              overflowWrap: "break-word",
+            }}
           >
             <AnimatePresence mode="wait">
               <motion.span
@@ -109,7 +115,7 @@ const LandingWhoAmI = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4 }}
-                style={{ display: "inline-block" }}
+                style={{ display: "inline-block", maxWidth: "100%" }}
               >
                 {shuffledPhrases[cyclingTextIndex]}
               </motion.span>
