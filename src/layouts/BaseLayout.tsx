@@ -48,7 +48,7 @@ export const BaseLayout = ({
             isSideNavigationCollapsed
               ? "w-[56px] min-w-[56px] max-w-[56px] h-fit overflow-clip m-2 rounded-lg absolute"
               : isMobile
-                ? "fixed top-0 left-0 h-full w-[240px] min-w-[180px] max-w-[320px] md:w-[240px] lg:w-[280px] z-20"
+                ? "fixed top-0 left-0 h-full w-[200px] min-w-[180px] max-w-[320px] md:w-[240px] lg:w-[280px] z-20"
                 : "pt-2 pl-4 w-[240px] min-w-[180px] max-w-[320px] md:w-[240px] lg:w-[280px]"
           }
         `}

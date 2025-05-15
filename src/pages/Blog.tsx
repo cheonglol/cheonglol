@@ -199,7 +199,7 @@ const Blog: React.FC = () => {
     <BaseLayout
       contentPadding={false}
       content={
-        <div className="pl py-8 sm:px-8 sm:py-12 md:px-16 md:py-20 lg:px-32 lg:py-24">
+        <div className="pl mx-[4em] my-[8em] py-8 sm:px-8 sm:py-12 md:px-16 md:py-20 lg:px-32 lg:py-24">
           <div className="mb-6">{BackToIndexButton}</div>
           {/* Show date posted if available */}
           {postMeta && postMeta.date && (

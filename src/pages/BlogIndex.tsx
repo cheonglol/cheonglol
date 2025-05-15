@@ -99,7 +99,7 @@ const BlogIndex = () => {
   );
 
   const renderPosts = () => (
-    <section className="max-w-2xl mx-auto px-4 py-8">
+    <section className="max-w-2xl mx-auto px-[4em] py-8 mt-[4em]">
       <h1 className="font-DM_Mono text-5xl md:text-4xl mb-8 tracking-tight">Blog</h1>
       <div className="relative pl-6 md:pl-8">
         {/* Timeline vertical line - made longer by using inset-y-0 */}
@@ -115,13 +115,13 @@ const BlogIndex = () => {
               <div className="flex-1 ml-6 md:ml-8">
                 <button
                   type="button"
-                  className="font-DM_Mono text-left text-blue-700 dark:text-blue-400 font-medium text-3xl md:text-2xl hover:underline focus:underline transition-colors outline-none"
+                  className="font-DM_Mono text-left text-blue-700 dark:text-blue-400 font-medium text-xl md:text-lg hover:underline focus:underline transition-colors outline-none"
                   onClick={() => handlePostClick(post.filename)}
                   aria-label={`Read blog post: ${post.title}`}
                 >
                   {post.title}
                 </button>
-                <div className="font-DM_Mono text-gray-500 dark:text-gray-400 text-base mt-2">
+                <div className="font-DM_Mono text-gray-500 dark:text-gray-400 text-sm mt-1">
                   {formatBlogDate(post.date)}
                 </div>
               </div>
