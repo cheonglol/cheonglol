@@ -22,7 +22,7 @@ const LandingIntro = () => {
   const s = useMotionValue(50); // Saturation: 50%
   const l = useMotionValue(50); // Lightness: 50%
 
-  const bgHSL = useTransform([h, s, l], ([h, s, l]) => `hsl(${h}, ${s}%, ${l}%)`);
+  // const bgHSL = useTransform([h, s, l], ([h, s, l]) => `hsl(${h}, ${s}%, ${l}%)`);
   const textHSL = useTransform([h, s, l], (values) => {
     const [hue, sat, light] = values as [number, number, number];
     const compH = (hue + 180) % 360;
@@ -84,18 +84,6 @@ const LandingIntro = () => {
           }}
         >
           {/* Animated background */}
-          <motion.div
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 0,
-              background: bgHSL,
-              filter: "blur(24px)",
-              opacity: 0.7,
-              pointerEvents: "none",
-              transition: "background 1s cubic-bezier(0.4,0,0.2,1)",
-            }}
-          />
           <div className="relative z-10 rounded-full w-full">
             <h1 className="font-DM_Mono mb-4 text-4xl sm:text-7xl break-words">hello,</h1>
             <div className="text-lg sm:text-2xl tracking-wide font-DM_Mono">
@@ -103,8 +91,9 @@ const LandingIntro = () => {
             </div>
             <span className="text-sm font-DM_Mono">
               Yes I was fucking around with the colors. lol
-            </span>
+            </span>{" "}
             <span className="mt-16 text-blue-600 animate-bounce flex flex-col items-center">
+              {" "}
               <motion.span style={{ color: textHSL }}>
                 Go on, scroll!
                 <Icon className="inline-block" size={22} icon="caret-down" />

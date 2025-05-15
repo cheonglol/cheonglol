@@ -99,8 +99,8 @@ const BlogIndex = () => {
   );
 
   const renderPosts = () => (
-    <section className="max-w-2xl mx-auto px-[4em] py-8 mt-[4em]">
-      <h1 className="font-DM_Mono text-5xl md:text-4xl mb-8 tracking-tight">Blog</h1>
+    <section className="max-w-4xl mx-auto px-[1em] py-2 md:px-2 mt-[4em]">
+      <h1 className="font-DM_Mono text-3xl md:text-4xl mb-8 tracking-tight underline">Blog</h1>
       <div className="relative pl-6 md:pl-8">
         {/* Timeline vertical line - made longer by using inset-y-0 */}
         <div
@@ -145,7 +145,7 @@ const BlogIndex = () => {
   return (
     <BaseLayout
       content={
-        <div className="pl py-8 sm:px-8 sm:py-12 md:px-16 md:py-20 lg:px-32 lg:py-24">
+        <div className="mx-[0.5em] md:mx-[4em] my-[8em] py-8 sm:px-2 sm:py-12 md:px-16 md:py-20 lg:px-32 lg:py-24">
           {pageContent}
         </div>
       }
