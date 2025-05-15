@@ -88,11 +88,11 @@ const Blog: React.FC = () => {
     }
 
     return (
-      <div className="my-4 flex items-center">
+      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
         {isSpeaking ? (
           <button
             onClick={stopSpeech}
-            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded flex items-center"
+            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full flex items-center shadow-lg"
           >
             <span className="mr-2">Stop Reading</span>
             <svg
@@ -107,7 +107,7 @@ const Blog: React.FC = () => {
         ) : (
           <button
             onClick={startSpeech}
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded flex items-center"
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full flex items-center shadow-lg"
             disabled={loading || notFound || !content}
           >
             <span className="mr-2">Read Aloud</span>
@@ -284,7 +284,7 @@ const Blog: React.FC = () => {
       )}
       {!loading && !notFound && (
         <div className="prose mx-auto my-8">
-          {!content.trimStart().toLowerCase().startsWith("<!doctype html>") && <SpeechControls />}
+          {/* Removed SpeechControls from here since it's now fixed positioned */}
           {content.trimStart().toLowerCase().startsWith("<!doctype html>") &&
             (content.includes("You need to enable JavaScript to run this app.") ? (
               <div className="text-red-600 font-semibold my-8">Failed to display contents.</div>
@@ -303,6 +303,10 @@ const Blog: React.FC = () => {
           )}
         </div>
       )}
+      {/* Add SpeechControls outside the content for the floating control */}
+      {!loading &&
+        !notFound &&
+        !content.trimStart().toLowerCase().startsWith("<!doctype html>") && <SpeechControls />}
     </div>
   );
 
@@ -320,7 +324,7 @@ const Blog: React.FC = () => {
           )}
           <div className="w-full flex justify-center">{pageContent}</div>
           {content && content.trim().length > 200 && (
-            <div className="mt-[200px] w-full flex justify-center">{BackToIndexButton}</div>
+            <div className="mt-[2em] mb-[10em] w-full flex justify-center">{BackToIndexButton}</div>
           )}
         </div>
       }
