@@ -139,13 +139,13 @@ const SideNavigation = () => {
       <AnimatePresence>
         {!isCollapsed && (
           <motion.div
-            className="p-4 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400"
+            className="p-4 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400 font-DM_Mono"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
           >
-            <p>© 2023 ChengLOL</p>
+            <p>© 2023 cheonglol</p>
           </motion.div>
         )}
       </AnimatePresence>
