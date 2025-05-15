@@ -18,6 +18,8 @@ const Blog: React.FC = () => {
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
   const speechSynthRef = useRef<SpeechSynthesis | null>(null);
   const speechSupportedRef = useRef<boolean>(false);
+  // Share button state
+  const [copied, setCopied] = useState<boolean>(false);
 
   // Initialize speech synthesis
   useEffect(() => {
@@ -81,46 +83,113 @@ const Blog: React.FC = () => {
     }
   };
 
-  // Speech control component
-  const SpeechControls = () => {
+  // Share functionality
+  const sharePost = () => {
+    if (!filename) return;
+
+    const shareUrl = `${window.location.origin}/cheonglol?blog=${filename}`;
+    const shareTitle = postMeta?.title || "Blog Post";
+
+    // Check if Web Share API is available
+    if (navigator.share) {
+      navigator
+        .share({
+          title: shareTitle,
+          url: shareUrl,
+        })
+        .catch((error) => {
+          console.error("Error sharing:", error);
+          // Fallback to clipboard
+          fallbackCopyToClipboard(shareUrl);
+        });
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      fallbackCopyToClipboard(shareUrl);
+    }
+  };
+
+  const fallbackCopyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  // Share button component
+  const ShareButton = () => {
+    return (
+      <button
+        onClick={sharePost}
+        className={`${
+          copied ? "bg-green-500 hover:bg-green-600" : "bg-purple-500 hover:bg-purple-600"
+        } text-white py-2 px-4 rounded-full flex items-center shadow-lg mx-2`}
+        disabled={loading || notFound || !content}
+      >
+        <span className="mr-2">{copied ? "Copied!" : "Share"}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+        </svg>
+      </button>
+    );
+  };
+
+  // Speech control component - modified to just return the button
+  const ReadAloudButton = () => {
     if (!speechSupportedRef.current) {
       return null;
     }
 
+    return isSpeaking ? (
+      <button
+        onClick={stopSpeech}
+        className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full flex items-center shadow-lg mx-2"
+      >
+        <span className="mr-2">Stop Reading</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <rect x="6" y="6" width="8" height="8" />
+        </svg>
+      </button>
+    ) : (
+      <button
+        onClick={startSpeech}
+        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full flex items-center shadow-lg mx-2"
+        disabled={loading || notFound || !content}
+      >
+        <span className="mr-2">Read Aloud</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path d="M10 15a1 1 0 0 1-1-1V6a1 1 0 0 1 1.5-.86l6 4a1 1 0 0 1 0 1.72l-6 4A1 1 0 0 1 10 15z" />
+        </svg>
+      </button>
+    );
+  };
+
+  // Combined controls container
+  const FloatingControls = () => {
+    if (
+      !(!loading && !notFound && !content.trimStart().toLowerCase().startsWith("<!doctype html>"))
+    ) {
+      return null;
+    }
+
     return (
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        {isSpeaking ? (
-          <button
-            onClick={stopSpeech}
-            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full flex items-center shadow-lg"
-          >
-            <span className="mr-2">Stop Reading</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <rect x="6" y="6" width="8" height="8" />
-            </svg>
-          </button>
-        ) : (
-          <button
-            onClick={startSpeech}
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full flex items-center shadow-lg"
-            disabled={loading || notFound || !content}
-          >
-            <span className="mr-2">Read Aloud</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M10 15a1 1 0 0 1-1-1V6a1 1 0 0 1 1.5-.86l6 4a1 1 0 0 1 0 1.72l-6 4A1 1 0 0 1 10 15z" />
-            </svg>
-          </button>
-        )}
+      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex flex-row items-center">
+        {speechSupportedRef.current && <ReadAloudButton />}
+        <ShareButton />
       </div>
     );
   };
@@ -306,7 +375,7 @@ const Blog: React.FC = () => {
       {/* Add SpeechControls outside the content for the floating control */}
       {!loading &&
         !notFound &&
-        !content.trimStart().toLowerCase().startsWith("<!doctype html>") && <SpeechControls />}
+        !content.trimStart().toLowerCase().startsWith("<!doctype html>") && <FloatingControls />}
     </div>
   );
 
@@ -326,6 +395,8 @@ const Blog: React.FC = () => {
           {content && content.trim().length > 200 && (
             <div className="mt-[2em] mb-[10em] w-full flex justify-center">{BackToIndexButton}</div>
           )}
+          {/* Add the combined floating controls */}
+          <FloatingControls />
         </div>
       }
     />

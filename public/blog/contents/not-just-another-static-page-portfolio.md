@@ -9,3 +9,9 @@ If you're interested in the details, the full source code is available here:
 🔗 [github.com/cheonglol/cheonglol/tree/portfolio-page-dev](https://github.com/cheonglol/cheonglol/tree/portfolio-page-dev)
 
 This project represents more than just a résumé—it's a live demonstration of my development process and problem-solving approach.
+
+---
+
+Well, also a place where I write whatever the fuck I want. Express how the hell I'm feeling too here on my little wall I've created.
+
+_yes, do we code-starers even express ourselves enough...? (Authentically),._
