@@ -391,7 +391,7 @@ const Blog: React.FC = () => {
               Posted: {formatBlogDate(postMeta.date)}
             </div>
           )}
-          <div className="w-full flex justify-center">{pageContent}</div>
+          <div className="w-full flex justify-center mt-[2em] mb-[8em]">{pageContent}</div>
           {content && content.trim().length > 200 && (
             <div className="mt-[2em] mb-[10em] w-full flex justify-center">{BackToIndexButton}</div>
           )}
