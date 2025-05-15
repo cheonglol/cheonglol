@@ -5,8 +5,10 @@ import { BaseLayout } from "../../layouts/BaseLayout";
 import { assignCollapseState } from "../../store/reducers/sideNavigation/sideNavigationSlice";
 import LandingIntro from "./components/LandingIntro";
 import LandingWhoAmI from "./components/LandingWhoAmI";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   const dispatchRedux = useDispatch();
 
   useEffect(() => {
@@ -57,18 +59,18 @@ const LandingPage = () => {
                 transition={{ delay: 0.6, duration: 0.5 }}
                 viewport={{ once: true, amount: 0.4 }}
               >
-                <a
-                  href="/cheonglol/blog"
+                <button
+                  onClick={() => navigate("/cheonglol/blog")}
                   className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold text-lg hover:bg-blue-900 hover:text-yellow-200 transition"
                 >
                   Go to Blog
-                </a>
-                <a
-                  href="/cheonglol/projects"
+                </button>
+                <button
+                  onClick={() => navigate("/cheonglol/projects")}
                   className="px-6 py-3 bg-green-600 text-white rounded-lg font-semibold text-lg hover:bg-green-900 hover:text-yellow-200 transition"
                 >
                   View Projects
-                </a>
+                </button>
               </motion.div>
             </motion.div>
           </AnimatePresence>
