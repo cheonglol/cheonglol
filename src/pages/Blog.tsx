@@ -203,7 +203,7 @@ const Blog: React.FC = () => {
           <div className="mb-6">{BackToIndexButton}</div>
           {/* Show date posted if available */}
           {postMeta && postMeta.date && (
-            <div className="mb-4 text-gray-500 dark:text-gray-400 text-sm">
+            <div className="mb-4 text-gray-500 dark:text-gray-400 text-sm font-DM_Mono">
               Posted: {formatBlogDate(postMeta.date)}
             </div>
           )}
