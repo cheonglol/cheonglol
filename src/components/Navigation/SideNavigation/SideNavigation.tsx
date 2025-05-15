@@ -4,7 +4,10 @@ import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { routes } from "../../../router/router";
 import { RootState } from "../../../store/reducers/rootReducer";
-import { toggleCollapseState } from "../../../store/reducers/sideNavigation/sideNavigationSlice";
+import {
+  toggleCollapseState,
+  toggleDarkMode,
+} from "../../../store/reducers/sideNavigation/sideNavigationSlice";
 import { useMemo, useEffect, useState } from "react";
 
 // Function to map route titles to appropriate Blueprint icons
@@ -27,7 +30,17 @@ const SideNavigation = () => {
   const isCollapsed = useSelector(
     (state: RootState) => state.sideNavigation.isSideNavigationCollapsed
   );
+  const isDarkMode = useSelector((state: RootState) => state.sideNavigation.isDarkMode);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Apply dark mode to the document
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   // Track window resize to determine if we're in mobile view
   useEffect(() => {
@@ -133,7 +146,7 @@ const SideNavigation = () => {
     [location.pathname, isCollapsed]
   );
 
-  // Memoize the footer
+  // Updated footer with dark mode toggle
   const footer = useMemo(
     () => (
       <AnimatePresence>
@@ -145,12 +158,55 @@ const SideNavigation = () => {
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
           >
-            <p>© 2023 cheonglol</p>
+            <div className="flex justify-between items-center">
+              <p>© 2023 cheonglol</p>
+              <button
+                onClick={() => dispatch(toggleDarkMode())}
+                className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                <Icon
+                  icon={isDarkMode ? "flash" : "moon"}
+                  size={14}
+                  className="text-gray-500 dark:text-gray-400"
+                />
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
     ),
-    [isCollapsed]
+    [isCollapsed, dispatch, isDarkMode]
+  );
+
+  // Add a collapsed footer version with just the icon
+  const collapsedFooter = useMemo(
+    () => (
+      <AnimatePresence>
+        {isCollapsed && (
+          <motion.div
+            className="p-3 border-t border-gray-200 dark:border-gray-700 flex justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <button
+              onClick={() => dispatch(toggleDarkMode())}
+              className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              <Icon
+                icon={isDarkMode ? "flash" : "moon"}
+                size={14}
+                className="text-gray-500 dark:text-gray-400"
+              />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    ),
+    [isCollapsed, dispatch, isDarkMode]
   );
 
   return (
@@ -185,6 +241,7 @@ const SideNavigation = () => {
 
         {/* Footer area */}
         {footer}
+        {collapsedFooter}
       </motion.div>
     </>
   );
