@@ -1,5 +1,6 @@
 // sample reducer
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { isMobileDevice } from "../../../helper";
 
 interface SideNavigationState {
   isSideNavigationCollapsed: boolean;
@@ -7,8 +8,8 @@ interface SideNavigationState {
 }
 
 const initialState: SideNavigationState = {
-  isSideNavigationCollapsed: true,
-  keepMenuOpen: false,
+  isSideNavigationCollapsed: isMobileDevice(),
+  keepMenuOpen: !isMobileDevice(),
 };
 
 const sideNavigationSlice = createSlice({

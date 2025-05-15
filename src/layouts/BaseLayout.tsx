@@ -49,8 +49,7 @@ export const BaseLayout = ({
       </div>
       {/* Content Container */}
       <div
-        className={`overflow-y-auto overflow-x-clip 
-          ${isSideNavigationCollapsed ? "flex-[1]" : "flex-[0.25] md:flex-[0.75] lg:flex-[0.80]"}
+        className={`overflow-y-auto overflow-x-clip flex-1
           ${contentSnap ? "snap-y snap-mandatory" : ""}
         `}
         onClick={handleContentClick}
