@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/cheonglol/static/css/main.293ad471.css",
-    "main.js": "/cheonglol/static/js/main.bf601d9d.js",
-    "blueprint-icons-all-paths-loader.js": "/cheonglol/static/js/blueprint-icons-all-paths-loader.6b788eeb.chunk.js",
-    "blueprint-icons-split-paths-by-size-loader.js": "/cheonglol/static/js/blueprint-icons-split-paths-by-size-loader.cf794e4e.chunk.js",
-    "blueprint-icons-all-paths.js": "/cheonglol/static/js/blueprint-icons-all-paths.92b09348.chunk.js",
-    "blueprint-icons-16px-paths.js": "/cheonglol/static/js/blueprint-icons-16px-paths.5b2bf154.chunk.js",
-    "blueprint-icons-20px-paths.js": "/cheonglol/static/js/blueprint-icons-20px-paths.144ffdca.chunk.js",
+    "main.css": "/cheonglol/static/css/main.72aa8635.css",
+    "main.js": "/cheonglol/static/js/main.8e664963.js",
+    "blueprint-icons-all-paths-loader.js": "/cheonglol/static/js/blueprint-icons-all-paths-loader.e306ff53.chunk.js",
+    "blueprint-icons-split-paths-by-size-loader.js": "/cheonglol/static/js/blueprint-icons-split-paths-by-size-loader.ae4762e7.chunk.js",
+    "blueprint-icons-all-paths.js": "/cheonglol/static/js/blueprint-icons-all-paths.94f183c0.chunk.js",
+    "blueprint-icons-16px-paths.js": "/cheonglol/static/js/blueprint-icons-16px-paths.fb9bd9cd.chunk.js",
+    "blueprint-icons-20px-paths.js": "/cheonglol/static/js/blueprint-icons-20px-paths.8f016648.chunk.js",
     "static/media/blueprint-icons-20.svg?": "/cheonglol/static/media/blueprint-icons-20.7232a810de8de6f2aeaf.svg",
     "static/media/blueprint-icons-16.svg?": "/cheonglol/static/media/blueprint-icons-16.a271f661ef44bd0c1da8.svg",
     "static/media/blueprint-icons-20.eot?": "/cheonglol/static/media/blueprint-icons-20.3f4081135062892dbcdc.eot",
@@ -18,16 +18,16 @@
     "static/media/blueprint-icons-20.woff2?": "/cheonglol/static/media/blueprint-icons-20.a167a3067f93fd318fc7.woff2",
     "static/media/blueprint-icons-16.woff2?": "/cheonglol/static/media/blueprint-icons-16.b2e01c0744d298935db0.woff2",
     "index.html": "/cheonglol/index.html",
-    "main.293ad471.css.map": "/cheonglol/static/css/main.293ad471.css.map",
-    "main.bf601d9d.js.map": "/cheonglol/static/js/main.bf601d9d.js.map",
-    "blueprint-icons-all-paths-loader.6b788eeb.chunk.js.map": "/cheonglol/static/js/blueprint-icons-all-paths-loader.6b788eeb.chunk.js.map",
-    "blueprint-icons-split-paths-by-size-loader.cf794e4e.chunk.js.map": "/cheonglol/static/js/blueprint-icons-split-paths-by-size-loader.cf794e4e.chunk.js.map",
-    "blueprint-icons-all-paths.92b09348.chunk.js.map": "/cheonglol/static/js/blueprint-icons-all-paths.92b09348.chunk.js.map",
-    "blueprint-icons-16px-paths.5b2bf154.chunk.js.map": "/cheonglol/static/js/blueprint-icons-16px-paths.5b2bf154.chunk.js.map",
-    "blueprint-icons-20px-paths.144ffdca.chunk.js.map": "/cheonglol/static/js/blueprint-icons-20px-paths.144ffdca.chunk.js.map"
+    "main.72aa8635.css.map": "/cheonglol/static/css/main.72aa8635.css.map",
+    "main.8e664963.js.map": "/cheonglol/static/js/main.8e664963.js.map",
+    "blueprint-icons-all-paths-loader.e306ff53.chunk.js.map": "/cheonglol/static/js/blueprint-icons-all-paths-loader.e306ff53.chunk.js.map",
+    "blueprint-icons-split-paths-by-size-loader.ae4762e7.chunk.js.map": "/cheonglol/static/js/blueprint-icons-split-paths-by-size-loader.ae4762e7.chunk.js.map",
+    "blueprint-icons-all-paths.94f183c0.chunk.js.map": "/cheonglol/static/js/blueprint-icons-all-paths.94f183c0.chunk.js.map",
+    "blueprint-icons-16px-paths.fb9bd9cd.chunk.js.map": "/cheonglol/static/js/blueprint-icons-16px-paths.fb9bd9cd.chunk.js.map",
+    "blueprint-icons-20px-paths.8f016648.chunk.js.map": "/cheonglol/static/js/blueprint-icons-20px-paths.8f016648.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.293ad471.css",
-    "static/js/main.bf601d9d.js"
+    "static/css/main.72aa8635.css",
+    "static/js/main.8e664963.js"
   ]
 }
