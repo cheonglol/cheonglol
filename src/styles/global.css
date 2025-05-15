@@ -32,6 +32,7 @@ h6 {
 /* START | Basic Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 5px;
+  position: absolute;
   /* Adjust width as needed */
 }
 
@@ -52,15 +53,5 @@ h6 {
   /* Darker thumb on hover */
 }
 
-/* Optional: Hide scrollbar until needed */
-::-webkit-scrollbar {
-  display: none;
-  /* Hide by default */
-}
-
-body:hover ::-webkit-scrollbar {
-  display: block;
-  /* Show on hover */
-}
-
+/* Remove hiding/showing scrollbar to prevent DOM width changes */
 /* END | Basic Scrollbar Styling */

@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'header-max-length': [2, 'always', 72], // Maximum header length
+    'header-max-length': [2, 'always', 120], // Maximum header length
     'type-enum': [ // Enforce specific commit types
       2,
       'always',

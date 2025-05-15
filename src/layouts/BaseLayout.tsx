@@ -35,13 +35,22 @@ export const BaseLayout = ({
     dispatch(assignCollapseState(true));
   };
 
+  // Determine if the screen is mobile using a media query
+  const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches;
+
   return (
     <div className="flex flex-row h-screen">
       {/* Side Navigation Container */}
       <div
         style={{ transitionDuration: "0.25s" }}
         className={`transition-all cursor-pointer bg-blue-800 text-white overflow-auto z-10 shadow
-          ${isSideNavigationCollapsed ? "flex-[0] min-w-fit h-fit overflow-clip m-2 rounded-lg absolute" : "pt-2 pl-4 flex-[0.75] md:flex-[0.25] lg:flex-[0.20]"}
+          ${
+            isSideNavigationCollapsed
+              ? "w-[56px] min-w-[56px] max-w-[56px] h-fit overflow-clip m-2 rounded-lg absolute"
+              : isMobile
+                ? "fixed top-0 left-0 h-full w-[240px] min-w-[180px] max-w-[320px] md:w-[240px] lg:w-[280px] z-20"
+                : "pt-2 pl-4 w-[240px] min-w-[180px] max-w-[320px] md:w-[240px] lg:w-[280px]"
+          }
         `}
         onClick={handleSideNavClick}
       >
@@ -49,8 +58,9 @@ export const BaseLayout = ({
       </div>
       {/* Content Container */}
       <div
-        className={`overflow-y-auto overflow-x-clip flex-1
+        className={`overflow-y-auto overflow-x-clip flex-1 min-w-0
           ${contentSnap ? "snap-y snap-mandatory" : ""}
+          ${isMobile && !isSideNavigationCollapsed ? "pointer-events-none" : ""}
         `}
         onClick={handleContentClick}
       >
@@ -61,6 +71,15 @@ export const BaseLayout = ({
           <div className="h-full">
             <div
               className={`min-w-full ${contentPadding ? "py-[64pt] px-8 md:px-10 lg:px-[12vw]" : ""}`}
+              ref={(containerRef) => {
+                if (containerRef && !isSideNavigationCollapsed && containerRef.offsetWidth < 768) {
+                  containerRef.style.overflowX = "hidden";
+                  containerRef.style.maxWidth = "100vw";
+                } else if (containerRef) {
+                  containerRef.style.overflowX = "";
+                  containerRef.style.maxWidth = "";
+                }
+              }}
             >
               {content}
             </div>

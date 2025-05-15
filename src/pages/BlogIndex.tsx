@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { BaseLayout } from "../layouts/BaseLayout";
+import { formatBlogDate } from "../utils/dateFormat";
 
 type Post = {
   filename: string;
@@ -34,6 +35,14 @@ const BlogIndex = () => {
         if (!res.ok) throw new Error("Manifest not found");
         const data = await res.json();
         if (!Array.isArray(data)) throw new Error("Invalid manifest format");
+        if (
+          Array.isArray(data) &&
+          data.length > 0 &&
+          data[0].date &&
+          !isNaN(Date.parse(data[0].date))
+        ) {
+          data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        }
         if (isMounted) setPosts(data);
       } catch {
         if (isMounted) {
@@ -92,27 +101,39 @@ const BlogIndex = () => {
   const renderPosts = () => (
     <section className="max-w-2xl mx-auto px-4 py-8">
       <h1 className="font-DM_Mono text-5xl md:text-4xl mb-8 tracking-tight">Blog</h1>
-      <ul>
-        {posts.map((post, idx) => (
-          <li key={post.filename} className="flex flex-col gap-1">
-            <button
-              type="button"
-              className="text-left text-blue-700 dark:text-blue-400 font-medium text-2xl hover:underline focus:underline transition-colors outline-none"
-              onClick={() => handlePostClick(post.filename)}
-              aria-label={`Read blog post: ${post.title}`}
-            >
-              {post.title}
-            </button>
-            <span className="text-gray-500 dark:text-gray-400 text-sm">{post.date}</span>
-            {idx < posts.length - 1 && <hr className="my-8 border-gray-200 dark:border-gray-700" />}
-          </li>
-        ))}
-      </ul>
-      {posts.length === 0 && (
-        <div className="text-gray-400 dark:text-gray-500 mt-8 text-center">
-          No blog posts found.
-        </div>
-      )}
+      <div className="relative pl-6 md:pl-8">
+        {/* Timeline vertical line - made longer by using inset-y-0 */}
+        <div
+          className="absolute left-2 md:left-3 inset-y-0 w-0.5 bg-gray-200 dark:bg-gray-700"
+          aria-hidden="true"
+        />
+        <ul className="space-y-10">
+          {posts.map((post, idx) => (
+            <li key={idx} className="relative flex items-start group py-[50px]">
+              {/* Timeline dot */}
+              <span className="absolute left-0 top-1/2 -translate-y-1/2 md:left-0 w-3 h-3 rounded-full bg-blue-600 dark:bg-blue-400 border-2 border-white dark:border-gray-900 shadow-md" />
+              <div className="flex-1 ml-6 md:ml-8">
+                <button
+                  type="button"
+                  className="font-DM_Mono text-left text-blue-700 dark:text-blue-400 font-medium text-3xl md:text-2xl hover:underline focus:underline transition-colors outline-none"
+                  onClick={() => handlePostClick(post.filename)}
+                  aria-label={`Read blog post: ${post.title}`}
+                >
+                  {post.title}
+                </button>
+                <div className="font-DM_Mono text-gray-500 dark:text-gray-400 text-base mt-2">
+                  {formatBlogDate(post.date)}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+        {posts.length === 0 && (
+          <div className="font-DM_Mono text-gray-400 dark:text-gray-500 mt-8 text-center">
+            No blog posts found.
+          </div>
+        )}
+      </div>
     </section>
   );
 
@@ -121,7 +142,16 @@ const BlogIndex = () => {
   else if (error) pageContent = renderError();
   else pageContent = renderPosts();
 
-  return <BaseLayout content={pageContent} />;
+  return (
+    <BaseLayout
+      content={
+        <div className="pl py-8 sm:px-8 sm:py-12 md:px-16 md:py-20 lg:px-32 lg:py-24">
+          {pageContent}
+        </div>
+      }
+      contentPadding={false}
+    />
+  );
 };
 
 export default BlogIndex;
