@@ -105,6 +105,9 @@ const SideNavigation = () => {
                 `}
                   onClick={() => {
                     document.title = `cheonglol - ${route.title}`;
+                    if (isMobile && !isCollapsed) {
+                      dispatch(toggleCollapseState());
+                    }
                   }}
                 >
                   <Icon icon={routeIcon} size={16} className={isCollapsed ? "mx-auto" : "mr-3"} />
