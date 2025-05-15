@@ -1,6 +1,4 @@
-# Title of Document
-
-## Owning the Work, Owning Myself
+# Owning the Work, Owning Myself
 
 I don’t have a job. But I’ve never felt more _certain_ about the path I’m on.
 
