@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cheonglol/static/css/main.00f27da8.css",
-    "main.js": "/cheonglol/static/js/main.e3187f6e.js",
+    "main.js": "/cheonglol/static/js/main.7d66a120.js",
     "blueprint-icons-all-paths-loader.js": "/cheonglol/static/js/blueprint-icons-all-paths-loader.e306ff53.chunk.js",
     "blueprint-icons-split-paths-by-size-loader.js": "/cheonglol/static/js/blueprint-icons-split-paths-by-size-loader.ae4762e7.chunk.js",
     "blueprint-icons-all-paths.js": "/cheonglol/static/js/blueprint-icons-all-paths.94f183c0.chunk.js",
@@ -19,7 +19,7 @@
     "static/media/blueprint-icons-16.woff2?": "/cheonglol/static/media/blueprint-icons-16.b2e01c0744d298935db0.woff2",
     "index.html": "/cheonglol/index.html",
     "main.00f27da8.css.map": "/cheonglol/static/css/main.00f27da8.css.map",
-    "main.e3187f6e.js.map": "/cheonglol/static/js/main.e3187f6e.js.map",
+    "main.7d66a120.js.map": "/cheonglol/static/js/main.7d66a120.js.map",
     "blueprint-icons-all-paths-loader.e306ff53.chunk.js.map": "/cheonglol/static/js/blueprint-icons-all-paths-loader.e306ff53.chunk.js.map",
     "blueprint-icons-split-paths-by-size-loader.ae4762e7.chunk.js.map": "/cheonglol/static/js/blueprint-icons-split-paths-by-size-loader.ae4762e7.chunk.js.map",
     "blueprint-icons-all-paths.94f183c0.chunk.js.map": "/cheonglol/static/js/blueprint-icons-all-paths.94f183c0.chunk.js.map",
@@ -28,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.00f27da8.css",
-    "static/js/main.e3187f6e.js"
+    "static/js/main.7d66a120.js"
   ]
 }
