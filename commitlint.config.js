@@ -19,11 +19,6 @@ module.exports = {
         'test'
       ]
     ],
-    'subject-case': [ // Enforce lowercase for the subject
-      2,
-      'always',
-      'lower-case'
-    ],
     'subject-full-stop': [ // Disallow full stop at the end of the subject
       2,
       'never',
