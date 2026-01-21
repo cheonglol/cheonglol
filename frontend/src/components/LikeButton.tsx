@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useLikes, useToggleLike } from "../hooks/usePosts";
 
 const UUID_KEY = "cheonglol-user-id";
@@ -18,7 +18,13 @@ type Props = {
 };
 
 export function LikeButton({ slug }: Props) {
-  const userId = getUserId();
+  const [userId, setUserId] = useState("");
+
+  // Get userId on client side only
+  useEffect(() => {
+    setUserId(getUserId());
+  }, []);
+
   const { data, isLoading } = useLikes(slug, userId);
   const toggleMutation = useToggleLike(slug, userId);
 
