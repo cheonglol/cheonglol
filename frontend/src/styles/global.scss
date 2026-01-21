@@ -113,7 +113,7 @@ li {
 .container {
   max-width: 720px;
   margin: 0 auto;
-  padding: 8em 0;
+  padding: 8em 2.5vw;
 }
 
 .text-muted {
@@ -139,39 +139,38 @@ li {
   margin-bottom: $space-1;
 }
 
-// Skills grid layout
+// Skills grid layout - responsive, 2 columns default
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: $space-8;
-  row-gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-2 $space-6;
   margin-bottom: $space-4;
-
-  // Subtle left border on columns 2 and 3
-  .skill-item:nth-child(3n + 2),
-  .skill-item:nth-child(3n + 3) {
-    padding-left: $space-4;
-    border-left: 1px solid $border;
-  }
+  justify-content: center;
 }
 
 // Skill item with visual proficiency dots
 .skill-item {
   display: flex;
   align-items: center;
-  gap: $space-2;
+  justify-content: space-between;
+  gap: $space-3;
   padding: $space-1 0;
 
   .skill-name {
     font-family: $font-mono;
     font-size: $font-size-xs;
     color: $text-primary;
-    min-width: 130px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .skill-dots {
     display: flex;
     gap: 4px;
+    flex-shrink: 0;
 
     .dot {
       width: 6px;
@@ -189,7 +188,8 @@ li {
   .skill-label {
     font-size: $font-size-xs;
     color: $text-muted;
-    min-width: 70px;
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 
   // Proficiency levels

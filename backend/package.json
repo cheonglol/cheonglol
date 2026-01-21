@@ -12,6 +12,7 @@
     "prisma:seed": "bun prisma/seed.ts"
   },
   "dependencies": {
+    "@fastify/cors": "^11",
     "@orpc/contract": "^1",
     "@orpc/server": "^1",
     "@orpc/standard-server-fastify": "^1",
