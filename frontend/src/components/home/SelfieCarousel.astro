@@ -101,8 +101,10 @@ try {
     border: 2px solid transparent;
   }
 
-  .selfie:hover:not(.fading-out) {
-    border-color: #8b5cf6;
+  @media (hover: hover) {
+    .selfie:hover:not(.fading-out) {
+      border-color: #8b5cf6;
+    }
   }
 
   .selfie.fading-out {
