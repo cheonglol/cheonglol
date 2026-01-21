@@ -5,7 +5,7 @@
     "buildCommand": "bun install && bun prisma generate && bun prisma db push --skip-generate"
   },
   "deploy": {
-    "startCommand": "node ./dist/index.js",
+    "startCommand": "bun src/index.ts",
     "healthcheckPath": "/health",
     "healthcheckTimeout": 30,
     "restartPolicyType": "ON_FAILURE",
