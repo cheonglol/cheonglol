@@ -25,21 +25,38 @@ const base = import.meta.env.BASE_URL;
     <title>{title}</title>
   </head>
   <body>
-    <nav class="sidebar-nav">
-      <a href={`${base}`} class:list={[{ active: currentPage === "profile" }]}>
-        <span class="nav-emoji">👤</span>
-        <span class="nav-tooltip">Profile</span>
-      </a>
-      <a
-        href={`${base}/blog`}
-        class:list={[{ active: currentPage === "blog" }]}
-      >
-        <span class="nav-emoji">📝</span>
-        <span class="nav-tooltip">Blog</span>
-      </a>
+    <nav class="sidebar-nav" id="sidebar-nav">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <div class="nav-links">
+        <a
+          href={`${base}`}
+          class:list={[{ active: currentPage === "profile" }]}
+        >
+          <span class="nav-emoji">👤</span>
+          <span class="nav-tooltip">Profile</span>
+        </a>
+        <a
+          href={`${base}/blog`}
+          class:list={[{ active: currentPage === "blog" }]}
+        >
+          <span class="nav-emoji">📝</span>
+          <span class="nav-tooltip">Blog</span>
+        </a>
+      </div>
     </nav>
     <main class="container">
       <slot />
     </main>
+    <script>
+      const toggle = document.getElementById("nav-toggle");
+      const nav = document.getElementById("sidebar-nav");
+      if (toggle && nav) {
+        toggle.addEventListener("click", () => {
+          nav.classList.toggle("open");
+        });
+      }
+    </script>
   </body>
 </html>

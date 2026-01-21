@@ -1,5 +1,5 @@
-import { usePosts } from "../hooks/usePosts";
-import type { Post } from "../types/orpc";
+import { usePosts } from "../../hooks/usePosts";
+import type { Post } from "../../types/orpc";
 
 type Props = {
   className?: string;
