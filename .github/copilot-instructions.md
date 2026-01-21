@@ -1,150 +1,143 @@
-<!-- Auto-generated for an empty repository snapshot. Update when repository gains source files. -->
-
 # copilot-instructions — cheonglol
 
-Repository state (discovered):
+Write direct, factual prose. No marketing language, no filler adjectives.
+Technical documentation style: concise, specific, verifiable.
+You are an assistant helping this user's personal assistant.
+
+## Repository state
 
 - Path: `c:\Users\leste\repos\cheonglol\cheonglol`
-- Git: repository present, branch `main` (monorepo-like layout: `frontend/`, `backend/`, `docker/`).
+- Git: branch `main`, monorepo layout (`frontend/`, `backend/`, `docker/`, `scripts/`).
 - Environment: Windows (default shell: `cmd.exe`).
 
-Purpose for AI coding agents
+## Production URLs
 
-- Primary objective: implement a minimal, production-ready portfolio + blog scaffold matching the owner's preferences: Bun (package manager) + Astro (frontend SPA with multiple pages), Fastify + Prisma backend (TypeScript), and CI that publishes the frontend to GitHub Pages.
-- Be conservative with private data: provide local-only helpers to surface private GitHub data (via `gh`) but do not publish private repo/org names in the public site or commits.
+- Frontend: https://cheonglol.github.io/cheonglol/
+- Backend: https://cheonglol-backend-production.up.railway.app/
+- Health check: `GET /health`
+- Issue tracker: https://github.com/cheonglol/cheonglol/issues
 
-Immediate workplan (priority)
+## Stack (confirmed & deployed)
 
-1. Confirm one small open question: which ORPC implementation does the owner mean (provide repo or npm package name)?
-2. If confirmed, scaffold the monorepo (one focused PR):
-   - `frontend/` — Astro (TypeScript + React) with content-driven blog in `frontend/content/blog/` and static build for GitHub Pages.
-   - `backend/` — Fastify (TypeScript) skeleton, Prisma schema for `Post`, JSON-RPC fallback + pluggable ORPC adapter.
-   - CI — GitHub Actions workflow that builds the frontend with Bun and deploys to `gh-pages`.
-3. Provide a small set of deterministic smoke checks and an explicit list of follow-ups that require owner input (ORPC package, production DATABASE_URL, license choice).
+| Layer              | Technology                                   |
+| ------------------ | -------------------------------------------- |
+| Package manager    | Bun (workspaces at root)                     |
+| Frontend           | Astro 4 + React 18 + TanStack Query 5 + SASS |
+| Backend            | Fastify 5 + Prisma 7 + oRPC-style routes     |
+| Database           | PostgreSQL (Railway; dev can use SQLite)     |
+| Hosting (frontend) | GitHub Pages via Actions                     |
+| Hosting (backend)  | Railway (Nixpacks via `railway.json`)        |
+| Fonts              | Inter (sans), JetBrains Mono (code)          |
 
-Project-specific, discoverable conventions
+## Content conventions
 
-- Stack choices (owner preference): Bun, Astro, TypeScript everywhere, Fastify, Prisma, GitHub Pages for hosting.
-- Content conventions:
-  - Blog posts: `frontend/content/blog/<yyyy-mm-dd>-slug.md` (Astro collection).
-  - Blog posts: `frontend/content/blog/<yyyy-mm-dd>-slug.md` (Astro collection).
-  - Categories / labels: use `categories: ["tag"]` in frontmatter. The site also accepts the legacy `category` key and will normalize it to `categories`.
-  - Resume: generated at build-time if the owner runs a local script that calls the `gh` CLI; public site will only show curated/approved items.
-  - Backend schema: `backend/prisma/schema.prisma` (dev: SQLite; production: set DATABASE_URL to Postgres).
-- Docker: lightweight images in `docker/` (optional for dev); existing files are placeholders — update them when containerizing.
+- Blog posts: `frontend/content/blog/<yyyy-mm-dd>-slug.md` (Astro collection).
+- Post images: `frontend/content/blog/image/<slug>/` folder.
+- Categories: `categories: ["tag"]` in frontmatter (legacy `category` key also accepted).
+- Resume: local-only script `scripts/gh-resume.ts` uses `gh` CLI; never publish private repos/orgs.
 
-Developer workflows (exact commands for Windows `cmd.exe`)
+## Features implemented
 
-- Install (root, Bun workspace):
-  - bun install
-- Frontend dev (inside `frontend`):
-  - cd frontend && bun dev
-- Frontend build (static output for Pages):
-  - cd frontend && bun build
-- Backend dev (inside `backend`):
-  - cd backend && bun run dev
-- Resume (local-only, uses `gh`):
-  - node scripts/gh-resume.js # run only locally after authenticating `gh`
+### Likes (💖)
 
-Prisma / database
+- UUID-based user tracking: each browser stores `cheonglol-user-id` in localStorage.
+- Toggle: clicking heart likes or unlikes; server returns `{ slug, count, userLiked }`.
+- Model: `UserLike { id, slug, userId, createdAt }` with `@@unique([slug, userId])`.
+- Rate limiting: 10 POST/min global, 3 s per-slug cooldown, 48 hr ban for spam (25+ in 1 min).
 
-- Dev flow (SQLite):
-  - cd backend && bun prisma generate
-  - cd backend && bun prisma migrate dev --name init
-- Production: set DATABASE_URL to a Postgres connection string and run `prisma migrate deploy` in CI.
+### UI
 
-ORPC guidance (important)
+- Sticky sidebar nav with emoji icons and tooltips.
+- Blog post modal (min-height 75 vh, scrollable body).
+- Skill bars with proficiency labels.
 
-- Do not assume a specific ORPC implementation. The canonical directory name is `backend/src/orpc/` (matches `@orpc/*` packages). Provide a small JSON-RPC fallback implementation in `backend/src/orpc/fallback/` and a pluggable adapter so the owner can supply the official `@orpc/*` packages. Ask the owner to confirm the package — the scaffold will include clear TODOs and an adapter interface.
+## Prisma 7 configuration
 
-oRPC (unnoq) + TanStack Query — recommended quickstart
+- Config file: `backend/prisma.config.ts` (must remain at backend root, NOT inside `prisma/`).
+- Uses `env('DATABASE_URL')` imported from `prisma/config`.
+- No migrations folder; we use `prisma db push` (idempotent, diffs schema directly against DB).
+- Production dockerfile runs `prisma db push --skip-generate` at container start.
 
-- Use the official oRPC packages (docs: https://orpc.unnoq.com). Recommended packages:
+## Docker
 
-  - Server/contract: `@orpc/contract`, `@orpc/server`, `@orpc/standard-server-fastify`
-  - Frontend (React + TanStack Query): `@orpc/react-query`, `@tanstack/react-query`
+- `docker/backend.dockerfile` — production image; runs `prisma db push` then `node ./dist/index.js`.
+- `docker/backend.dev.dockerfile` — dev image with nodemon.
+- `docker/frontend.dockerfile` / `frontend.dev.dockerfile` — Astro builds.
+- No entrypoint scripts; commands are inlined in `CMD`.
 
-- Why: end-to-end TypeScript contracts (define procedure signatures once in `@orpc/contract`) and consume them in the frontend with first-class TanStack Query hooks via `@orpc/react-query`.
+## Developer workflows (Windows `cmd.exe`)
 
-- Minimal developer flow:
+```sh
+# Install (root)
+bun install
 
-  1. Define contract in `backend/src/orpc/contract.ts` using `@orpc/contract`.
-  2. Implement handlers and register them with Fastify via the official Fastify adapter.
-  3. Export or generate a typed client (local workspace import or publish to npm/private registry).
-  4. In the frontend import the generated contract/client and use `createReactQueryHooks` from `@orpc/react-query` to get typed hooks that integrate with TanStack Query.
+# Frontend dev
+cd frontend && bun dev
 
-- Example (conceptual):
+# Frontend build (static for Pages)
+cd frontend && bun run build
 
-  - Install: bun --cwd frontend add @tanstack/react-query @orpc/react-query
-  - Usage: `const rpc = createReactQueryHooks<AppContract>();` then `rpc.useQuery(['posts.getAll'])` — hooks are fully typed.
+# Backend dev
+cd backend && bun run dev
 
-- CI / deployment notes:
-  - CI should build the backend contract (type-check) and ensure the generated client used by `frontend/` is up-to-date. Add a check in CI that `frontend` and `backend` contracts match (simple `tsc` step or a unit that imports the contract from the backend workspace).
+# Prisma generate + push (dev)
+cd backend && bun prisma generate && bun prisma db push
+```
 
-Important: do not publish or expose private procedure names or private repo/org data in the public site. Keep any `gh`-driven resume generation local-only unless the owner explicitly opts in.
+## GitHub Actions
 
-Files and locations an AI should modify or inspect
+- Workflow: `.github/workflows/deploy-astro-to-pages.yml`
+- Triggers on push to `main`.
+- Uses repository variable `PUBLIC_API_URL` (set in repo settings → Variables).
+- Cleans up caches older than 24 hours before each run.
 
-- Frontend: `frontend/src/pages/` (landing + blog), `frontend/content/blog/` (markdown posts), `frontend/package.json`, `astro.config.*`.
-- Backend: `backend/src/` (Fastify routes + RPC shim), `backend/prisma/schema.prisma`, `backend/.env.example`.
-- Devops: `docker/` (Dockerfiles + entrypoints), `.github/workflows/pages.yml` (Pages CI), `scripts/gh-resume.ts` (local-only resume generator).
+## Railway deployment
 
-Safety & privacy rules (must-follow)
+- Config: `backend/railway.json`
+- Build: `bun install && bun prisma generate && bun run build`
+- Start: `node ./dist/index.js` (dockerfile runs db push at start)
+- Env vars: set `DATABASE_URL` in Railway dashboard.
 
-- NEVER publish or display the owner's private repos/org names in the public site or commits. Provide local scripts that the owner runs to inject private data.
-- Implement ORPC as a pluggable adapter with a secure default (JSON-RPC fallback) until the owner confirms the exact library.
+## oRPC structure
 
-What to include in the initial PR from an agent
+- Contract: `backend/src/orpc/contract.ts` — Zod schemas for routes.
+- Handlers: `backend/src/orpc/handlers/` — Prisma operations.
+- Routes: `backend/src/orpc/routes/` — Fastify route registration with rate limiting.
+- Frontend client: `frontend/src/orpc/client.ts` — typed fetch wrappers.
+- React hooks: `frontend/src/hooks/usePosts.ts` — TanStack Query hooks.
 
-- One-line summary and chosen stack (Astro + Bun frontend; Fastify + Prisma backend).
-- How to run locally (Windows `cmd.exe`) with exact commands and expected smoke outputs.
-- Files added and why (list of high-impact files).
-- A tiny smoke test: frontend builds and serves; backend returns sample posts at `/api/posts`.
-- Explicit list of follow-ups that require owner input (ORPC package, production DATABASE_URL, license choice).
+## Key files
 
-If anything in these instructions is unclear or you want the scaffold adjusted (different CSS, prefer `docs/`→Pages vs `gh-pages` branch, or a different DB), tell me which option to implement and I will update the scaffold and the PR accordingly.
+| Purpose       | Path                                     |
+| ------------- | ---------------------------------------- |
+| Prisma schema | `backend/prisma/schema.prisma`           |
+| Prisma config | `backend/prisma.config.ts`               |
+| Fastify entry | `backend/src/index.ts`                   |
+| Astro config  | `frontend/astro.config.mjs`              |
+| Landing page  | `frontend/src/pages/index.astro`         |
+| Blog page     | `frontend/src/pages/blog.astro`          |
+| Like button   | `frontend/src/components/LikeButton.tsx` |
+| Posts hooks   | `frontend/src/hooks/usePosts.ts`         |
 
-Examples an agent may propose (include when the user approves a stack)
+## Pending work
 
-- Node (recommended minimal):
+1. **Thoughts page** (Issue #1) — requires GitHub OAuth; currently blocked.
+2. **GitHub OAuth** — needed for authenticated features.
+3. **License** — owner to choose (MIT, ISC, etc.).
 
-  - Files to add: `package.json`, `src/index.js`, `tests/smoke.test.js`, GitHub Actions `ci.yml`.
-  - Example run instructions to include in `README.md` (Windows `cmd.exe`):
-    - npm install
-    - npm test
+## Safety & privacy rules
 
-- Python (recommended minimal):
-  - Files to add: `pyproject.toml` or `requirements.txt`, `src/`, `tests/`, GitHub Actions `ci.yml`.
-  - Windows quick commands to document: `py -3 -m venv .venv` then `.venv\Scripts\pip.exe install -r requirements.txt`
+- NEVER publish private repo/org names in the public site or commits.
+- Resume script (`scripts/gh-resume.ts`) runs locally only.
+- Rate limiting protects backend from spam.
 
-When to ask the user (explicit, required questions)
+## Behavior rules for agents
 
-- What language / framework do you want this repository to be? (show 2–3 presets with trade-offs)
-- Preferred package manager / Python version / Node LTS? Any internal templates or license preference?
-- Do you want CI on push + PR (GitHub Actions) and a coverage badge in the README?
+- Do not fabricate domain knowledge or implement features without owner approval.
+- Prefer minimal, well-documented commits; each change should be reversible.
+- When modifying Prisma schema, run `prisma db push` (not migrations) for dev/prod.
+- CORS is configured for `https://cheonglol.github.io`; update `backend/src/index.ts` if domain changes.
 
-What to include in the initial PR (agent checklist)
+## Contact
 
-- Purpose and chosen stack (1–2 sentences).
-- Files added with short rationale (README, src example, tests, CI).
-- How to run locally on Windows (`cmd.exe`) and the expected smoke-test output.
-- A tiny test that passes on CI and locally.
-- Suggested next tasks (API design, feature A, add integration tests).
-
-Behavior rules for agents working in this repo
-
-- Do not fabricate domain knowledge or implement features without explicit owner approval.
-- If the repo is empty, always present choices and a minimal plan before creating code.
-- Prefer minimal, well-documented commits — each change must be reversible and covered by a smoke test.
-
-Where to look later (when code appears)
-
-- Root manifests: `package.json`, `pyproject.toml`, `go.mod`, `Cargo.toml`.
-- Source: `src/`, `app/`, or language-specific defaults.
-- Tests: `tests/`, `spec/`, or `__tests__/`.
-
-Contact / escalation
-
-- If the owner is unresponsive for >72 hours after a proposed scaffold, open a draft PR and add a clear PR description with the questions the agent asked.
-
-If anything in these instructions is unclear or you expected different priorities, tell me which areas to expand or which stacks to prepare templates for and I'll iterate.
+- If owner is unresponsive >72 h, open a draft PR with clear description of pending questions.

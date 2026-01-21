@@ -54,7 +54,7 @@ h1 {
 h2 {
   font-size: $font-size-xl;
   font-weight: 500;
-  margin-top: $space-4;
+  margin-top: $space-6;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: $text-secondary;
@@ -137,6 +137,22 @@ li {
   border-radius: $radius-full;
   margin-right: $space-1;
   margin-bottom: $space-1;
+}
+
+// Skills grid layout
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: $space-8;
+  row-gap: 0;
+  margin-bottom: $space-4;
+
+  // Subtle left border on columns 2 and 3
+  .skill-item:nth-child(3n + 2),
+  .skill-item:nth-child(3n + 3) {
+    padding-left: $space-4;
+    border-left: 1px solid $border;
+  }
 }
 
 // Skill item with visual proficiency bar
