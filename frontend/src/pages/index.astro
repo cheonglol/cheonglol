@@ -1,0 +1,327 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Lester Cheong";
+---
+
+<BaseLayout title={title} currentPage="profile">
+  <header>
+    <h1>Lester Cheong</h1>
+    <p class="text-muted">Software Developer · Singapore</p>
+  </header>
+
+  <div class="section-divider"><span class="dot"></span></div>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p>
+      Software developer with experience across full-stack web development,
+      enterprise banking systems, and developer tooling. Demonstrated capability
+      in TypeScript, React, and backend services. Active contributor to
+      Singapore's developer community through DevsGoWhere and technical
+      instruction programmes.
+    </p>
+  </section>
+
+  <div class="section-divider"><span class="dot"></span></div>
+
+  <section>
+    <h2>Professional Experience</h2>
+
+    <article class="card">
+      <h3>Freelance Software Developer</h3>
+      <p class="text-muted">Self-employed · Jun 2025 – Present</p>
+      <p>
+        Designed and delivered a Telegram-based sales order management system
+        for a distribution business. The solution serves 24–26 sales personnel,
+        enabling field order entry via Telegram bot while providing management
+        with a Mini App interface for product catalogue maintenance, supplier
+        configuration, and time-limited promotions.
+      </p>
+      <p>
+        Technical implementation includes PostgreSQL with scheduled archive,
+        cleanup, and backup routines. Authentication ensures data isolation
+        between sales users. Engagement undertaken to gain production lifecycle
+        experience—deployment, monitoring, safe schema migrations, and iterative
+        feature releases.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Sales Executive</h3>
+      <p class="text-muted">JustifyPrint · May 2025 – Jun 2025</p>
+      <p>
+        Business development and client engagement for print solutions provider.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Founder, Indie Product Studio</h3>
+      <p class="text-muted">Self-employed · Dec 2024 – Present</p>
+      <p>Pre-launch phase product development and prototyping.</p>
+    </article>
+
+    <article class="card">
+      <h3>Hackathon Participant</h3>
+      <p class="text-muted">
+        SuperAI · Jun 2025 &nbsp;|&nbsp; AngelHack · May 2024
+      </p>
+      <p>
+        SuperAI Next Hackathon 2025 — TypeScript full-stack submission.
+        AngelHack 2024 — team placed 29th of 200 entries (Seraphim Sentinels).
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Code@OCBC, Assistant Class Instructor</h3>
+      <p class="text-muted">OCBC Bank · Oct 2022</p>
+      <p>
+        Delivered JavaScript programming instruction to 19 students at St.
+        Patrick's School. Guided participants through building a timer web
+        application from initial concept to completion.
+      </p>
+    </article>
+  </section>
+
+  <div class="section-divider"><span class="dot"></span></div>
+
+  <!-- Community Engagement (commented out)
+  <section>
+    <h2>Community Engagement</h2>
+
+    <article class="card">
+      <h3>Open-Source &amp; Tooling</h3>
+      <p class="text-muted">GitHub · Ongoing</p>
+      <p>
+        Maintainer of developer utilities including MCP Bridge API (Model
+        Context Protocol proxy), Wayland MCP (Linux desktop automation for
+        LLMs), and assorted TypeScript project templates. Fork contributions to
+        vscode-mermaid-editor.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>RED Conference Committee Member</h3>
+      <p class="text-muted">OCBC · 2023, 2024</p>
+      <p>
+        Technology partner engagement and attendee feedback collection for
+        enterprise technology conference.
+      </p>
+    </article>
+  </section>
+
+  <div class="section-divider"><span class="dot"></span></div>
+  -->
+
+  <section>
+    <h2>Technical Competencies</h2>
+
+    <h3>Languages &amp; Frameworks</h3>
+    <div class="skills-grid">
+      <div class="skill-item" data-level="proficient">
+        <span class="skill-name">TypeScript</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Proficient</span>
+      </div>
+      <div class="skill-item" data-level="proficient">
+        <span class="skill-name">JavaScript</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Proficient</span>
+      </div>
+      <div class="skill-item" data-level="proficient">
+        <span class="skill-name">React</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Proficient</span>
+      </div>
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">Python</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">C#</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+      <div class="skill-item" data-level="foundational">
+        <span class="skill-name">Java</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Foundational</span>
+      </div>
+      <div class="skill-item" data-level="foundational">
+        <span class="skill-name">Kotlin</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Foundational</span>
+      </div>
+      <div class="skill-item" data-level="foundational">
+        <span class="skill-name">Swift</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Foundational</span>
+      </div>
+      <div class="skill-item" data-level="foundational">
+        <span class="skill-name">C++</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Foundational</span>
+      </div>
+    </div>
+
+    <h3>Backend &amp; Infrastructure</h3>
+    <div class="skills-grid">
+      <div class="skill-item" data-level="proficient">
+        <span class="skill-name">Fastify</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Proficient</span>
+      </div>
+      <div class="skill-item" data-level="proficient">
+        <span class="skill-name">Prisma</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Proficient</span>
+      </div>
+      <div class="skill-item" data-level="proficient">
+        <span class="skill-name">PostgreSQL</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Proficient</span>
+      </div>
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">Telegram Bot API</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">Docker</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">CI/CD</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+    </div>
+
+    <h3>Frontend &amp; Tooling</h3>
+    <div class="skills-grid">
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">Astro</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">Vite</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">Bun</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">TanStack Query</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+    </div>
+
+    <h3>AI &amp; Emerging Technologies</h3>
+    <div class="skills-grid">
+      <div class="skill-item" data-level="working">
+        <span class="skill-name">MCP Servers</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Working</span>
+      </div>
+      <div class="skill-item" data-level="foundational">
+        <span class="skill-name">RAG Applications</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Foundational</span>
+      </div>
+      <div class="skill-item" data-level="foundational">
+        <span class="skill-name">LangChain</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Foundational</span>
+      </div>
+      <div class="skill-item" data-level="foundational">
+        <span class="skill-name">NLP/ML</span>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+        <span class="skill-label">Foundational</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"><span class="dot"></span></div>
+
+  <section>
+    <h2>Contact</h2>
+    <ul>
+      <li><a href="https://github.com/cheonglol">GitHub</a></li>
+      <li>
+        <a href="https://sg.linkedin.com/in/lester-cheong-a29a4a209">LinkedIn</a
+        >
+      </li>
+      <li><a href="mailto:lestercheong70@outlook.com">Email</a></li>
+      <li><a href="/blog">Blog →</a></li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  header {
+    margin-bottom: $space-4;
+  }
+
+  .card {
+    margin-bottom: $space-3;
+
+    h3 {
+      margin-bottom: $space-1;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: $space-1;
+    margin-bottom: $space-3;
+  }
+
+  .skill-legend {
+    display: flex;
+    gap: $space-4;
+    font-size: $font-size-xs;
+    color: $text-muted;
+    margin-top: $space-2;
+
+    .legend-bar {
+      display: inline-block;
+      width: 24px;
+      height: 4px;
+      border-radius: $radius-full;
+      margin-right: $space-1;
+      vertical-align: middle;
+
+      &.proficient {
+        background: $accent;
+      }
+      &.working {
+        background: $purple-400;
+      }
+      &.foundational {
+        background: $grey-500;
+      }
+    }
+  }
+
+  section ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      margin-bottom: $space-1;
+    }
+  }
+</style>

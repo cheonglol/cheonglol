@@ -1,0 +1,69 @@
+// Railway/Temporal inspired color scheme
+// Purple, white, grey, black (dark mode default)
+
+// Core colors
+$purple-500: #8b5cf6;
+$purple-400: #a78bfa;
+$purple-600: #7c3aed;
+$purple-700: #6d28d9;
+
+$white: #ffffff;
+$grey-100: #f4f4f5;
+$grey-200: #e4e4e7;
+$grey-300: #d4d4d8;
+$grey-400: #a1a1aa;
+$grey-500: #71717a;
+$grey-600: #52525b;
+$grey-700: #3f3f46;
+$grey-800: #27272a;
+$grey-900: #18181b;
+$black: #09090b;
+
+// Semantic colors (dark mode default)
+$bg-primary: $black;
+$bg-secondary: $grey-900;
+$bg-tertiary: $grey-800;
+
+$text-primary: $white;
+$text-secondary: $grey-300;
+$text-muted: $grey-500;
+
+$accent: $purple-500;
+$accent-hover: $purple-400;
+$accent-active: $purple-600;
+
+$border: $grey-700;
+$border-subtle: $grey-800;
+
+// Typography
+$font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  sans-serif;
+$font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Monaco, monospace;
+
+$font-size-xs: 0.7rem;
+$font-size-sm: 0.8rem;
+$font-size-base: 0.9rem;
+$font-size-lg: 1.1rem;
+$font-size-xl: 1.35rem;
+$font-size-2xl: 1.75rem;
+$font-size-3xl: 2.25rem;
+
+// Spacing
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-12: 3rem;
+$space-16: 4rem;
+
+// Border radius
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-full: 9999px;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 200ms ease;

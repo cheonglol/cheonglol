@@ -1,0 +1,22 @@
+{
+  "name": "cheonglol",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "bootstrap": "bun install && bun --cwd backend prisma generate",
+    "dev": "docker compose up --build --watch",
+    "dev:frontend": "bun --cwd frontend dev",
+    "dev:backend": "bun --cwd backend run dev",
+    "build": "bun --cwd frontend build && bun --cwd backend build || true",
+    "preview": "bun --cwd frontend preview",
+    "smoke": "bun --cwd frontend build && test -d frontend/dist"
+  },
+  "files": [
+    "frontend",
+    "backend"
+  ]
+}

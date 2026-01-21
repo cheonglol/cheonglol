@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { BlogPosts } from "../components/BlogPosts";
+
+const staticPosts = await Astro.glob("../../content/blog/*.md");
+const sortedPosts = staticPosts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).getTime() -
+    new Date(a.frontmatter.pubDate).getTime(),
+);
+
+// Transform to props format with rendered HTML
+const posts = await Promise.all(
+  sortedPosts.map(async (p) => {
+    const cats = p.frontmatter.categories ?? p.frontmatter.category ?? [];
+    const date = new Date(p.frontmatter.pubDate).toLocaleDateString("en-SG", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+    const slug =
+      p.url?.split("/").pop() ??
+      p.file.split("/").pop()?.replace(".md", "") ??
+      "";
+    return {
+      slug,
+      title: p.frontmatter.title,
+      date,
+      description: p.frontmatter.description ?? "",
+      categories: Array.isArray(cats) ? cats : [],
+      content: p.compiledContent(),
+    };
+  }),
+);
+---
+
+<BaseLayout title="Blog" currentPage="blog">
+  <header>
+    <h1>Blog</h1>
+    <p class="text-muted">Notes on development, tooling, and experiments.</p>
+  </header>
+
+  <div class="section-divider"><span class="dot"></span></div>
+
+  <section>
+    <h2>Posts</h2>
+    <BlogPosts posts={posts} client:load />
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  header {
+    margin-bottom: $space-2;
+  }
+</style>

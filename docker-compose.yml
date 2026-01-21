@@ -1,0 +1,57 @@
+# Local development with hot-reload
+# Usage: docker compose up --watch (or docker compose watch)
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.dev.dockerfile
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=development
+      - PORT=4000
+    restart: unless-stopped
+    develop:
+      watch:
+        - action: sync
+          path: ./backend/src
+          target: /app/backend/src
+          ignore:
+            - node_modules/
+        - action: sync
+          path: ./backend/prisma
+          target: /app/backend/prisma
+        - action: rebuild
+          path: ./backend/package.json
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.dev.dockerfile
+    ports:
+      - "4321:4321"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    restart: unless-stopped
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend/src
+          target: /app/frontend/src
+          ignore:
+            - node_modules/
+        - action: sync
+          path: ./frontend/content
+          target: /app/frontend/content
+        - action: sync
+          path: ./frontend/public
+          target: /app/frontend/public
+        - action: rebuild
+          path: ./frontend/package.json
+        - action: rebuild
+          path: ./frontend/astro.config.mjs
