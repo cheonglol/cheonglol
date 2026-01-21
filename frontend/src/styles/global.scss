@@ -155,7 +155,7 @@ li {
   }
 }
 
-// Skill item with visual proficiency bar
+// Skill item with visual proficiency dots
 .skill-item {
   display: flex;
   align-items: center;
@@ -169,17 +169,20 @@ li {
     min-width: 130px;
   }
 
-  .skill-bar {
-    width: 60px;
-    height: 4px;
-    background: $bg-tertiary;
-    border-radius: $radius-full;
-    overflow: hidden;
+  .skill-dots {
+    display: flex;
+    gap: 4px;
 
-    .skill-fill {
-      height: 100%;
-      border-radius: $radius-full;
-      transition: width $transition-base;
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: $bg-tertiary;
+      transition: background $transition-base;
+
+      &.filled {
+        background: currentColor;
+      }
     }
   }
 
@@ -191,27 +194,24 @@ li {
 
   // Proficiency levels
   &[data-level="proficient"] {
-    .skill-fill {
-      width: 100%;
-      background: $accent;
+    .skill-dots {
+      color: $accent;
     }
     .skill-label {
       color: $accent;
     }
   }
   &[data-level="working"] {
-    .skill-fill {
-      width: 60%;
-      background: $purple-400;
+    .skill-dots {
+      color: $purple-400;
     }
     .skill-label {
       color: $purple-400;
     }
   }
   &[data-level="foundational"] {
-    .skill-fill {
-      width: 30%;
-      background: $grey-500;
+    .skill-dots {
+      color: $grey-500;
     }
   }
 }
