@@ -26,19 +26,16 @@ const base = import.meta.env.BASE_URL;
   </head>
   <body>
     <nav class="sidebar-nav">
-      <a
-        href={`${base}`}
-        class:list={[{ active: currentPage === "profile" }]}
-        title="Profile"
-      >
+      <a href={`${base}`} class:list={[{ active: currentPage === "profile" }]}>
         <span class="nav-emoji">👤</span>
+        <span class="nav-tooltip">Profile</span>
       </a>
       <a
         href={`${base}/blog`}
         class:list={[{ active: currentPage === "blog" }]}
-        title="Blog"
       >
         <span class="nav-emoji">📝</span>
+        <span class="nav-tooltip">Blog</span>
       </a>
     </nav>
     <main class="container">

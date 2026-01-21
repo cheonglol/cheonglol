@@ -14,9 +14,12 @@ RUN npm install
 COPY backend/nodemon.json ./
 COPY backend/src ./src
 COPY backend/prisma ./prisma
+COPY backend/prisma.config.ts ./
 COPY backend/tsconfig.json ./
+COPY docker/backend.entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 WORKDIR /app/backend
 
-# Use nodemon with config file
-CMD ["nodemon"]
+# Generate Prisma client and start with nodemon
+ENTRYPOINT ["/entrypoint.sh"]
