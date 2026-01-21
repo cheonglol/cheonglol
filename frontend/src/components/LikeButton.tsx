@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useLikes, useLikeMutation, useUnlikeMutation } from "../hooks/usePosts";
+import {
+  useLikes,
+  useLikeMutation,
+  useUnlikeMutation,
+} from "../hooks/usePosts";
 
 const UUID_KEY = "cheonglol-user-id";
 const COOLDOWN_MS = 2000;
@@ -36,11 +40,11 @@ export function LikeButton({ slug }: Props) {
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    
+
     const now = Date.now();
     if (now - lastClickRef.current < COOLDOWN_MS) return;
     lastClickRef.current = now;
-    
+
     if (isDisabled) return;
 
     setCooldown(true);
@@ -55,11 +59,19 @@ export function LikeButton({ slug }: Props) {
 
   return (
     <button
-      className={`like-btn ${isLiked ? "liked" : ""} ${cooldown ? "cooldown" : ""}`}
+      className={`like-btn ${isLiked ? "liked" : ""} ${
+        cooldown ? "cooldown" : ""
+      }`}
       onClick={handleClick}
       disabled={isDisabled}
       aria-label={isLiked ? "Unlike this post" : "Like this post"}
-      title={cooldown ? "Please wait..." : isLiked ? "Click to unlike" : "Click to like"}
+      title={
+        cooldown
+          ? "Please wait..."
+          : isLiked
+          ? "Click to unlike"
+          : "Click to like"
+      }
     >
       <span className="like-emoji">{isLiked ? "💖" : "🩶"}</span>
       <span className="like-count">{isLoading ? "..." : count}</span>
