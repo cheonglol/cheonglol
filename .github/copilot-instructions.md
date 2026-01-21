@@ -1,4 +1,4 @@
-# copilot-instructions — cheonglol
+# copilot-instructions - cheonglol
 
 Write direct, factual prose. No marketing language, no filler adjectives.
 Technical documentation style: concise, specific, verifiable.
@@ -60,9 +60,9 @@ You are an assistant helping this user's personal assistant.
 
 ## Docker
 
-- `docker/backend.dockerfile` — production image; runs `prisma db push` then `node ./dist/index.js`.
-- `docker/backend.dev.dockerfile` — dev image with nodemon.
-- `docker/frontend.dockerfile` / `frontend.dev.dockerfile` — Astro builds.
+- `docker/backend.dockerfile` - production image; runs `prisma db push` then `node ./dist/index.js`.
+- `docker/backend.dev.dockerfile` - dev image with nodemon.
+- `docker/frontend.dockerfile` / `frontend.dev.dockerfile` - Astro builds.
 - No entrypoint scripts; commands are inlined in `CMD`.
 
 ## Developer workflows (Windows `cmd.exe`)
@@ -100,11 +100,11 @@ cd backend && bun prisma generate && bun prisma db push
 
 ## oRPC structure
 
-- Contract: `backend/src/orpc/contract.ts` — Zod schemas for routes.
-- Handlers: `backend/src/orpc/handlers/` — Prisma operations.
-- Routes: `backend/src/orpc/routes/` — Fastify route registration with rate limiting.
-- Frontend client: `frontend/src/orpc/client.ts` — typed fetch wrappers.
-- React hooks: `frontend/src/hooks/usePosts.ts` — TanStack Query hooks.
+- Contract: `backend/src/orpc/contract.ts` - Zod schemas for routes.
+- Handlers: `backend/src/orpc/handlers/` - Prisma operations.
+- Routes: `backend/src/orpc/routes/` - Fastify route registration with rate limiting.
+- Frontend client: `frontend/src/orpc/client.ts` - typed fetch wrappers.
+- React hooks: `frontend/src/hooks/usePosts.ts` - TanStack Query hooks.
 
 ## Key files
 
@@ -121,9 +121,9 @@ cd backend && bun prisma generate && bun prisma db push
 
 ## Pending work
 
-1. **Thoughts page** (Issue #1) — requires GitHub OAuth; currently blocked.
-2. **GitHub OAuth** — needed for authenticated features.
-3. **License** — owner to choose (MIT, ISC, etc.).
+1. **Thoughts page** (Issue #1) - requires GitHub OAuth; currently blocked.
+2. **GitHub OAuth** - needed for authenticated features.
+3. **License** - owner to choose (MIT, ISC, etc.).
 
 ## Safety & privacy rules
 

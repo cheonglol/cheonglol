@@ -8,7 +8,7 @@ type Props = {
 };
 
 /**
- * PostsList — accessible, minimal presentation for a list of posts.
+ * PostsList - accessible, minimal presentation for a list of posts.
  * - shows loading skeleton, empty and error states
  * - accepts renderItem for custom rendering (used by portfolio pages)
  */

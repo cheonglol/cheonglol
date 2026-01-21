@@ -13,7 +13,7 @@ try {
   // The owner should inspect and curate the output before committing.
   writeFileSync('frontend/src/data/gh-repos.json', out, { encoding: 'utf8' });
   // eslint-disable-next-line no-console
-  console.log('Wrote frontend/src/data/gh-repos.json — inspect before publishing');
+  console.log('Wrote frontend/src/data/gh-repos.json - inspect before publishing');
 } catch (err) {
   // eslint-disable-next-line no-console
   console.error('gh CLI is required to run this script. Run locally after authenticating gh.');

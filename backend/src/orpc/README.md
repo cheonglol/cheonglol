@@ -41,7 +41,7 @@ backend/src/orpc/
 
 ## Conventions
 
-- **Contract**: `contract.ts` — Zod schemas defining types and procedure signatures
+- **Contract**: `contract.ts` - Zod schemas defining types and procedure signatures
 - **Handlers**: Pure business logic, no HTTP concerns, Prisma fallback to in-memory seed
 - **Routes**: Fastify route definitions, delegates to handlers
 
