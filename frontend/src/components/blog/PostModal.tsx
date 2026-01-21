@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { LikeButton } from "./LikeButton";
+import { LikeButton } from "../LikeButton";
 
 type Post = {
   slug: string;

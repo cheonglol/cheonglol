@@ -1,0 +1,120 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+
+// Read selfies at build time
+const selfiesDir = path.join(process.cwd(), "public/images/selfies");
+let images: string[] = [];
+try {
+  if (fs.existsSync(selfiesDir)) {
+    images = fs
+      .readdirSync(selfiesDir)
+      .filter((f) => /\.(jpg|jpeg|png|gif|webp)$/i.test(f))
+      .sort()
+      .map((f) => `/cheonglol/images/selfies/${f}`);
+  }
+} catch {
+  /* no selfies folder */
+}
+---
+
+{
+  images.length > 0 && (
+    <div class="selfie-carousel">
+      <img
+        id="selfie-img"
+        src={images[0]}
+        alt="selfie"
+        class="selfie"
+        data-images={JSON.stringify(images)}
+      />
+    </div>
+  )
+}
+
+<script>
+  const img = document.getElementById("selfie-img") as HTMLImageElement | null;
+  if (img) {
+    const images: string[] = JSON.parse(img.dataset.images || "[]");
+    let currentIndex = 0;
+    let isPaused = false;
+    let isTransitioning = false;
+
+    function cycleNext() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      img.classList.add("fading-out");
+
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        img.src = images[currentIndex];
+        img.classList.remove("fading-out");
+        img.classList.add("fading-in");
+
+        setTimeout(() => {
+          img.classList.remove("fading-in");
+          isTransitioning = false;
+        }, 500);
+      }, 500);
+    }
+
+    // Hover to pause
+    img.addEventListener("mouseenter", () => {
+      isPaused = true;
+    });
+    img.addEventListener("mouseleave", () => {
+      isPaused = false;
+    });
+
+    // Click to cycle
+    img.addEventListener("click", () => {
+      cycleNext();
+    });
+    img.style.cursor = "pointer";
+
+    // Auto cycle
+    if (images.length > 1) {
+      setInterval(() => {
+        if (!isPaused) cycleNext();
+      }, 6000);
+    }
+  }
+</script>
+
+<style>
+  .selfie-carousel {
+    display: block;
+  }
+
+  .selfie {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 12px;
+    transition:
+      filter 0.5s ease-in-out,
+      box-shadow 0.5s ease-in-out,
+      border-color 0.5s ease-in-out;
+    filter: brightness(1) saturate(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    border: 2px solid transparent;
+  }
+
+  .selfie:hover:not(.fading-out) {
+    border-color: #8b5cf6;
+  }
+
+  .selfie.fading-out {
+    filter: brightness(5) saturate(0);
+    box-shadow: 0 0 40px 20px rgba(255, 255, 255, 0.7);
+    border-color: #ffffff;
+  }
+
+  .selfie.fading-in {
+    filter: brightness(1) saturate(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    border-color: transparent;
+  }
+  }
+</style>

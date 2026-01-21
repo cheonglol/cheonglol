@@ -1,15 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionDivider from "../components/ui/SectionDivider.astro";
+import SelfieCarousel from "../components/home/SelfieCarousel.astro";
+
 const title = "Lester Cheong";
 ---
 
 <BaseLayout title={title} currentPage="profile">
-  <header>
-    <h1>Lester Cheong</h1>
-    <p class="text-muted">Software Developer · Singapore</p>
+  <header class="header-grid">
+    <div class="header-info">
+      <h1>Lester Cheong</h1>
+      <p class="text-muted">Software Developer · Singapore</p>
+    </div>
+    <div class="header-selfie">
+      <SelfieCarousel />
+    </div>
   </header>
 
-  <div class="section-divider"><span class="dot"></span></div>
+  <SectionDivider />
 
   <section>
     <h2>Summary</h2>
@@ -29,7 +37,7 @@ const title = "Lester Cheong";
     </p>
   </section>
 
-  <div class="section-divider"><span class="dot"></span></div>
+  <SectionDivider />
 
   <section>
     <h2>Experience</h2>
@@ -115,7 +123,7 @@ const title = "Lester Cheong";
     </article>
   </section>
 
-  <div class="section-divider"><span class="dot"></span></div>
+  <SectionDivider />
 
   <section>
     <h2>Community &amp; Open Source</h2>
@@ -141,236 +149,71 @@ const title = "Lester Cheong";
     </article>
   </section>
 
-  <div class="section-divider"><span class="dot"></span></div>
+  <SectionDivider />
 
   <section>
     <h2>Technical Competencies</h2>
+    {
+      (() => {
+        const skills = {
+          "Languages & Frameworks": [
+            { name: "TypeScript", level: 5 },
+            { name: "JavaScript", level: 5 },
+            { name: "React", level: 5 },
+            { name: "Python", level: 3 },
+            { name: "C#", level: 3 },
+            { name: "Java", level: 2 },
+            { name: "Kotlin", level: 2 },
+            { name: "Swift", level: 2 },
+            { name: "C++", level: 2 },
+          ],
+          "Backend & Infrastructure": [
+            { name: "Fastify", level: 5 },
+            { name: "Prisma", level: 5 },
+            { name: "PostgreSQL", level: 5 },
+            { name: "Telegram Bot API", level: 3 },
+            { name: "Docker", level: 3 },
+            { name: "CI/CD", level: 3 },
+          ],
+          "Frontend & Tooling": [
+            { name: "Astro", level: 3 },
+            { name: "Vite", level: 3 },
+            { name: "Bun", level: 3 },
+            { name: "TanStack Query", level: 3 },
+          ],
+          "AI & Emerging": [
+            { name: "MCP Servers", level: 3 },
+            { name: "RAG Applications", level: 2 },
+            { name: "LangChain", level: 2 },
+            { name: "NLP/ML", level: 2 },
+          ],
+        };
 
-    <h3>Languages &amp; Frameworks</h3>
-    <div class="skills-grid">
-      <div class="skill-item" data-level="proficient">
-        <span class="skill-name">TypeScript</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span>
-        </div>
-        <span class="skill-label">Proficient</span>
-      </div>
-      <div class="skill-item" data-level="proficient">
-        <span class="skill-name">JavaScript</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span>
-        </div>
-        <span class="skill-label">Proficient</span>
-      </div>
-      <div class="skill-item" data-level="proficient">
-        <span class="skill-name">React</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span>
-        </div>
-        <span class="skill-label">Proficient</span>
-      </div>
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">Python</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">C#</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-      <div class="skill-item" data-level="foundational">
-        <span class="skill-name">Java</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Foundational</span>
-      </div>
-      <div class="skill-item" data-level="foundational">
-        <span class="skill-name">Kotlin</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Foundational</span>
-      </div>
-      <div class="skill-item" data-level="foundational">
-        <span class="skill-name">Swift</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Foundational</span>
-      </div>
-      <div class="skill-item" data-level="foundational">
-        <span class="skill-name">C++</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Foundational</span>
-      </div>
-    </div>
+        const levelClass = (l: number) =>
+          l === 5 ? "proficient" : l === 3 ? "working" : "foundational";
 
-    <h3>Backend &amp; Infrastructure</h3>
-    <div class="skills-grid">
-      <div class="skill-item" data-level="proficient">
-        <span class="skill-name">Fastify</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span>
-        </div>
-        <span class="skill-label">Proficient</span>
-      </div>
-      <div class="skill-item" data-level="proficient">
-        <span class="skill-name">Prisma</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span>
-        </div>
-        <span class="skill-label">Proficient</span>
-      </div>
-      <div class="skill-item" data-level="proficient">
-        <span class="skill-name">PostgreSQL</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span>
-        </div>
-        <span class="skill-label">Proficient</span>
-      </div>
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">Telegram Bot API</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">Docker</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">CI/CD</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-    </div>
-
-    <h3>Frontend &amp; Tooling</h3>
-    <div class="skills-grid">
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">Astro</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">Vite</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">Bun</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">TanStack Query</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-    </div>
-
-    <h3>AI &amp; Emerging Technologies</h3>
-    <div class="skills-grid">
-      <div class="skill-item" data-level="working">
-        <span class="skill-name">MCP Servers</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot filled"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Working</span>
-      </div>
-      <div class="skill-item" data-level="foundational">
-        <span class="skill-name">RAG Applications</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Foundational</span>
-      </div>
-      <div class="skill-item" data-level="foundational">
-        <span class="skill-name">LangChain</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Foundational</span>
-      </div>
-      <div class="skill-item" data-level="foundational">
-        <span class="skill-name">NLP/ML</span>
-        <div class="skill-dots">
-          <span class="dot filled"></span><span class="dot filled"></span><span
-            class="dot"></span><span class="dot"></span><span class="dot"
-          ></span>
-        </div>
-        <span class="skill-label">Foundational</span>
-      </div>
-    </div>
+        return Object.entries(skills).map(([category, items]) => (
+          <div class="skill-category">
+            <h3>{category}</h3>
+            <ul class="skill-list">
+              {items.map(({ name, level }) => (
+                <li class={`skill-row ${levelClass(level)}`}>
+                  <span class="skill-name">{name}</span>
+                  <span class="skill-bars">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <span class={`bar ${i > level ? "dim" : ""}`} />
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ));
+      })()
+    }
   </section>
 
-  <div class="section-divider"><span class="dot"></span></div>
+  <SectionDivider />
 
   <section>
     <h2>Contact</h2>
@@ -381,7 +224,7 @@ const title = "Lester Cheong";
         >
       </li>
       <li><a href="mailto:lestercheong70@outlook.com">Email</a></li>
-      <li><a href="/blog">Blog →</a></li>
+      <li><a href="/cheonglol/blog">Blog →</a></li>
     </ul>
   </section>
 </BaseLayout>
@@ -389,8 +232,33 @@ const title = "Lester Cheong";
 <style lang="scss">
   @use "../styles/variables" as *;
 
-  header {
+  .header-grid {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: $space-3;
     margin-bottom: $space-4;
+
+    @media (min-width: 640px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $space-4;
+      align-items: end;
+    }
+  }
+
+  .header-info {
+    h1 {
+      margin-bottom: $space-1;
+    }
+  }
+
+  .header-selfie {
+    width: 65%;
+
+    @media (min-width: 640px) {
+      width: 100%;
+      justify-self: end;
+    }
   }
 
   .card {

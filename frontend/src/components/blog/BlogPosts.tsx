@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PostModal } from "./PostModal";
-import { LikeButton } from "./LikeButton";
+import { LikeButton } from "../LikeButton";
 
 type Post = {
   slug: string;

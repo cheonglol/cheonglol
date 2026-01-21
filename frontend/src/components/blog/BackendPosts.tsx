@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
-import { HealthGate } from "./HealthGate";
+import { HealthGate } from "../HealthGate";
 import PostsList from "./PostsList";
 
 /**

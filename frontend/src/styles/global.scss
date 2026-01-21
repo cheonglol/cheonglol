@@ -54,7 +54,8 @@ h1 {
 h2 {
   font-size: $font-size-xl;
   font-weight: 500;
-  margin-top: $space-6;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: $text-secondary;
@@ -139,80 +140,83 @@ li {
   margin-bottom: $space-1;
 }
 
-// Skills grid layout - responsive, 2 columns default
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: $space-2 $space-6;
-  margin-bottom: $space-4;
-  justify-content: center;
+// Skills - category groups with simple list layout
+.skill-category {
+  margin-bottom: $space-6;
+
+  h3 {
+    margin-top: 2.15rem;
+    margin-bottom: 1rem;
+    padding-bottom: $space-2;
+    border-bottom: 1px solid $border;
+  }
 }
 
-// Skill item with visual proficiency dots
-.skill-item {
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4 $space-12;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: $space-3;
-  padding: $space-1 0;
+  padding: $space-2 0;
 
   .skill-name {
     font-family: $font-mono;
-    font-size: $font-size-xs;
+    font-size: $font-size-sm;
     color: $text-primary;
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
-  .skill-dots {
+  .skill-bars {
     display: flex;
-    gap: 4px;
-    flex-shrink: 0;
+    align-items: flex-end;
+    gap: 2px;
 
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: $bg-tertiary;
-      transition: background $transition-base;
+    .bar {
+      width: 4px;
+      background: currentColor;
+      border-radius: 1px 1px 0 0;
 
-      &.filled {
-        background: currentColor;
+      &:nth-child(1) {
+        height: 4px;
+      }
+      &:nth-child(2) {
+        height: 7px;
+      }
+      &:nth-child(3) {
+        height: 10px;
+      }
+      &:nth-child(4) {
+        height: 13px;
+      }
+      &:nth-child(5) {
+        height: 16px;
+      }
+
+      &.dim {
+        opacity: 0.15;
       }
     }
   }
 
-  .skill-label {
-    font-size: $font-size-xs;
+  &.proficient .skill-bars {
+    color: $accent;
+  }
+  &.working .skill-bars {
+    color: $purple-400;
+  }
+  &.foundational .skill-bars {
     color: $text-muted;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
-  // Proficiency levels
-  &[data-level="proficient"] {
-    .skill-dots {
-      color: $accent;
-    }
-    .skill-label {
-      color: $accent;
-    }
-  }
-  &[data-level="working"] {
-    .skill-dots {
-      color: $purple-400;
-    }
-    .skill-label {
-      color: $purple-400;
-    }
-  }
-  &[data-level="foundational"] {
-    .skill-dots {
-      color: $grey-500;
-    }
   }
 }
 
@@ -265,7 +269,7 @@ li {
 .section-divider {
   display: flex;
   align-items: center;
-  margin: $space-8 0;
+  margin: 3rem 0;
 
   &::before,
   &::after {
@@ -277,16 +281,16 @@ li {
   }
 
   &::after {
-    margin-left: $space-2;
+    margin-left: $space-3;
   }
 
   &::before {
-    margin-right: $space-2;
+    margin-right: $space-3;
   }
 
   .dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: $accent;
   }
@@ -478,6 +482,7 @@ li {
   z-index: 200;
   padding: $space-4;
   backdrop-filter: blur(4px);
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -487,17 +492,18 @@ li {
   border-radius: $radius-lg;
   max-width: 640px;
   width: 100%;
-  min-height: 75vh;
-  max-height: 85vh;
+  max-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
   padding: $space-6;
+  overflow: hidden;
 
   h2 {
     margin-top: 0;
     font-size: $font-size-xl;
     color: $text-primary;
     flex-shrink: 0;
+    padding-right: $space-8;
   }
 
   .modal-tags {
@@ -513,7 +519,10 @@ li {
     line-height: 1.7;
     flex: 1;
     overflow-y: auto;
-    padding-right: $space-2; // space for scrollbar
+    overflow-x: hidden;
+    padding-right: $space-3;
+    margin-right: -$space-2;
+    min-height: 0;
 
     p {
       margin-bottom: $space-3;

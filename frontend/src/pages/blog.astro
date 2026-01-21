@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { BlogPosts } from "../components/BlogPosts";
+import { BlogPosts } from "../components/blog";
 
 const staticPosts = await Astro.glob("../../content/blog/*.md");
 const sortedPosts = staticPosts.sort(
