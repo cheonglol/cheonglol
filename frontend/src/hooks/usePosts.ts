@@ -31,23 +31,13 @@ async function fetchLikes(slug: string, userId: string): Promise<PostLike> {
   return res.json();
 }
 
-async function incrementLike(slug: string, userId: string): Promise<PostLike> {
+async function toggleLike(slug: string, userId: string): Promise<PostLike> {
   const res = await fetch(`${API_URL}/api/likes/${slug}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userId }),
   });
-  if (!res.ok) return { slug, count: 0, userLiked: false };
-  return res.json();
-}
-
-async function decrementLike(slug: string, userId: string): Promise<PostLike> {
-  const res = await fetch(`${API_URL}/api/likes/${slug}`, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userId }),
-  });
-  if (!res.ok) return { slug, count: 0, userLiked: false };
+  if (!res.ok) throw new Error('Failed to toggle like');
   return res.json();
 }
 
@@ -60,52 +50,12 @@ export function useLikes(slug: string, userId: string) {
   });
 }
 
-export function useLikeMutation(slug: string, userId: string) {
+export function useToggleLike(slug: string, userId: string) {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => incrementLike(slug, userId),
-    onMutate: async () => {
-      await queryClient.cancelQueries({ queryKey: ['likes', slug, userId] });
-      const previous = queryClient.getQueryData<PostLike>(['likes', slug, userId]);
-      queryClient.setQueryData<PostLike>(['likes', slug, userId], (old) => ({
-        slug,
-        count: (old?.count ?? 0) + 1,
-        userLiked: true,
-      }));
-      return { previous };
-    },
-    onError: (_err, _vars, context) => {
-      if (context?.previous) {
-        queryClient.setQueryData(['likes', slug, userId], context.previous);
-      }
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['likes', slug, userId] });
-    },
-  });
-}
-
-export function useUnlikeMutation(slug: string, userId: string) {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: () => decrementLike(slug, userId),
-    onMutate: async () => {
-      await queryClient.cancelQueries({ queryKey: ['likes', slug, userId] });
-      const previous = queryClient.getQueryData<PostLike>(['likes', slug, userId]);
-      queryClient.setQueryData<PostLike>(['likes', slug, userId], (old) => ({
-        slug,
-        count: Math.max(0, (old?.count ?? 0) - 1),
-        userLiked: false,
-      }));
-      return { previous };
-    },
-    onError: (_err, _vars, context) => {
-      if (context?.previous) {
-        queryClient.setQueryData(['likes', slug, userId], context.previous);
-      }
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['likes', slug, userId] });
+    mutationFn: () => toggleLike(slug, userId),
+    onSuccess: (data) => {
+      queryClient.setQueryData(['likes', slug, userId], data);
     },
   });
 }
