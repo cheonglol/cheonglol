@@ -1,5 +1,9 @@
 @use "variables" as *;
 
+html {
+  min-height: 110vh;
+}
+
 *,
 *::before,
 *::after {
@@ -11,6 +15,7 @@
 html {
   color-scheme: dark;
   font-size: 16px;
+  min-height: 110vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
