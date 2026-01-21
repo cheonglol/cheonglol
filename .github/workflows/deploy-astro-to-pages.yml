@@ -50,6 +50,7 @@ jobs:
     name: Build frontend (Bun + Astro)
     needs: cleanup
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
