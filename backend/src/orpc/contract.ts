@@ -14,10 +14,6 @@ export const AppContract = {
       input: z.object({ slug: z.string() }),
       output: PostLike,
     },
-    increment: {
-      input: z.object({ slug: z.string() }),
-      output: PostLike,
-    },
   },
 } as const;
 
