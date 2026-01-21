@@ -66,6 +66,3 @@ export function LikeButton({ slug }: Props) {
     </button>
   );
 }
-    </button>
-  );
-}
