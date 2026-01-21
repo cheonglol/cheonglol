@@ -46,7 +46,10 @@ export function useLikes(slug: string, userId: string) {
     queryKey: ['likes', slug, userId],
     queryFn: () => fetchLikes(slug, userId),
     staleTime: 30_000,
-    enabled: !!userId,
+    gcTime: 5 * 60 * 1000,
+    enabled: !!slug && !!userId,
+    retry: 2,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 }
 
@@ -57,5 +60,7 @@ export function useToggleLike(slug: string, userId: string) {
     onSuccess: (data) => {
       queryClient.setQueryData(['likes', slug, userId], data);
     },
+    retry: 2,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 }

@@ -19,14 +19,32 @@ type Props = {
 
 export function LikeButton({ slug }: Props) {
   const [userId, setUserId] = useState("");
+  const [mounted, setMounted] = useState(false);
 
   // Get userId on client side only
   useEffect(() => {
-    setUserId(getUserId());
+    const id = getUserId();
+    setUserId(id);
+    setMounted(true);
   }, []);
 
-  const { data, isLoading } = useLikes(slug, userId);
+  const { data, isLoading, error } = useLikes(slug, userId);
   const toggleMutation = useToggleLike(slug, userId);
+
+  // Debug logging
+  useEffect(() => {
+    if (error)
+      console.error("[LikeButton] Like fetch error:", error, { slug, userId });
+  }, [error, slug, userId]);
+
+  useEffect(() => {
+    if (toggleMutation.error) {
+      console.error("[LikeButton] Toggle error:", toggleMutation.error, {
+        slug,
+        userId,
+      });
+    }
+  }, [toggleMutation.error, slug, userId]);
 
   const isLiked = data?.userLiked ?? false;
   const count = data?.count ?? 0;
@@ -36,6 +54,16 @@ export function LikeButton({ slug }: Props) {
     if (toggleMutation.isPending || !userId) return;
     toggleMutation.mutate();
   };
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <button className="like-btn" disabled aria-label="Like this post">
+        <span className="like-emoji">🩶</span>
+        <span className="like-count">…</span>
+      </button>
+    );
+  }
 
   return (
     <button
