@@ -1,7 +1,7 @@
 ---
 title: "AI App in Prodution - What did I gain from this?"
-pubDate: 2026-01-21
-description: "Using this workspace to experiment with developer experience and AI-assisted workflows."
+pubDate: 2026-01-27
+description: "What the fuck was I thinking and what was I expecting? What did I gain out of this?"
 categories: ["announcement", "meta"]
 ---
 
