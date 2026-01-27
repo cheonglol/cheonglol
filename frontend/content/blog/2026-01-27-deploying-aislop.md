@@ -1,5 +1,5 @@
 ---
-title: "Why I removed the old cheonglol/cheonglol repo"
+title: "AI App in Prodution - What did I gain from this?"
 pubDate: 2026-01-21
 description: "Using this workspace to experiment with developer experience and AI-assisted workflows."
 categories: ["announcement", "meta"]
