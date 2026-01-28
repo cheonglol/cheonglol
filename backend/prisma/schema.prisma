@@ -6,13 +6,10 @@ datasource db {
   provider = "postgresql"
 }
 
-// Track individual likes by user
-model UserLike {
+// Simple counter for demonstration
+model Counter {
   id        String   @id @default(cuid())
-  slug      String
-  userId    String
+  value     Int      @default(0)
   createdAt DateTime @default(now())
-
-  @@unique([slug, userId]) // One like per user per post
-  @@index([slug])
+  updatedAt DateTime @updatedAt
 }

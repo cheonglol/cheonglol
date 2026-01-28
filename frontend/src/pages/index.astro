@@ -2,8 +2,121 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionDivider from "../components/ui/SectionDivider.astro";
 import SelfieCarousel from "../components/home/SelfieCarousel.astro";
+import CounterButton from "../components/CounterButton";
 
-const title = "Lester Cheong";
+const title = "Your Name";
+---
+
+<BaseLayout title={title} currentPage="profile">
+  <header class="header-grid">
+    <div class="header-info">
+      <h1>Your Name</h1>
+      <p class="text-muted">Your Title · Your Location</p>
+    </div>
+    <div class="header-selfie">
+      <SelfieCarousel />
+    </div>
+  </header>
+
+  <SectionDivider />
+
+  <section>
+    <h2>About</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris.
+    </p>
+    <p>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </section>
+
+  <SectionDivider />
+
+  <section>
+    <h2>Counter Demo</h2>
+    <p>
+      Simple end-to-end example showing frontend-backend integration with
+      Prisma.
+    </p>
+    <CounterButton client:load />
+  </section>
+
+  <SectionDivider />
+
+  <section>
+    <h2>Experience</h2>
+
+    <article class="card">
+      <h3>Job Title</h3>
+      <p class="text-muted">Company Name · Start Date – End Date</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+      <p>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Another Position</h3>
+      <p class="text-muted">Another Company · Start Date – End Date</p>
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+        illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+        explicabo.
+      </p>
+      <p>
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+        fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+        sequi nesciunt.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Previous Role</h3>
+      <p class="text-muted">Previous Company · Start Date – End Date</p>
+      <p>
+        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+        consectetur, adipisci velit, sed quia non numquam eius modi tempora
+        incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+      </p>
+    </article>
+  </section>
+
+  <SectionDivider />
+
+  <section>
+    <h2>Skills</h2>
+
+    <article class="card">
+      <h3>Technical Skills</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Additional Competencies</h3>
+      <p>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </article>
+  </section>
+</BaseLayout>
 ---
 
 <BaseLayout title={title} currentPage="profile">

@@ -1,18 +1,21 @@
 // Authoritative oRPC contract for the application (types + procedure signatures)
 import { z } from 'zod';
 
-export const PostLike = z.object({
-  slug: z.string(),
-  count: z.number(),
+export const CounterResponse = z.object({
+  value: z.number(),
 });
 
-export type PostLike = z.infer<typeof PostLike>;
+export type CounterResponse = z.infer<typeof CounterResponse>;
 
 export const AppContract = {
-  likes: {
+  counter: {
     get: {
-      input: z.object({ slug: z.string() }),
-      output: PostLike,
+      input: z.object({}),
+      output: CounterResponse,
+    },
+    increment: {
+      input: z.object({}),
+      output: CounterResponse,
     },
   },
 } as const;

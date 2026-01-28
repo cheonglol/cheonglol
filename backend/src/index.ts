@@ -8,8 +8,8 @@ const PORT = Number(process.env.PORT || 4000);
 const ALLOWED_ORIGINS = [
   'http://localhost:4321',  // local frontend dev
   'http://localhost:3000',
-  'https://cheonglol.github.io',  // GitHub Pages
-  'https://cheonglol.com',  // future custom domain
+  'https://yourusername.github.io',  // GitHub Pages
+  'https://your-domain.com',  // custom domain
 ];
 
 async function start() {

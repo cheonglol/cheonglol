@@ -1,9 +1,9 @@
 import type { FastifyInstance } from 'fastify';
-import { likesRoutes } from './likes.route';
+import { counterRoutes } from './counter.route';
 
 // Route modules to register - add new route files here
 const routeModules = [
-  { prefix: '/api', register: likesRoutes },
+  { prefix: '/api', register: counterRoutes },
 ] as const;
 
 /**

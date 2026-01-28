@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://cheonglol.github.io',
-  base: '/cheonglol',
+  site: 'https://yourusername.github.io',
+  base: '/your-repo',
   output: 'static',
   integrations: [react()],
 });
