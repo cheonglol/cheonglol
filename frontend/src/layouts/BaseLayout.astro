@@ -44,6 +44,13 @@ const base = import.meta.env.BASE_URL;
           <span class="nav-emoji">📝</span>
           <span class="nav-tooltip">Blog</span>
         </a>
+        <a
+          href={`${base}/docs`}
+          class:list={[{ active: currentPage === "docs" }]}
+        >
+          <span class="nav-emoji">📚</span>
+          <span class="nav-tooltip">Docs</span>
+        </a>
       </div>
     </nav>
     <main class="container">

@@ -13,9 +13,9 @@ yarn.lock
 pnpm-lock.yaml
 /.turbo
 /dist
-/build
-/docs
+**/dist
 /.cache
+**/.astro
 /*.log
 /.idea
 /*.sqlite

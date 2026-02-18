@@ -673,3 +673,68 @@ li {
     color: $text-primary;
   }
 }
+
+// Docs explorer
+.docs-explorer {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.docs-folders {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.docs-folder-btn {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  width: 100%;
+  padding: $space-3;
+  background: $bg-secondary;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-sm;
+  color: $text-primary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  text-align: left;
+
+  &:hover {
+    border-color: $border;
+    background: $bg-tertiary;
+  }
+
+  &.active {
+    border-color: $accent;
+    background: rgba($accent, 0.08);
+  }
+
+  .folder-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .folder-name {
+    flex: 1;
+    font-weight: 500;
+  }
+
+  .folder-count {
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+    color: $text-muted;
+    background: $bg-tertiary;
+    padding: 1px $space-2;
+    border-radius: $radius-full;
+  }
+}
+
+.docs-folder-contents {
+  padding-left: $space-3;
+  border-left: 2px solid $border-subtle;
+  margin-left: $space-3;
+}

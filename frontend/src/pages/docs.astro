@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { DocExplorer } from "../components/docs";
+import fs from "node:fs";
+import path from "node:path";
+
+// Scan public/content/ for directories, each is a doc folder
+const contentDir = path.resolve("public/content");
+const entries = fs.readdirSync(contentDir, { withFileTypes: true });
+const folderNames = entries
+  .filter((e) => e.isDirectory())
+  .map((e) => e.name)
+  .sort();
+
+// For each folder, glob the markdown files
+const allMdModules = import.meta.glob("../../public/content/**/*.md", {
+  eager: true,
+});
+
+function formatFolderLabel(name: string): string {
+  return name
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+type MdModule = {
+  frontmatter: Record<string, any>;
+  compiledContent: () => string;
+  file: string;
+  url?: string;
+};
+
+const folders = folderNames.map((folderName) => {
+  // Filter modules belonging to this folder
+  const folderModules = Object.entries(allMdModules).filter(([filepath]) =>
+    filepath.includes(`/content/${folderName}/`),
+  ) as [string, MdModule][];
+
+  const docs = folderModules
+    .map(([filepath, mod]) => {
+      const fm = mod.frontmatter ?? {};
+      const cats = fm.categories ?? fm.category ?? [];
+      const date = fm.pubDate
+        ? new Date(fm.pubDate).toLocaleDateString("en-SG", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+        : "";
+      const slug =
+        filepath.split("/").pop()?.replace(".md", "") ?? "";
+
+      return {
+        slug,
+        title: fm.title ?? slug,
+        date,
+        description: fm.description ?? "",
+        categories: Array.isArray(cats) ? cats : [],
+        content: mod.compiledContent(),
+      };
+    })
+    .sort((a, b) => {
+      // newest first
+      const da = new Date(a.date).getTime() || 0;
+      const db = new Date(b.date).getTime() || 0;
+      return db - da;
+    });
+
+  return {
+    name: folderName,
+    label: formatFolderLabel(folderName),
+    docs,
+  };
+});
+---
+
+<BaseLayout title="Docs" currentPage="docs">
+  <header>
+    <h1>Docs</h1>
+    <p class="text-muted">
+      Technical notes, patterns, and findings. Organized by topic.
+    </p>
+  </header>
+
+  <div class="section-divider"><span class="dot"></span></div>
+
+  <section>
+    <DocExplorer folders={folders} client:load />
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  header {
+    margin-bottom: $space-2;
+  }
+</style>
