@@ -582,7 +582,7 @@ li {
   z-index: 999;
   padding: $space-4;
   backdrop-filter: blur(4px);
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .modal-content {
@@ -596,7 +596,9 @@ li {
   display: flex;
   flex-direction: column;
   padding: $space-6;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
 
   h2 {
     margin-top: 0;
