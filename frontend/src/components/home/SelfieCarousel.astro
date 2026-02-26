@@ -5,39 +5,59 @@ import path from "node:path";
 // Read selfies at build time
 const selfiesDir = path.join(process.cwd(), "public/images/selfies");
 let images: string[] = [];
+let startImage = "";
 try {
   if (fs.existsSync(selfiesDir)) {
-    images = fs
+    const allFiles = fs
       .readdirSync(selfiesDir)
       .filter((f) => /\.(jpg|jpeg|png|gif|webp)$/i.test(f))
-      .sort()
+      .sort();
+
+    // start.png is the default static image, not part of the cycle pool
+    startImage = allFiles.includes("start.png")
+      ? `/cheonglol/images/selfies/start.png`
+      : "";
+
+    images = allFiles
+      .filter((f) => f !== "start.png")
       .map((f) => `/cheonglol/images/selfies/${f}`);
   }
 } catch {
   /* no selfies folder */
 }
+
+const initialSrc = startImage || images[0] || "";
 ---
 
 {
-  images.length > 0 && (
+  initialSrc && (
     <div class="selfie-carousel">
       <img
         id="selfie-img"
-        src={images[0]}
+        src={initialSrc}
         alt="selfie"
         class="selfie"
         data-images={JSON.stringify(images)}
+        data-start={startImage}
       />
+      <p id="selfie-caption" class="selfie-caption">
+        &lt;boring mode&gt;
+      </p>
     </div>
   )
 }
 
 <script>
   const img = document.getElementById("selfie-img") as HTMLImageElement | null;
+  const caption = document.getElementById(
+    "selfie-caption",
+  ) as HTMLParagraphElement | null;
   if (img) {
     const images: string[] = JSON.parse(img.dataset.images || "[]");
+    const startSrc = img.dataset.start || "";
+    let cycling = false;
+    let intervalId: ReturnType<typeof setInterval> | null = null;
     let currentIndex = 0;
-    let isPaused = false;
     let isTransitioning = false;
 
     function cycleNext() {
@@ -59,32 +79,84 @@ try {
       }, 500);
     }
 
-    // Hover to pause
-    img.addEventListener("mouseenter", () => {
-      isPaused = true;
-    });
-    img.addEventListener("mouseleave", () => {
-      isPaused = false;
-    });
+    function startCycling() {
+      cycling = true;
+      if (caption) {
+        caption.textContent = "\u2728";
+        caption.classList.add("aura-mode");
+      }
+      // Immediately show first cycle image
+      currentIndex = 0;
+      isTransitioning = true;
+      img.classList.add("fading-out");
+      setTimeout(() => {
+        img.src = images[currentIndex];
+        img.classList.remove("fading-out");
+        img.classList.add("fading-in");
+        setTimeout(() => {
+          img.classList.remove("fading-in");
+          isTransitioning = false;
+        }, 500);
+      }, 500);
 
-    // Click to cycle
+      intervalId = setInterval(() => {
+        cycleNext();
+      }, 4000);
+    }
+
+    function stopCycling() {
+      cycling = false;
+      if (caption) {
+        caption.textContent = "<boring mode>";
+        caption.classList.remove("aura-mode");
+      }
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      // Reset to start image
+      isTransitioning = true;
+      img.classList.add("fading-out");
+      setTimeout(() => {
+        img.src = startSrc;
+        currentIndex = 0;
+        img.classList.remove("fading-out");
+        img.classList.add("fading-in");
+        setTimeout(() => {
+          img.classList.remove("fading-in");
+          isTransitioning = false;
+        }, 500);
+      }, 500);
+    }
+
     img.addEventListener("click", () => {
-      cycleNext();
+      if (images.length === 0) return;
+      if (cycling) {
+        stopCycling();
+      } else {
+        startCycling();
+      }
     });
     img.style.cursor = "pointer";
-
-    // Auto cycle
-    if (images.length > 1) {
-      setInterval(() => {
-        if (!isPaused) cycleNext();
-      }, 6000);
-    }
   }
 </script>
 
 <style>
   .selfie-carousel {
     display: block;
+  }
+
+  .selfie-caption {
+    text-align: center;
+    font-size: 0.75rem;
+    font-family: "JetBrains Mono", monospace;
+    color: #888;
+    margin-top: 6px;
+    margin-bottom: 0;
+  }
+
+  .selfie-caption.aura-mode {
+    color: #8b5cf6;
   }
 
   .selfie {
@@ -117,6 +189,5 @@ try {
     filter: brightness(1) saturate(1);
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
     border-color: transparent;
-  }
   }
 </style>

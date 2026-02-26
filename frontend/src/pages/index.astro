@@ -3,6 +3,85 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionDivider from "../components/ui/SectionDivider.astro";
 import SelfieCarousel from "../components/home/SelfieCarousel.astro";
 
+// Types
+interface Skill {
+  name: string;
+  level: 1 | 2 | 3 | 4 | 5;
+}
+
+interface SkillCategory {
+  [category: string]: Skill[];
+}
+
+// Skills data
+const skillsData: SkillCategory = {
+  "Languages & Frameworks": [
+    { name: "TypeScript", level: 4 },
+    { name: "JavaScript", level: 4 },
+    { name: "React", level: 4 },
+    { name: "Vue", level: 3 },
+    { name: "Python", level: 3 },
+    { name: "C#", level: 3 },
+    { name: "Java", level: 2 },
+    { name: "Kotlin", level: 2 },
+    { name: "Swift", level: 2 },
+    { name: "C++", level: 2 },
+  ],
+  "Backend & Infrastructure": [
+    { name: "Fastify", level: 4 },
+    { name: "Prisma", level: 4 },
+    { name: "PostgreSQL", level: 4 },
+    { name: "Telegram Bot API", level: 4 },
+    { name: "Railway", level: 4 },
+    { name: "Linux", level: 3 },
+    { name: "Docker", level: 3 },
+    { name: "CI/CD", level: 3 },
+    { name: "Cloudflare", level: 2 },
+    { name: "Portainer", level: 3 },
+    { name: "VPN/Networking", level: 2 },
+    { name: "Homelab & Networking", level: 2 },
+  ],
+  "Frontend & Tooling": [
+    { name: "Astro", level: 3 },
+    { name: "Vite", level: 3 },
+    { name: "Bun", level: 3 },
+    { name: "TanStack Query", level: 3 },
+  ],
+  "AI & Emerging": [
+    { name: "MCP Servers", level: 3 },
+    { name: "Mastra AI", level: 3 },
+    { name: "GitHub Copilot", level: 3 },
+    { name: "Agent Orchestration", level: 3 },
+    { name: "Stable Diffusion", level: 2 },
+    { name: "RAG Applications", level: 2 },
+    { name: "LangChain", level: 2 },
+    { name: "NLP/ML", level: 2 },
+  ],
+};
+
+// Helper function to map skill level to CSS class
+function getLevelClass(level: Skill["level"]): string {
+  switch (level) {
+    case 4:
+    case 5:
+      return "proficient";
+    case 3:
+      return "working";
+    case 1:
+    case 2:
+      return "foundational";
+    default:
+      return "foundational";
+  }
+}
+
+// Helper function to render skill bars
+function renderSkillBars(level: Skill["level"]): string {
+  return [1, 2, 3, 4, 5]
+    .map((i) => `<span class="bar ${i > level ? "dim" : ""}"></span>`)
+    .join("");
+}
+
 const title = "Lester Cheong";
 ---
 
@@ -22,22 +101,30 @@ const title = "Lester Cheong";
   <section>
     <h2>Summary</h2>
     <p>
-      Engineer who ships production systems end-to-end — from database schema to
-      deployed frontend. 4+ shipped products across AI, fintech, and commerce.
-      Built and operate software serving real paying clients today, not side
-      projects.
+      Full-stack engineer with 4 production systems running across AI, commerce,
+      and enterprise banking. Sole operator on every system he builds:
+      deployment, monitoring, incident response, no ops team.
+      TypeScript-dominant. Open-source tooling preference. Builds only what's
+      needed, keeps costs low. The title "software engineer" matters less to him
+      than whether a client's product is running healthy.
     </p>
     <p>
-      I build AI-native products for SMBs that can't afford engineering teams.
-      Three production Telegram bots. One computer-vision photobooth. Multiple
-      client-facing web apps. Every system I've built is in production, handling
-      real users, real money, real data.
+      Currently freelancing for 3 paying SMB clients. Built an LLM agent that
+      takes print orders through Telegram (Mastra AI, tool-calling, persistent
+      memory). Built a sales order pipeline for a 24-user distribution team
+      (grammY, PostgreSQL, automated reporting). Built a computer-vision
+      photobooth deployed at live events (Stable Diffusion, InsightFace, Vue 3).
+      Built a PWA for a heritage restaurant (React, Supabase, service worker).
+      Previously spent 18 months at OCBC Bank on OpenBanking APIs.
     </p>
     <p>
-      Thesis: the cost of software just collapsed. A single engineer with AI
-      tooling now delivers what took a team of five. The bottleneck isn't speed
-      — it's taste. Knowing what to build, what corners not to cut, and when
-      "good enough" ships value faster than "perfect."
+      Operating thesis: the cost of custom software collapsed. One engineer with
+      AI tooling now delivers what previously required a team. The constraint
+      moved from velocity to judgement: what to build, which corners to protect,
+      when shipped beats polished. He works in the gap where small businesses
+      need custom software but can't access it. Solutions are too expensive or
+      don't exist. AI levelled access to knowledge; it did not level
+      application. He applies it, charges fairly, and keeps the product running.
     </p>
   </section>
 
@@ -50,16 +137,11 @@ const title = "Lester Cheong";
       <h3>Sales Executive &amp; Technical Consultant</h3>
       <p class="text-muted">JustifyPrint · May 2025 – Present</p>
       <p>
-        Wore every hat — sales, engineering, marketing — for a brick-and-mortar
-        print shop. Built an AI chatbot that handles customer inquiries and
-        captures leads 24/7, turning off-hours traffic into orders. The bot uses
-        tool-calling agents (Mastra AI) to walk customers through product
-        selection, pricing, and checkout — entirely within Telegram.
-      </p>
-      <p>
-        Rebuilt the company website with analytics. Drove digital transformation
-        strategy for a traditional business with zero prior tech infrastructure.
-        This is what "AI for SMBs" looks like in practice.
+        Combined sales and engineering for a print shop with no prior tech
+        infrastructure. Built an LLM-powered Telegram bot (Mastra AI,
+        tool-calling agents) that handles product inquiries, calculates pricing,
+        and captures orders 24/7. Rebuilt the company website with analytics
+        tracking.
       </p>
     </article>
 
@@ -67,15 +149,12 @@ const title = "Lester Cheong";
       <h3>Freelance Software Engineer</h3>
       <p class="text-muted">Self-employed · Dec 2024 – Present</p>
       <p>
-        Freelance engineer digitizing operations for SMBs. 3 paying clients.
-        Every engagement starts the same way: walk into the business, map their
-        workflow on paper, ship a working system within weeks.
-      </p>
-      <p>
-        Flagship product: a Telegram-based order management system for a
-        distribution company — 24–26 active daily users, dual-sync to PostgreSQL
-        + Google Sheets, role-based access, CRON-scheduled reports. Zero
-        downtime since launch. Stack: TypeScript, grammY, Prisma, PostgreSQL.
+        3 paying clients. Scope: walk in, map the workflow, ship a production
+        system. Delivered a Telegram-based order management system (24–26 daily
+        users, PostgreSQL, role-based access, CRON reports), an AI photobooth
+        for live events, and a restaurant PWA. Sole operator across all systems
+        across CI/CD, monitoring, on-call, infrastructure. No ops team. No SRE
+        handoff. I deploy it, I keep it running.
       </p>
     </article>
 
@@ -83,11 +162,11 @@ const title = "Lester Cheong";
       <h3>API Developer, Digital Channels &amp; OpenBanking</h3>
       <p class="text-muted">OCBC Bank · Apr 2023 – Sep 2024</p>
       <p>
-        Enterprise API development at Singapore's second-largest bank (S$13B
-        revenue). Owned partner onboarding pipeline for OpenBanking APIs.
-        Mentored a cohort of Ignite apprentices building an internal partner
-        portal (React + Spring). Managed change tickets across production
-        banking systems with zero-downtime deployment requirements.
+        OpenBanking API development at OCBC. Owned the partner onboarding
+        pipeline end-to-end: spec review, implementation, regression testing,
+        production release. Shepherded change tickets through banking-grade
+        release gates with zero rollback incidents. Mentored Ignite apprentices
+        on an internal portal (React, Spring).
       </p>
     </article>
 
@@ -95,11 +174,10 @@ const title = "Lester Cheong";
       <h3>IGNITE Apprenticeship, OpenBanking &amp; Partnerships</h3>
       <p class="text-muted">OCBC Bank · Mar 2022 – Mar 2023</p>
       <p>
-        Built internal developer tooling from scratch — a Node.js CLI that
-        parses Postman collections, auto-generates API assertion tests, and
-        renders results on a live dashboard. Reduced manual QA effort for the
-        team's API regression suite. Won Rookie of the Year. Volunteered
-        teaching JavaScript to secondary school students through Code@OCBC.
+        Built a Node.js CLI that parses Postman collections, auto-generates
+        assertion tests, and renders results on a dashboard. Replaced manual QA
+        for the team's API regression suite. Won Rookie of the Year. Taught
+        JavaScript to secondary school students via Code@OCBC.
       </p>
     </article>
 
@@ -107,11 +185,10 @@ const title = "Lester Cheong";
       <h3>IoT Lock Technician</h3>
       <p class="text-muted">SG Bike · Nov 2018 – Aug 2020</p>
       <p>
-        Hardware + software hybrid role at a shared mobility startup. Trained 3
-        interns, wrote the team's first troubleshooting docs. Reverse-engineered
-        a competitor's lock firmware (acquired via M&A, no keys provided) to
-        integrate it into fleet operations — the kind of scrappy problem-solving
-        that startups need.
+        Shared-mobility startup. Trained 3 interns, wrote the team's first
+        troubleshooting documentation. Reverse-engineered a competitor's lock
+        firmware acquired through M&A (no keys provided) to integrate into fleet
+        operations.
       </p>
     </article>
 
@@ -121,9 +198,8 @@ const title = "Lester Cheong";
         SuperAI · Jun 2025 &nbsp;|&nbsp; AngelHack · May 2024
       </p>
       <p>
-        SuperAI Next Hackathon 2025 — shipped a full-stack TypeScript submission
-        in 24 hours. AngelHack 2024 — top 15% finish, placed 29th of 200 teams
-        (Seraphim Sentinels).
+        SuperAI Next 2025: full-stack TypeScript submission, 24-hour build.
+        AngelHack 2024: placed 29th of 200 teams (top 15%).
       </p>
     </article>
   </section>
@@ -139,9 +215,8 @@ const title = "Lester Cheong";
         Singapore Developer Community · Active Contributor
       </p>
       <p>
-        Core contributor to Singapore's developer event aggregation platform —
-        the go-to resource for local tech meetups and conferences. Embedded in
-        the SG dev ecosystem.
+        Contributor to Singapore's developer event aggregation platform. Local
+        tech meetups, conferences, community knowledge-sharing.
       </p>
     </article>
 
@@ -149,11 +224,9 @@ const title = "Lester Cheong";
       <h3>Open-Source &amp; AI Tooling</h3>
       <p class="text-muted">GitHub · Ongoing</p>
       <p>
-        Shipping MCP servers (Model Context Protocol) that plug into AI coding
-        assistants — part of the emerging toolchain that's redefining how
-        software gets built. TypeScript project templates, developer utilities,
-        and public experiments in AI-assisted development. This portfolio site
-        is one of them.
+        MCP servers (wayland-mcp for AI desktop automation, in active
+        development). 26 original repos, 1300+ contributions. TypeScript project
+        templates and developer utilities.
       </p>
     </article>
   </section>
@@ -164,11 +237,11 @@ const title = "Lester Cheong";
     <h2>Projects</h2>
 
     <article class="card">
-      <h3>JustifyPrint — AI Sales Agent</h3>
+      <h3>JustifyPrint: AI Sales Agent</h3>
       <p class="text-muted">Justifyprint · 2025 – Present · Production</p>
       <p>
         An AI agent that sells printing services through Telegram. Not a chatbot
-        with canned replies — a tool-calling LLM agent that queries live product
+        with canned replies. A tool-calling LLM agent that queries live product
         catalogs, calculates pricing with paper/size multipliers, saves order
         drafts, and processes confirmations. Runs 24/7 with conversation memory
         and token-aware context management. One-person build, zero-to-production
@@ -186,7 +259,7 @@ const title = "Lester Cheong";
     </article>
 
     <article class="card">
-      <h3>Tekong Seafood Restaurant — Digital Storefront</h3>
+      <h3>Tekong Seafood Restaurant: Digital Storefront</h3>
       <p class="text-muted">
         tekong-seafood-restaurant · 2024 – Present · Production
       </p>
@@ -209,31 +282,28 @@ const title = "Lester Cheong";
     </article>
 
     <article class="card">
-      <h3>Sales Consolidator — Order Pipeline</h3>
+      <h3>Sales Consolidator: Order Pipeline</h3>
       <p class="text-muted">
         uncle-james-giam · 2025 – Present · Production (24–26 daily users)
       </p>
       <p>
-        Replaced a manual WhatsApp + spreadsheet workflow with a structured
-        order pipeline. Salespersons submit orders via Telegram; data
-        dual-writes to PostgreSQL (source of truth) and Google Sheets (for
-        non-technical verifiers). Role-based admin flows, CRON-triggered daily
-        summaries, custom ESLint rules enforcing bot command consistency. Zero
-        data loss since launch. Built for a real distribution company moving
-        real inventory.
+        Replaced a manual spreadsheet workflow with a structured order pipeline.
+        Salespersons submit orders via Telegram; PostgreSQL as source of truth.
+        Role-based admin flows, CRON-triggered daily summaries, custom ESLint
+        rules enforcing bot command consistency. Zero data loss since launch.
+        Built for a real distribution company moving real inventory.
       </p>
       <ul class="project-tags">
         <li>TypeScript</li>
         <li>grammY</li>
         <li>Fastify</li>
-        <li>Google Sheets API</li>
         <li>PostgreSQL</li>
         <li>LangChain</li>
       </ul>
     </article>
 
     <article class="card">
-      <h3>Events AI Photobooth — Generative Portraits</h3>
+      <h3>Events AI Photobooth: Generative Portraits</h3>
       <p class="text-muted">
         client-kendrick · 2026 – Present · Deployed at live events
       </p>
@@ -266,66 +336,49 @@ const title = "Lester Cheong";
   <section>
     <h2>Technical Competencies</h2>
     {
-      (() => {
-        const skills = {
-          "Languages & Frameworks": [
-            { name: "TypeScript", level: 5 },
-            { name: "JavaScript", level: 5 },
-            { name: "React", level: 5 },
-            { name: "Vue", level: 3 },
-            { name: "Python", level: 3 },
-            { name: "C#", level: 3 },
-            { name: "Java", level: 2 },
-            { name: "Kotlin", level: 2 },
-            { name: "Swift", level: 2 },
-            { name: "C++", level: 2 },
-          ],
-          "Backend & Infrastructure": [
-            { name: "Fastify", level: 5 },
-            { name: "Prisma", level: 5 },
-            { name: "PostgreSQL", level: 5 },
-            { name: "Telegram Bot API", level: 5 },
-            { name: "Docker", level: 3 },
-            { name: "CI/CD", level: 3 },
-          ],
-          "Frontend & Tooling": [
-            { name: "Astro", level: 3 },
-            { name: "Vite", level: 3 },
-            { name: "Bun", level: 3 },
-            { name: "TanStack Query", level: 3 },
-          ],
-          "AI & Emerging": [
-            { name: "MCP Servers", level: 3 },
-            { name: "Mastra AI", level: 3 },
-            { name: "Stable Diffusion", level: 2 },
-            { name: "RAG Applications", level: 2 },
-            { name: "LangChain", level: 2 },
-            { name: "NLP/ML", level: 2 },
-          ],
-        };
-
-        const levelClass = (l: number) =>
-          l === 5 ? "proficient" : l === 3 ? "working" : "foundational";
-
-        return Object.entries(skills).map(([category, items]) => (
-          <div class="skill-category">
-            <h3>{category}</h3>
-            <ul class="skill-list">
-              {items.map(({ name, level }) => (
-                <li class={`skill-row ${levelClass(level)}`}>
-                  <span class="skill-name">{name}</span>
-                  <span class="skill-bars">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <span class={`bar ${i > level ? "dim" : ""}`} />
-                    ))}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ));
-      })()
+      Object.entries(skillsData).map(([category, skills]) => (
+        <div class="skill-category">
+          <h3>{category}</h3>
+          <ul class="skill-list">
+            {skills.map(({ name, level }) => (
+              <li class={`skill-row ${getLevelClass(level)}`}>
+                <span class="skill-name">{name}</span>
+                <span class="skill-bars">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <span class={`bar ${i > level ? "dim" : ""}`} />
+                  ))}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
     }
+  </section>
+
+  <SectionDivider />
+
+  <section>
+    <h2>Notes & Extras</h2>
+    <article class="card">
+      <h3>Infrastructure & Homelab</h3>
+      <p>
+        Active homelab operator with hands-on experience across Docker,
+        Portainer, and Linux systems administration. Daily router and network
+        device management. Self-hosted VPN server and Cloudflare DNS
+        configuration for privacy-first infrastructure. This isn't theoretical;
+        it's what keeps my systems running.
+      </p>
+    </article>
+    <article class="card">
+      <h3>LLM Orchestration & Automation</h3>
+      <p>
+        Using GitHub Copilot to manage portfolio issues, orchestrate multi-agent
+        workflows, and automate repetitive development tasks. Treats LLM
+        orchestration as a tool for reducing mechanical work and scaling
+        decision-making without adding overhead.
+      </p>
+    </article>
   </section>
 
   <SectionDivider />
@@ -335,8 +388,12 @@ const title = "Lester Cheong";
     <ul>
       <li><a href="https://github.com/cheonglol">GitHub</a></li>
       <li>
-        <a href="https://sg.linkedin.com/in/lester-cheong-a29a4a209">LinkedIn</a
+        <s
+          ><a href="https://sg.linkedin.com/in/lester-cheong-a29a4a209"
+            >LinkedIn</a
+          ></s
         >
+        <span class="text-muted"> (deactivated)</span>
       </li>
       <li><a href="mailto:lestercheong70@outlook.com">Email</a></li>
       <li><a href="/cheonglol/blog">Blog →</a></li>
