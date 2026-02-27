@@ -1,4 +1,13 @@
 ---
+/**
+ * WRITING RULES FOR THIS FILE:
+ * - Direct, factual prose only. No marketing language, no filler adjectives.
+ * - Technical documentation style: concise, specific, verifiable.
+ * - Write about the subject in third person. State what was built and how.
+ * - No blog voice, no contrasts ("not X, but Y"), no rhetorical devices.
+ * - No editorial opinions, no thought-leadership, no manifestos.
+ * - Every sentence should be verifiable or contain a concrete detail.
+ */
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionDivider from "../components/ui/SectionDivider.astro";
 import SelfieCarousel from "../components/home/SelfieCarousel.astro";
@@ -101,12 +110,10 @@ const title = "Lester Cheong";
   <section>
     <h2>Summary</h2>
     <p>
-      Full-stack engineer with 4 production systems running across AI, commerce,
-      and enterprise banking. Sole operator on every system he builds:
-      deployment, monitoring, incident response, no ops team.
-      TypeScript-dominant. Open-source tooling preference. Builds only what's
-      needed, keeps costs low. The title "software engineer" matters less to him
-      than whether a client's product is running healthy.
+      Full-stack engineer. 4 production systems across AI, commerce, and
+      enterprise banking. Sole operator on all deployed systems: deployment,
+      monitoring, incident response. No ops team. TypeScript-dominant.
+      Open-source tooling. Scope limited to what's needed; cost kept low.
     </p>
     <p>
       Currently freelancing for 3 paying SMB clients. Built an LLM agent that
@@ -118,13 +125,11 @@ const title = "Lester Cheong";
       Previously spent 18 months at OCBC Bank on OpenBanking APIs.
     </p>
     <p>
-      Operating thesis: the cost of custom software collapsed. One engineer with
-      AI tooling now delivers what previously required a team. The constraint
-      moved from velocity to judgement: what to build, which corners to protect,
-      when shipped beats polished. He works in the gap where small businesses
-      need custom software but can't access it. Solutions are too expensive or
-      don't exist. AI levelled access to knowledge; it did not level
-      application. He applies it, charges fairly, and keeps the product running.
+      AI tooling reduced the cost of custom software. One engineer now delivers
+      what previously required a team. Small businesses lack access to
+      purpose-built software because existing solutions are too expensive or too
+      generic. He builds in that gap. Focuses on keeping deployed products
+      operational over starting new ones.
     </p>
   </section>
 
@@ -137,11 +142,10 @@ const title = "Lester Cheong";
       <h3>Sales Executive &amp; Technical Consultant</h3>
       <p class="text-muted">JustifyPrint · May 2025 – Present</p>
       <p>
-        Combined sales and engineering for a print shop with no prior tech
-        infrastructure. Built an LLM-powered Telegram bot (Mastra AI,
-        tool-calling agents) that handles product inquiries, calculates pricing,
-        and captures orders 24/7. Rebuilt the company website with analytics
-        tracking.
+        Print shop with no prior tech infrastructure. Built an LLM-powered
+        Telegram bot (Mastra AI, tool-calling agents) that handles product
+        inquiries, calculates pricing, and captures orders. Also rebuilt the
+        company website with analytics tracking.
       </p>
     </article>
 
@@ -149,12 +153,10 @@ const title = "Lester Cheong";
       <h3>Freelance Software Engineer</h3>
       <p class="text-muted">Self-employed · Dec 2024 – Present</p>
       <p>
-        3 paying clients. Scope: walk in, map the workflow, ship a production
-        system. Delivered a Telegram-based order management system (24–26 daily
-        users, PostgreSQL, role-based access, CRON reports), an AI photobooth
-        for live events, and a restaurant PWA. Sole operator across all systems
-        across CI/CD, monitoring, on-call, infrastructure. No ops team. No SRE
-        handoff. I deploy it, I keep it running.
+        3 paying clients. Delivered a Telegram-based order management system
+        (24–26 daily users, PostgreSQL, role-based access, CRON reports), an AI
+        photobooth for live events, and a restaurant PWA. Sole operator on all
+        systems: CI/CD, monitoring, on-call, infrastructure.
       </p>
     </article>
 
@@ -162,11 +164,11 @@ const title = "Lester Cheong";
       <h3>API Developer, Digital Channels &amp; OpenBanking</h3>
       <p class="text-muted">OCBC Bank · Apr 2023 – Sep 2024</p>
       <p>
-        OpenBanking API development at OCBC. Owned the partner onboarding
-        pipeline end-to-end: spec review, implementation, regression testing,
-        production release. Shepherded change tickets through banking-grade
-        release gates with zero rollback incidents. Mentored Ignite apprentices
-        on an internal portal (React, Spring).
+        OpenBanking API development. Owned the partner onboarding pipeline: spec
+        review, implementation, regression testing, production release. Managed
+        change tickets through banking-grade release gates. Zero rollback
+        incidents. Mentored Ignite apprentices on an internal portal (React,
+        Spring).
       </p>
     </article>
 
@@ -214,10 +216,7 @@ const title = "Lester Cheong";
       <p class="text-muted">
         Singapore Developer Community · Active Contributor
       </p>
-      <p>
-        Contributor to Singapore's developer event aggregation platform. Local
-        tech meetups, conferences, community knowledge-sharing.
-      </p>
+      <p>Contributor to Singapore's developer event aggregation platform.</p>
     </article>
 
     <article class="card">
@@ -240,12 +239,10 @@ const title = "Lester Cheong";
       <h3>JustifyPrint: AI Sales Agent</h3>
       <p class="text-muted">Justifyprint · 2025 – Present · Production</p>
       <p>
-        An AI agent that sells printing services through Telegram. Not a chatbot
-        with canned replies. A tool-calling LLM agent that queries live product
-        catalogs, calculates pricing with paper/size multipliers, saves order
-        drafts, and processes confirmations. Runs 24/7 with conversation memory
-        and token-aware context management. One-person build, zero-to-production
-        in weeks.
+        Tool-calling LLM agent that sells printing services through Telegram.
+        Queries live product catalogs, calculates pricing with paper/size
+        multipliers, saves order drafts, processes confirmations. Runs 24/7.
+        Conversation memory with token-aware context management.
       </p>
       <ul class="project-tags">
         <li>TypeScript</li>
@@ -264,12 +261,10 @@ const title = "Lester Cheong";
         tekong-seafood-restaurant · 2024 – Present · Production
       </p>
       <p>
-        PWA for a 35-year heritage restaurant in Singapore. Digitized their
-        entire menu from spreadsheets into a searchable, mobile-first
-        experience. Embedded media (YouTube celebrity feature, TikTok viral
-        clip), seasonal promotional banners, Supabase-backed customer data, and
-        offline-first service worker. Helped a traditional F&B business reach
-        customers who expect a modern digital presence.
+        PWA for a 35-year restaurant in Singapore. Menu digitized from
+        spreadsheets into searchable, mobile-first format. Embedded media
+        (YouTube, TikTok), seasonal promotional banners, Supabase-backed
+        customer data, offline-first service worker.
       </p>
       <ul class="project-tags">
         <li>React 18</li>
@@ -287,11 +282,10 @@ const title = "Lester Cheong";
         uncle-james-giam · 2025 – Present · Production (24–26 daily users)
       </p>
       <p>
-        Replaced a manual spreadsheet workflow with a structured order pipeline.
-        Salespersons submit orders via Telegram; PostgreSQL as source of truth.
+        Replaced manual spreadsheet workflow with a structured order pipeline.
+        Salespersons submit orders via Telegram. PostgreSQL as source of truth.
         Role-based admin flows, CRON-triggered daily summaries, custom ESLint
         rules enforcing bot command consistency. Zero data loss since launch.
-        Built for a real distribution company moving real inventory.
       </p>
       <ul class="project-tags">
         <li>TypeScript</li>
@@ -308,14 +302,12 @@ const title = "Lester Cheong";
         client-kendrick · 2026 – Present · Deployed at live events
       </p>
       <p>
-        A kiosk that turns a webcam selfie into an AI-styled portrait in
-        seconds. Three-service architecture: Vue 3 touch-screen frontend →
-        Fastify session API with PostgreSQL → Python FastAPI service running
-        IP-Adapter-FaceID-PlusV2 on CUDA (InsightFace face embedding + Stable
-        Diffusion 1.5 generation). Users select gender and hairstyle; the
-        pipeline generates a photorealistic stylized portrait. Designed for
-        high-throughput event environments. Dockerized for portable deployment
-        to any venue with a GPU.
+        Kiosk-based AI portrait generator. Three-service architecture: Vue 3
+        touch-screen frontend, Fastify session API with PostgreSQL, Python
+        FastAPI service running IP-Adapter-FaceID-PlusV2 on CUDA (InsightFace
+        face embedding + Stable Diffusion 1.5). User selects gender and
+        hairstyle; pipeline generates stylized portrait. Dockerized for portable
+        deployment to any venue with a GPU.
       </p>
       <ul class="project-tags">
         <li>Vue 3</li>
@@ -363,20 +355,17 @@ const title = "Lester Cheong";
     <article class="card">
       <h3>Infrastructure & Homelab</h3>
       <p>
-        Active homelab operator with hands-on experience across Docker,
-        Portainer, and Linux systems administration. Daily router and network
-        device management. Self-hosted VPN server and Cloudflare DNS
-        configuration for privacy-first infrastructure. This isn't theoretical;
-        it's what keeps my systems running.
+        Homelab with multiple machines. Docker, Portainer, Linux systems
+        administration. Router and network device management. Self-hosted VPN
+        server. Cloudflare DNS configuration.
       </p>
     </article>
     <article class="card">
       <h3>LLM Orchestration & Automation</h3>
       <p>
-        Using GitHub Copilot to manage portfolio issues, orchestrate multi-agent
-        workflows, and automate repetitive development tasks. Treats LLM
-        orchestration as a tool for reducing mechanical work and scaling
-        decision-making without adding overhead.
+        GitHub Copilot for issue management and multi-agent workflow
+        orchestration. Automates repetitive development tasks across
+        repositories.
       </p>
     </article>
   </section>
