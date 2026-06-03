@@ -29,12 +29,8 @@ const skillsData: SkillCategory = {
     { name: "JavaScript", level: 4 },
     { name: "React", level: 4 },
     { name: "SvelteKit", level: 2 },
+    { name: "Svelte 5", level: 2 },
     { name: "Python", level: 3 },
-    { name: "C#", level: 3 },
-    { name: "Java", level: 2 },
-    { name: "Kotlin", level: 2 },
-    { name: "Swift", level: 2 },
-    { name: "C++", level: 2 },
   ],
   "Backend & Infrastructure": [
     { name: "Fastify", level: 4 },
@@ -46,10 +42,18 @@ const skillsData: SkillCategory = {
     { name: "Docker", level: 3 },
     { name: "Bun", level: 4 },
     { name: "CI/CD", level: 3 },
+    { name: "Temporal.io", level: 2 },
     { name: "Cloudflare", level: 2 },
     { name: "Portainer", level: 3 },
     { name: "Redis", level: 2 },
     { name: "Homelab & Networking", level: 2 },
+  ],
+  "Integrations & APIs": [
+    { name: "Stripe", level: 2 },
+    { name: "Xero API", level: 2 },
+    { name: "Azure AD", level: 2 },
+    { name: "Zod", level: 4 },
+    { name: "oRPC", level: 3 },
   ],
   "Frontend & Tooling": [
     { name: "Astro", level: 3 },
@@ -66,6 +70,7 @@ const skillsData: SkillCategory = {
     { name: "Agent Orchestration", level: 3 },
     { name: "OpenCode", level: 3 },
     { name: "OpenChamber", level: 3 },
+    { name: "LangGraph", level: 2 },
     { name: "RAG Applications", level: 2 },
     { name: "LangChain", level: 2 },
     { name: "Telegram Bot API", level: 4 },
@@ -122,15 +127,13 @@ const title = "Lester Cheong";
     <p>
       Currently freelancing for 3 paying SMB clients. All production backends
       deployed on Railway (Fastify, PostgreSQL, health-checked endpoints,
-      zero-downtime deploys). Built an LLM agent that takes print orders through
-      Telegram (Mastra AI, tool-calling, persistent memory). Built a sales order
-      pipeline for a 24-user distribution team (grammY, PostgreSQL, automated
-      reporting). Built a SvelteKit-based AI photobooth deployed at live events
-      (Replicate flux-kontext-pro). Built a PWA for a heritage
-      restaurant (React, Supabase, service worker). Previously spent 18 months
-      at OCBC Bank on OpenBanking APIs.
+      zero-downtime deploys). Built a sales order pipeline for a 24-user
+      distribution team (grammY, PostgreSQL, automated reporting). Built a
+      SvelteKit-based AI photobooth deployed at live events (Replicate
+      flux-kontext-pro). Built a PWA for a heritage restaurant (React, Supabase,
+      service worker). Previously spent 18 months at OCBC Bank on OpenBanking
+      APIs.
     </p>
-
   </section>
 
   <SectionDivider />
@@ -184,17 +187,6 @@ const title = "Lester Cheong";
         operations.
       </p>
     </article>
-
-    <article class="card">
-      <h3>Hackathons</h3>
-      <p class="text-muted">
-        SuperAI · Jun 2025 &nbsp;|&nbsp; AngelHack · May 2024
-      </p>
-      <p>
-        SuperAI Next 2025: full-stack TypeScript submission, 24-hour build.
-        AngelHack 2024: placed 29th of 200 teams (top 15%).
-      </p>
-    </article>
   </section>
 
   <SectionDivider />
@@ -204,13 +196,11 @@ const title = "Lester Cheong";
 
     <article class="card">
       <h3>Vexora Solution: Company Landing Page</h3>
-      <p class="text-muted">
-        vexora-solution · 2025 · Static site
-      </p>
+      <p class="text-muted">vexora-solution · 2025 · Static site</p>
       <p>
         Company landing website for a consulting business. Astro SSR with
         Tailwind CSS, Express API backend, Prisma + PostgreSQL. Deployed as a
-        single Railway service. Mostly an Astro playground.
+        single Railway service.
       </p>
       <ul class="project-tags">
         <li>Astro</li>
@@ -254,8 +244,8 @@ const title = "Lester Cheong";
         Salespersons submit orders via Telegram. PostgreSQL as source of truth.
         Role-based admin flows, CRON-triggered daily summaries, custom ESLint
         rules enforcing bot command consistency. Zero data loss since launch.
-        Extended with an AI product catalog intake: upload transcripts
-        and DeepSeek AI structures them into product rows for CSV export.
+        Extended with an AI product catalog intake: upload transcripts and
+        DeepSeek AI structures them into product rows for CSV export.
       </p>
       <ul class="project-tags">
         <li>TypeScript</li>
@@ -270,16 +260,14 @@ const title = "Lester Cheong";
 
     <article class="card">
       <h3>Retro 90s Pop-Up: AI Avatar &amp; Interactive Arcade</h3>
-      <p class="text-muted">
-        2025 – Present · Deployed at live events
-      </p>
+      <p class="text-muted">2025 – Present · Deployed at live events</p>
       <p>
         4-station retro 90s-themed event activation. AI pixel art avatar via
         Replicate (flux-kontext-pro), Snake game, video stations, QR-code-based
-        navigation, prize claim system. Built as a SvelteKit 5 SPA with
-        Fastify 5 API, Prisma + PostgreSQL, and Redis session cache. Retro
-        Windows 98 UI with 98.css and pink palette. Deployed on Railway as
-        a single-service Railpack build.
+        navigation, prize claim system. Built as a SvelteKit 5 SPA with Fastify
+        5 API, Prisma + PostgreSQL, and Redis session cache. Retro Windows 98 UI
+        with 98.css and pink palette. Deployed on Railway as a single-service
+        Railpack build.
       </p>
       <ul class="project-tags">
         <li>SvelteKit</li>
@@ -292,6 +280,34 @@ const title = "Lester Cheong";
         <li>Redis</li>
         <li>Replicate AI</li>
         <li>QR Code</li>
+        <li>Railway</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Themelios: AI Accounts Receivables Platform</h3>
+      <p class="text-muted">2024 – 2025 · Attempted startup (scrapped)</p>
+      <p>
+        AI-powered platform for business owners to manage invoices, collections,
+        and payment reconciliation. Built with Temporal.io for durable workflow
+        orchestration, Mastra AI agents for email-based receivables
+        conversations, Xero accounting API integration, Stripe payment
+        processing, oRPC type-safe API contracts, and Azure AD authentication.
+        Monorepo with React 19 + Redux Saga frontend, Fastify + Prisma +
+        PostgreSQL backend, and dedicated Temporal worker service.
+        Over-engineered for the problem and never shipped. A lesson in scoping.
+      </p>
+      <ul class="project-tags">
+        <li>Fastify</li>
+        <li>Prisma</li>
+        <li>PostgreSQL</li>
+        <li>React 19</li>
+        <li>Temporal.io</li>
+        <li>Mastra AI</li>
+        <li>Xero</li>
+        <li>Stripe</li>
+        <li>oRPC</li>
+        <li>Azure AD</li>
         <li>Railway</li>
       </ul>
     </article>
@@ -336,6 +352,13 @@ const title = "Lester Cheong";
       </p>
     </article>
 
+    <article class="card">
+      <h3>Events</h3>
+      <p>
+        SuperAI Next 2025: full-stack TypeScript submission, 24-hour build.
+        AngelHack 2024: placed 29th of 200 teams (top 15%).
+      </p>
+    </article>
   </section>
 
   <SectionDivider />
