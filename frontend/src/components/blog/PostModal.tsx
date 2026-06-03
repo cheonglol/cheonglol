@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { LikeButton } from "../LikeButton";
 
 type Post = {
   slug: string;
@@ -52,9 +51,6 @@ export function PostModal({ post, onClose }: Props) {
             className="modal-body"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
-          <div className="modal-footer">
-            <LikeButton slug={post.slug} />
-          </div>
         </article>
       </div>
     </div>
