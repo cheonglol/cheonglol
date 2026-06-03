@@ -1,12 +1,9 @@
 ---
 /**
  * WRITING RULES FOR THIS FILE:
- * - Direct, factual prose only. No marketing language, no filler adjectives.
- * - Technical documentation style: concise, specific, verifiable.
- * - Write about the subject in third person. State what was built and how.
- * - No blog voice, no contrasts ("not X, but Y"), no rhetorical devices.
- * - No editorial opinions, no thought-leadership, no manifestos.
- * - Every sentence should be verifiable or contain a concrete detail.
+ * - Say what's true. No marketing fluff, no filler.
+ * - Write like you'd tell someone at a coffee shop.
+ * - It's OK to be casual if it's honest.
  */
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionDivider from "../components/ui/SectionDivider.astro";
@@ -59,7 +56,6 @@ const skillsData: SkillCategory = {
     { name: "Astro", level: 3 },
     { name: "Vite", level: 3 },
     { name: "Tailwind CSS", level: 3 },
-    { name: "TanStack Query", level: 3 },
     { name: "ESLint (custom rules)", level: 2 },
   ],
   "AI & Emerging": [
@@ -119,20 +115,17 @@ const title = "Lester Cheong";
   <section>
     <h2>Summary</h2>
     <p>
-      Full-stack engineer. 4 production systems across AI, commerce, and
-      enterprise banking. Sole operator on all deployed systems: deployment,
-      monitoring, incident response. No ops team. TypeScript-dominant.
-      Open-source tooling. Scope limited to what's needed; cost kept low.
+      Left corporate banking because the gap between how systems <em>should</em>
+      serve people and how bureaucracy actually runs them was too frustrating.
+      Went freelance to build software for small businesses — where what you
+      ship actually reaches users and they talk to you directly.
     </p>
     <p>
-      Currently freelancing for 3 paying SMB clients. All production backends
-      deployed on Railway (Fastify, PostgreSQL, health-checked endpoints,
-      zero-downtime deploys). Built a sales order pipeline for a 24-user
-      distribution team (grammY, PostgreSQL, automated reporting). Built a
-      SvelteKit-based AI photobooth deployed at live events (Replicate
-      flux-kontext-pro). Built a PWA for a heritage restaurant (React, Supabase,
-      service worker). Previously spent 18 months at OCBC Bank on OpenBanking
-      APIs.
+      Full-stack generalist. TypeScript-dominant. Runs everything on Railway
+      with Fastify + PostgreSQL. Lays groundwork for sustainable additions so
+      changes stay cheap. Fast feedback loops via PaaS, type safety, good linting,
+      and AI-assisted tooling. Learned the hard way that over-engineering kills
+      projects before they launch.
     </p>
   </section>
 
@@ -259,15 +252,16 @@ const title = "Lester Cheong";
     </article>
 
     <article class="card">
-      <h3>Retro 90s Pop-Up: AI Avatar &amp; Interactive Arcade</h3>
+      <h3>Valentino Houseparty: AI Avatar &amp; Interactive Arcade</h3>
       <p class="text-muted">2025 – Present · Deployed at live events</p>
       <p>
-        4-station retro 90s-themed event activation. AI pixel art avatar via
-        Replicate (flux-kontext-pro), Snake game, video stations, QR-code-based
-        navigation, prize claim system. Built as a SvelteKit 5 SPA with Fastify
-        5 API, Prisma + PostgreSQL, and Redis session cache. Retro Windows 98 UI
-        with 98.css and pink palette. Deployed on Railway as a single-service
-        Railpack build.
+        4-station beauty brand event activation with a retro 90s theme.
+        AI pixel art avatar via Replicate (flux-kontext-pro), Snake game,
+        video stations, QR-code-based navigation, prize claim system.
+        Built as a SvelteKit 5 SPA with Fastify 5 API, Prisma + PostgreSQL,
+        and Redis session cache. Retro Windows 98 UI with 98.css and pink
+        palette. Deployed on Railway. Closest I've been to actual production
+        users — client was happy, event ran live.
       </p>
       <ul class="project-tags">
         <li>SvelteKit</li>
