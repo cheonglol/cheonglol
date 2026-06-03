@@ -28,7 +28,7 @@ const skillsData: SkillCategory = {
     { name: "TypeScript", level: 4 },
     { name: "JavaScript", level: 4 },
     { name: "React", level: 4 },
-    { name: "Vue", level: 3 },
+    { name: "SvelteKit", level: 2 },
     { name: "Python", level: 3 },
     { name: "C#", level: 3 },
     { name: "Java", level: 2 },
@@ -40,31 +40,35 @@ const skillsData: SkillCategory = {
     { name: "Fastify", level: 4 },
     { name: "Prisma", level: 4 },
     { name: "PostgreSQL", level: 4 },
-    { name: "Telegram Bot API", level: 4 },
+    { name: "grammY", level: 4 },
     { name: "Railway", level: 4 },
     { name: "Linux", level: 3 },
     { name: "Docker", level: 3 },
+    { name: "Bun", level: 4 },
     { name: "CI/CD", level: 3 },
     { name: "Cloudflare", level: 2 },
     { name: "Portainer", level: 3 },
-    { name: "VPN/Networking", level: 2 },
+    { name: "Redis", level: 2 },
     { name: "Homelab & Networking", level: 2 },
   ],
   "Frontend & Tooling": [
     { name: "Astro", level: 3 },
     { name: "Vite", level: 3 },
-    { name: "Bun", level: 3 },
+    { name: "Tailwind CSS", level: 3 },
     { name: "TanStack Query", level: 3 },
+    { name: "ESLint (custom rules)", level: 2 },
   ],
   "AI & Emerging": [
     { name: "MCP Servers", level: 3 },
     { name: "Mastra AI", level: 3 },
-    { name: "GitHub Copilot", level: 3 },
+    { name: "Replicate AI", level: 3 },
+    { name: "DeepSeek", level: 3 },
     { name: "Agent Orchestration", level: 3 },
-    { name: "Stable Diffusion", level: 2 },
+    { name: "OpenCode", level: 3 },
+    { name: "OpenChamber", level: 3 },
     { name: "RAG Applications", level: 2 },
     { name: "LangChain", level: 2 },
-    { name: "NLP/ML", level: 2 },
+    { name: "Telegram Bot API", level: 4 },
   ],
 };
 
@@ -121,35 +125,18 @@ const title = "Lester Cheong";
       zero-downtime deploys). Built an LLM agent that takes print orders through
       Telegram (Mastra AI, tool-calling, persistent memory). Built a sales order
       pipeline for a 24-user distribution team (grammY, PostgreSQL, automated
-      reporting). Built a computer-vision photobooth deployed at live events
-      (Stable Diffusion, InsightFace, Vue 3). Built a PWA for a heritage
+      reporting). Built a SvelteKit-based AI photobooth deployed at live events
+      (Replicate flux-kontext-pro). Built a PWA for a heritage
       restaurant (React, Supabase, service worker). Previously spent 18 months
       at OCBC Bank on OpenBanking APIs.
     </p>
-    <p>
-      AI tooling reduced the cost of custom software. One engineer now delivers
-      what previously required a team. Small businesses lack access to
-      purpose-built software because existing solutions are too expensive or too
-      generic. He builds in that gap. Focuses on keeping deployed products
-      operational over starting new ones.
-    </p>
+
   </section>
 
   <SectionDivider />
 
   <section>
     <h2>Experience</h2>
-
-    <article class="card">
-      <h3>Sales Executive &amp; Technical Consultant</h3>
-      <p class="text-muted">JustifyPrint · May 2025 – Present</p>
-      <p>
-        Print shop with no prior tech infrastructure. Built an LLM-powered
-        Telegram bot (Mastra AI, tool-calling agents) that handles product
-        inquiries, calculates pricing, and captures orders. Also rebuilt the
-        company website with analytics tracking.
-      </p>
-    </article>
 
     <article class="card">
       <h3>Freelance Software Engineer</h3>
@@ -160,8 +147,7 @@ const title = "Lester Cheong";
         photobooth for live events, and a restaurant PWA. Sole operator on all
         systems: CI/CD, monitoring, on-call, infrastructure. All production
         backends deployed on Railway (Fastify, PostgreSQL, health-checked
-        endpoints, zero-downtime deploys). Also publishes deployable service
-        templates for Railway, including a webtop jump server.
+        endpoints, zero-downtime deploys).
       </p>
     </article>
 
@@ -214,48 +200,25 @@ const title = "Lester Cheong";
   <SectionDivider />
 
   <section>
-    <h2>Community &amp; Open Source</h2>
-
-    <article class="card">
-      <h3>DevsGoWhere</h3>
-      <p class="text-muted">
-        Singapore Developer Community · Active Contributor
-      </p>
-      <p>Contributor to Singapore's developer event aggregation platform.</p>
-    </article>
-
-    <article class="card">
-      <h3>Open-Source &amp; AI Tooling</h3>
-      <p class="text-muted">GitHub · Ongoing</p>
-      <p>
-        MCP servers (wayland-mcp for AI desktop automation, in active
-        development). 26 original repos, 1300+ contributions. TypeScript project
-        templates and developer utilities.
-      </p>
-    </article>
-  </section>
-
-  <SectionDivider />
-
-  <section>
     <h2>Projects</h2>
 
     <article class="card">
-      <h3>JustifyPrint: AI Sales Agent</h3>
-      <p class="text-muted">Justifyprint · 2025 – Present · Production</p>
+      <h3>Vexora Solution: Company Landing Page</h3>
+      <p class="text-muted">
+        vexora-solution · 2025 · Static site
+      </p>
       <p>
-        Tool-calling LLM agent that sells printing services through Telegram.
-        Queries live product catalogs, calculates pricing with paper/size
-        multipliers, saves order drafts, processes confirmations. Runs 24/7.
-        Conversation memory with token-aware context management.
+        Company landing website for a consulting business. Astro SSR with
+        Tailwind CSS, Express API backend, Prisma + PostgreSQL. Deployed as a
+        single Railway service. Mostly an Astro playground.
       </p>
       <ul class="project-tags">
+        <li>Astro</li>
         <li>TypeScript</li>
-        <li>Mastra AI</li>
-        <li>grammY</li>
+        <li>Express</li>
         <li>Prisma</li>
-        <li>Fastify</li>
         <li>PostgreSQL</li>
+        <li>Tailwind CSS</li>
         <li>Railway</li>
       </ul>
     </article>
@@ -284,13 +247,15 @@ const title = "Lester Cheong";
     <article class="card">
       <h3>Sales Consolidator: Order Pipeline</h3>
       <p class="text-muted">
-        uncle-james-giam · 2025 – Present · Production (24–26 daily users)
+        Distribution team · 2025 – Present · Production (24–26 daily users)
       </p>
       <p>
         Replaced manual spreadsheet workflow with a structured order pipeline.
         Salespersons submit orders via Telegram. PostgreSQL as source of truth.
         Role-based admin flows, CRON-triggered daily summaries, custom ESLint
         rules enforcing bot command consistency. Zero data loss since launch.
+        Extended with an AI product catalog intake: upload transcripts
+        and DeepSeek AI structures them into product rows for CSV export.
       </p>
       <ul class="project-tags">
         <li>TypeScript</li>
@@ -298,33 +263,36 @@ const title = "Lester Cheong";
         <li>Fastify</li>
         <li>PostgreSQL</li>
         <li>LangChain</li>
+        <li>DeepSeek</li>
         <li>Railway</li>
       </ul>
     </article>
 
     <article class="card">
-      <h3>Events AI Photobooth: Generative Portraits</h3>
+      <h3>Retro 90s Pop-Up: AI Avatar &amp; Interactive Arcade</h3>
       <p class="text-muted">
-        client-kendrick · 2026 – Present · Deployed at live events
+        2025 – Present · Deployed at live events
       </p>
       <p>
-        Kiosk-based AI portrait generator. Three-service architecture: Vue 3
-        touch-screen frontend, Fastify session API with PostgreSQL, Python
-        FastAPI service running IP-Adapter-FaceID-PlusV2 on CUDA (InsightFace
-        face embedding + Stable Diffusion 1.5). User selects gender and
-        hairstyle; pipeline generates stylized portrait. Dockerized for portable
-        deployment to any venue with a GPU.
+        4-station retro 90s-themed event activation. AI pixel art avatar via
+        Replicate (flux-kontext-pro), Snake game, video stations, QR-code-based
+        navigation, prize claim system. Built as a SvelteKit 5 SPA with
+        Fastify 5 API, Prisma + PostgreSQL, and Redis session cache. Retro
+        Windows 98 UI with 98.css and pink palette. Deployed on Railway as
+        a single-service Railpack build.
       </p>
       <ul class="project-tags">
-        <li>Vue 3</li>
+        <li>SvelteKit</li>
+        <li>Svelte 5</li>
         <li>TypeScript</li>
-        <li>Python</li>
-        <li>FastAPI</li>
-        <li>Stable Diffusion</li>
-        <li>InsightFace</li>
         <li>Fastify</li>
+        <li>Bun</li>
+        <li>Prisma</li>
         <li>PostgreSQL</li>
-        <li>Docker</li>
+        <li>Redis</li>
+        <li>Replicate AI</li>
+        <li>QR Code</li>
+        <li>Railway</li>
       </ul>
     </article>
   </section>
@@ -362,18 +330,12 @@ const title = "Lester Cheong";
       <h3>Infrastructure & Homelab</h3>
       <p>
         Homelab with multiple machines. Docker, Portainer, Linux systems
-        administration. Railway deployment management. Router and network
+        administration. Railway deployment management. Publishes deployable
+        service templates for Railway (webtop jump server). Router and network
         device management. Self-hosted VPN server. Cloudflare DNS configuration.
       </p>
     </article>
-    <article class="card">
-      <h3>LLM Orchestration & Automation</h3>
-      <p>
-        GitHub Copilot for issue management and multi-agent workflow
-        orchestration. Automates repetitive development tasks across
-        repositories.
-      </p>
-    </article>
+
   </section>
 
   <SectionDivider />
