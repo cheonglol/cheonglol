@@ -4,7 +4,7 @@
  * Run: bun run scripts/generate-resume.ts
  */
 import PDFDocument from "pdfkit";
-import { writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { resume, type Resume } from "./resume-data";
 
@@ -16,31 +16,32 @@ const OUTPUT = join(
   "resume.pdf",
 );
 
-function generate(resumeData: Resume): void {
-  const doc = new PDFDocument({
-    size: "A4",
-    margins: { top: 50, bottom: 40, left: 50, right: 50 },
-    info: {
-      Title: `${resumeData.basics.name} - Resume`,
-      Author: resumeData.basics.name,
-      Subject: "Resume",
-    },
-  });
+async function generate(resumeData: Resume): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    const doc = new PDFDocument({
+      size: "A4",
+      margins: { top: 50, bottom: 40, left: 50, right: 50 },
+      info: {
+        Title: `${resumeData.basics.name} - Resume`,
+        Author: resumeData.basics.name,
+        Subject: "Resume",
+      },
+    });
 
-  // Ensure output dir exists
-  const outDir = dirname(OUTPUT);
-  if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
+    // Ensure output dir exists
+    const outDir = dirname(OUTPUT);
+    if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
 
-  const stream = writeFileSync(OUTPUT, Buffer.alloc(0));
-  // We need to write to a buffer then to file
-  const chunks: Buffer[] = [];
-  doc.on("data", (chunk: Buffer) => chunks.push(chunk));
-  doc.on("end", () => {
-    writeFileSync(OUTPUT, Buffer.concat(chunks));
-    console.log(`Wrote ${OUTPUT}`);
-  });
+    const chunks: Buffer[] = [];
+    doc.on("data", (chunk: Buffer) => chunks.push(chunk));
+    doc.on("end", () => {
+      writeFileSync(OUTPUT, Buffer.concat(chunks));
+      console.log(`Wrote ${OUTPUT}`);
+      resolve();
+    });
+    doc.on("error", reject);
 
-  const { basics, work, skills, projects } = resumeData;
+    const { basics, work, skills, projects } = resumeData;
   const FONT = "Helvetica";
   const FONT_BOLD = "Helvetica-Bold";
   const FONT_SIZE_NAME = 22;
@@ -142,10 +143,8 @@ function generate(resumeData: Resume): void {
     }
   }
 
-  doc.end();
-
-  // Wait for the stream to finish
-  // PDFKit writes synchronously in Node.js so the buffer is complete after end()
+    doc.end();
+  });
 }
 
 function drawSectionHeader(
@@ -208,4 +207,29 @@ function formatDate(date?: string): string | undefined {
   return `${month} ${parts[0]}`;
 }
 
-generate(resume);
+function validate(path: string): void {
+  const buf = readFileSync(path);
+  const size = buf.length;
+
+  if (size < 500) {
+    console.error(`FAIL: PDF too small (${size} bytes)`);
+    process.exit(1);
+  }
+
+  const head = buf.subarray(0, 8).toString();
+  if (!head.startsWith("%PDF-")) {
+    console.error(`FAIL: invalid PDF header: ${head}`);
+    process.exit(1);
+  }
+
+  const body = buf.toString("utf-8");
+  if (!body.includes("/Font")) {
+    console.error("FAIL: PDF contains no fonts — likely empty");
+    process.exit(1);
+  }
+
+  console.log(`OK: ${path} (${size} bytes, valid PDF with text)`);
+}
+
+await generate(resume);
+validate(OUTPUT);
