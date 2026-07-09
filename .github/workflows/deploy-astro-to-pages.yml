@@ -66,10 +66,8 @@ jobs:
           curl -fsSL https://bun.sh/install | bash
           echo "$HOME/.bun/bin" >> $GITHUB_PATH
 
-      - name: Install dependencies (fresh, no cache)
-        run: |
-          rm -rf node_modules frontend/node_modules backend/node_modules
-          bun install
+      - name: Install dependencies
+        run: bun install
 
       - name: Prisma generate (if present)
         run: |
@@ -86,7 +84,7 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
           bun run scripts/generate-resume.ts
-          bun test scripts/__tests__/resume.test.ts
+          bun test tests/resume.test.ts
 
       - name: Build frontend (Astro)
         env:

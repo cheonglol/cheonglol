@@ -24,3 +24,6 @@ pnpm-lock.yaml
 
 # Generated artifacts
 /frontend/public/resume.pdf
+
+# Vendored repos (never track from monorepo root)
+temp-repos/

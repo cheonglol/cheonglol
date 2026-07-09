@@ -2,27 +2,21 @@
  * Integration test for resume PDF generation.
  * Runs the generator and validates the output is ATS-compatible.
  *
- * Run: bun test scripts/__tests__/resume.test.ts
+ * Run: bun test tests/resume.test.ts
  */
 import { describe, expect, test } from "bun:test";
 import { execSync } from "node:child_process";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const PDF_PATH = join(
-  import.meta.dirname,
-  "..",
-  "..",
-  "frontend",
-  "public",
-  "resume.pdf",
-);
+const ROOT = join(import.meta.dirname, "..");
+const PDF_PATH = join(ROOT, "frontend", "public", "resume.pdf");
 
 describe("Resume PDF", () => {
   test("generates without error", () => {
     const out = execSync("bun run scripts/generate-resume.ts", {
       encoding: "utf-8",
-      cwd: join(import.meta.dirname, "..", ".."),
+      cwd: ROOT,
     });
     expect(out).toContain("OK:");
     expect(out).toContain("valid PDF with text");
