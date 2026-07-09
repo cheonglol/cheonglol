@@ -465,9 +465,9 @@ li {
   }
 }
 
-// Adjust container for sidebar
+// Adjust container for sidebar (only when nav exists)
 @media (min-width: 900px) {
-  body {
+  body.has-nav {
     padding-left: 80px;
   }
 }
