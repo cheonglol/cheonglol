@@ -11,7 +11,9 @@
     "dev": "docker compose up --build --watch",
     "dev:frontend": "bun --cwd frontend dev",
     "dev:backend": "bun --cwd backend run dev",
-    "build": "bun --cwd frontend build && bun --cwd backend build || true",
+    "generate:resume": "bun run scripts/generate-resume.ts",
+    "test": "bun test tests/",
+    "build": "bun run generate:resume && bun run test && bun --cwd frontend build && (bun --cwd backend build || true)",
     "preview": "bun --cwd frontend preview",
     "smoke": "bun --cwd frontend build && test -d frontend/dist"
   },
@@ -19,5 +21,9 @@
     "frontend",
     "backend"
   ],
-  "packageManager": "bun@1.3.9"
+  "packageManager": "bun@1.3.9",
+  "dependencies": {
+    "@types/pdfkit": "^0.17.6",
+    "pdfkit": "^0.19.1"
+  }
 }
