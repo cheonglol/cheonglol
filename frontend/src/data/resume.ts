@@ -59,7 +59,7 @@ export interface Resume {
 export const resume: Resume = {
   basics: {
     name: "Lester Cheong",
-    label: "Full-Stack Engineer",
+    label: "AI-augmented Software Engineer",
     email: "lestercheong70@outlook.com",
     url: "https://cheonglol.github.io/cheonglol",
     location: {
@@ -74,7 +74,7 @@ export const resume: Resume = {
       },
     ],
     summary:
-      "Engineer who operates systems end-to-end. Builds with TypeScript, PostgreSQL, and Railway. Serves small businesses directly — the same person who ships is the one on-call.",
+      "AI-augmented software engineer who operates systems end-to-end. Builds with TypeScript, PostgreSQL, and Railway. Serves small businesses directly — the same person who ships is the one on-call.",
   },
   work: [
     {
