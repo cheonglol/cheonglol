@@ -81,7 +81,6 @@ jobs:
 
       - name: Generate and test resume PDF
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
           bun run scripts/generate-resume.ts
           bun test tests/resume.test.ts
 

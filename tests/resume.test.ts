@@ -46,47 +46,50 @@ describe("Resume PDF", () => {
   });
 });
 
-describe("Resume content (pdftotext)", () => {
-  test("extracts name", () => {
-    const text = extractText(PDF_PATH);
-    expect(text).toContain("Lester Cheong");
-  });
-
-  test("extracts contact info", () => {
-    const text = extractText(PDF_PATH);
-    expect(text).toContain("lestercheong70@outlook.com");
-  });
-
-  test("extracts experience", () => {
-    const text = extractText(PDF_PATH);
-    expect(text).toContain("Freelance Software Engineer");
-    expect(text).toContain("OCBC Bank");
-    expect(text).toContain("SG Bike");
-  });
-
-  test("extracts skills", () => {
-    const text = extractText(PDF_PATH);
-    expect(text).toContain("TypeScript");
-    expect(text).toContain("Fastify");
-    expect(text).toContain("PostgreSQL");
-  });
-
-  test("extracts projects", () => {
-    const text = extractText(PDF_PATH);
-    expect(text).toContain("Sales Consolidator");
-    expect(text).toContain("Valentino");
-    expect(text).toContain("Themelios");
-  });
-});
-
-function extractText(pdfPath: string): string {
+const hasPdftotext = (() => {
   try {
-    return execSync(`pdftotext "${pdfPath}" -`, {
-      encoding: "utf-8",
-      timeout: 10_000,
-    });
+    execSync("which pdftotext", { encoding: "utf-8" });
+    return true;
   } catch {
-    // pdftotext not available — skip text extraction tests
-    return "";
+    return false;
   }
-}
+})();
+
+const contentTest = hasPdftotext ? test : test.skip;
+
+describe("Resume content (pdftotext)", () => {
+  if (!hasPdftotext) {
+    test.skip("pdftotext not installed — install poppler-utils for content tests", () => {});
+  } else {
+    contentTest("extracts name", () => {
+      const text = execSync(`pdftotext "${PDF_PATH}" -`, { encoding: "utf-8", timeout: 10_000 });
+      expect(text).toContain("Lester Cheong");
+    });
+
+    contentTest("extracts contact info", () => {
+      const text = execSync(`pdftotext "${PDF_PATH}" -`, { encoding: "utf-8", timeout: 10_000 });
+      expect(text).toContain("lestercheong70@outlook.com");
+    });
+
+    contentTest("extracts experience", () => {
+      const text = execSync(`pdftotext "${PDF_PATH}" -`, { encoding: "utf-8", timeout: 10_000 });
+      expect(text).toContain("Freelance Software Engineer");
+      expect(text).toContain("OCBC Bank");
+      expect(text).toContain("SG Bike");
+    });
+
+    contentTest("extracts skills", () => {
+      const text = execSync(`pdftotext "${PDF_PATH}" -`, { encoding: "utf-8", timeout: 10_000 });
+      expect(text).toContain("TypeScript");
+      expect(text).toContain("Fastify");
+      expect(text).toContain("PostgreSQL");
+    });
+
+    contentTest("extracts projects", () => {
+      const text = execSync(`pdftotext "${PDF_PATH}" -`, { encoding: "utf-8", timeout: 10_000 });
+      expect(text).toContain("Sales Consolidator");
+      expect(text).toContain("Valentino");
+      expect(text).toContain("Themelios");
+    });
+  }
+});
