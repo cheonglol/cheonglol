@@ -83,7 +83,7 @@ export const resume: Resume = {
       startDate: "2025-01",
       highlights: [
         "3 paying clients. Delivered a Telegram-based order management system (24-26 daily users, PostgreSQL, role-based access, CRON reports)",
-        "Built an AI photobooth for live events using Replicate AI",
+        "Built a full event activation platform for a local marketing company (SvelteKit, Fastify, PostgreSQL, Redis, Replicate AI) — 9 interactive stations including Snake, claw machine, spot-the-difference, AI avatar passport kiosk, QR check-in, and admin dashboard. Deployed live.",
         "Built a restaurant PWA with digital menu, seasonal banners, and offline-first service worker",
         "Sole operator on all systems: CI/CD, monitoring, on-call, infrastructure",
         "All production backends deployed on Railway (Fastify, PostgreSQL, zero-downtime deploys)",
