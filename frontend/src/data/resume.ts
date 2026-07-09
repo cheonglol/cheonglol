@@ -212,6 +212,7 @@ export const resume: Resume = {
       highlights: [
         "Over-engineered for the problem and never shipped. A lesson in scoping",
         "Startup discontinued after co-founder fallout",
+        "Built CI/CD pipeline with change-detection and self-hosted runners — environment-aware Prisma migrations with production safety guards, auto-healing GitHub issue tracking on failure. Deployed 6-service Railway stack (PostgreSQL, self-hosted Temporal, API, Workers, Frontend, Jump Server) with private networking and service-to-service communication.",
       ],
     },
   ],
