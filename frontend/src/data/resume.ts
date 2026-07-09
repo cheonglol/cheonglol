@@ -92,24 +92,14 @@ export const resume: Resume = {
     {
       name: "OCBC Bank",
       position: "API Developer, Digital Channels & OpenBanking",
-      startDate: "2023-04",
+      startDate: "2022-03",
       endDate: "2024-09",
       highlights: [
-        "Mentored 2nd and 3rd batch of IGNITE interns on a partner portal web app (React, TypeScript, Spring Framework)",
+        "Started as IGNITE apprentice — built a Node.js CLI that parses Postman collections, auto-generates assertion tests, and displays results on a dashboard, adopted by QA team. Won Rookie of the Year.",
         "Investigated and resolved integration issues for partners onboarded on Connect2OCBC API store",
         "Managed change/management tickets, improving team productivity",
         "Assisted with digital certificate renewals for UAT server, documented renewal practices and implemented database housekeeping in UAT environment",
-      ],
-    },
-    {
-      name: "OCBC Bank",
-      position: "IGNITE Apprenticeship, OpenBanking & Partnerships",
-      startDate: "2022-03",
-      endDate: "2023-03",
-      highlights: [
-        "Built a Node.js CLI that parses Postman collections, auto-generates assertion tests, and displays results on a dashboard — adopted by QA team",
         "Created Swagger documentation and added APIs to sandbox portal via Wso2 carbon",
-        "Won Rookie of the Year",
         "Taught JavaScript to secondary school students via Code@OCBC",
       ],
     },
