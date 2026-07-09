@@ -71,9 +71,6 @@ jobs:
           rm -rf node_modules frontend/node_modules backend/node_modules
           bun install
 
-      - name: Install poppler-utils (PDF text extraction for validation)
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
-
       - name: Prisma generate (if present)
         run: |
           if [ -f backend/prisma/schema.prisma ]; then
@@ -85,23 +82,11 @@ jobs:
           bun x tsc -p backend --noEmit || true
           bun x tsc -p frontend --noEmit || true
 
-      - name: Generate resume PDF
+      - name: Generate and test resume PDF
         run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
           bun run scripts/generate-resume.ts
-          echo "Generated $(wc -c < frontend/public/resume.pdf) bytes"
-
-      - name: Validate resume PDF (ATS text check)
-        run: |
-          pdftotext frontend/public/resume.pdf - | grep -q "Lester Cheong" || {
-            echo "FAIL: Resume PDF missing expected text"
-            pdftotext frontend/public/resume.pdf - | head -5
-            exit 1
-          }
-          pdftotext frontend/public/resume.pdf - | grep -q "Freelance" || {
-            echo "FAIL: Resume PDF missing experience section"
-            exit 1
-          }
-          echo "Resume PDF validated OK"
+          bun test scripts/__tests__/resume.test.ts
 
       - name: Build frontend (Astro)
         env:

@@ -12,7 +12,8 @@
     "dev:frontend": "bun --cwd frontend dev",
     "dev:backend": "bun --cwd backend run dev",
     "generate:resume": "bun run scripts/generate-resume.ts",
-    "build": "bun run generate:resume && bun --cwd frontend build && bun --cwd backend build || true",
+    "test": "bun test scripts/__tests__/",
+    "build": "bun run generate:resume && bun run test && bun --cwd frontend build && bun --cwd backend build || true",
     "preview": "bun --cwd frontend preview",
     "smoke": "bun --cwd frontend build && test -d frontend/dist"
   },
