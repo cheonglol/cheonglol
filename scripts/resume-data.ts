@@ -80,7 +80,7 @@ export const resume: Resume = {
     {
       name: "Self-employed",
       position: "Freelance Software Engineer",
-      startDate: "2024-12",
+      startDate: "2025-01",
       highlights: [
         "3 paying clients. Delivered a Telegram-based order management system (24-26 daily users, PostgreSQL, role-based access, CRON reports)",
         "Built an AI photobooth for live events using Replicate AI",
@@ -97,7 +97,6 @@ export const resume: Resume = {
       highlights: [
         "OpenBanking API development. Owned partner onboarding pipeline: spec review, implementation, regression testing, production release",
         "Managed change tickets through banking-grade release gates",
-        "Zero rollback incidents",
         "Mentored IGNITE apprentices on an internal portal (React, Spring)",
       ],
     },
