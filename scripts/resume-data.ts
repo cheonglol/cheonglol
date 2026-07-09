@@ -95,9 +95,10 @@ export const resume: Resume = {
       startDate: "2023-04",
       endDate: "2024-09",
       highlights: [
-        "OpenBanking API development. Owned partner onboarding pipeline: spec review, implementation, regression testing, production release",
-        "Managed change tickets through banking-grade release gates",
-        "Mentored IGNITE apprentices on an internal portal (React, Spring)",
+        "Mentored 2nd and 3rd batch of IGNITE interns on a partner portal web app (React, TypeScript, Spring Framework)",
+        "Investigated and resolved integration issues for partners onboarded on Connect2OCBC API store",
+        "Managed change/management tickets, improving team productivity",
+        "Assisted with digital certificate renewals for UAT server and implemented database housekeeping in UAT environment",
       ],
     },
     {
@@ -106,8 +107,8 @@ export const resume: Resume = {
       startDate: "2022-03",
       endDate: "2023-03",
       highlights: [
-        "Built a Node.js CLI that parses Postman collections, auto-generates assertion tests, and renders results on a dashboard",
-        "Replaced manual QA for the team's API regression suite",
+        "Built a Node.js CLI that parses Postman collections, auto-generates assertion tests, and displays results on a dashboard — adopted by QA team",
+        "Created Swagger documentation and added APIs to sandbox portal via Wso2 carbon",
         "Won Rookie of the Year",
         "Taught JavaScript to secondary school students via Code@OCBC",
       ],
@@ -115,13 +116,29 @@ export const resume: Resume = {
     {
       name: "SG Bike",
       position: "IoT Lock Technician",
-      startDate: "2018-11",
-      endDate: "2020-08",
+      startDate: "2019-11",
+      endDate: "2021-10",
       highlights: [
-        "Shared-mobility startup. Trained 3 interns",
-        "Wrote the team's first troubleshooting documentation",
-        "Reverse-engineered a competitor's lock firmware acquired through M&A (no keys provided) to integrate into fleet operations",
+        "Shared-mobility startup. Trained 3 interns on lock repairs and firmware upgrades",
+        "Wrote the team's first comprehensive troubleshooting documentation",
+        "Reverse-engineered competitor's smart lock debugging software via dnspy decompilation — bypassed access restrictions, handed over as a cost-effective internal tool",
       ],
+    },
+  ],
+  education: [
+    {
+      institution: "Ngee Ann Polytechnic",
+      area: "Information Technology",
+      studyType: "Higher National Diploma",
+      startDate: "2020-04",
+      endDate: "2023-04",
+    },
+    {
+      institution: "Institute of Technical Education",
+      area: "Web Applications",
+      studyType: "Nitec",
+      startDate: "2018-01",
+      endDate: "2019-12",
     },
   ],
   skills: [

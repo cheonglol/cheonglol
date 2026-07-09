@@ -41,7 +41,7 @@ async function generate(resumeData: Resume): Promise<void> {
     });
     doc.on("error", reject);
 
-    const { basics, work, skills, projects } = resumeData;
+    const { basics, work, skills, education, projects } = resumeData;
   const FONT = "Times-Roman";
   const FONT_BOLD = "Times-Bold";
   const FONT_SIZE_NAME = 22;
@@ -119,6 +119,22 @@ async function generate(resumeData: Resume): Promise<void> {
       doc.text(skill.name + ": ", 50, y, { continued: true });
       doc.font(FONT).fillColor("#444444").text(keywords);
       y = doc.y + 2;
+    }
+    y += SECTION_GAP - LINE_GAP;
+  }
+
+  // Education
+  if (education && education.length > 0) {
+    y = drawSectionHeader(doc, "Education", y, FONT_BOLD, FONT_SIZE_SECTION, SECTION_GAP);
+    for (const edu of education) {
+      doc.font(FONT_BOLD).fontSize(FONT_SIZE_BODY).fillColor("#000000");
+      doc.text(edu.institution, 50, y);
+      y = doc.y + 1;
+      doc.font(FONT).fontSize(FONT_SIZE_BODY).fillColor("#444444");
+      const detail = [edu.studyType, edu.area].filter(Boolean).join(", ");
+      const years = [edu.startDate?.slice(0, 4), edu.endDate?.slice(0, 4)].filter(Boolean).join(" - ");
+      doc.text(`${detail}  |  ${years}`);
+      y = doc.y + 4;
     }
     y += SECTION_GAP - LINE_GAP;
   }
