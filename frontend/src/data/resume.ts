@@ -82,7 +82,7 @@ export const resume: Resume = {
       position: "Freelance Software Engineer",
       startDate: "2025-01",
       highlights: [
-        "3 paying clients. Delivered a Telegram-based order management system (24-26 daily users, PostgreSQL, role-based access, CRON reports)",
+        "3 paying clients. Delivered a Telegram-based order management system (24-26 daily users, PostgreSQL, role-based access, CRON reports) with real-time SSE push notifications to sales dashboard and message queue throttling with coalescing to respect Telegram rate limits and acknowledge user messages during busy periods",
         "Built a full event activation platform for a local marketing company (SvelteKit, Fastify, PostgreSQL, Redis, Replicate AI, Twilio) — 9 interactive stations including Snake, claw machine, spot-the-difference, AI avatar passport kiosk, SMS authentication, QR check-in, and admin dashboard. Deployed live with on-site support throughout event duration. Optimized AI generation pipeline during the event via parallel model execution and streaming downloads — reduced generation time by ~67%.",
         "Built a restaurant PWA with digital menu, seasonal banners, and offline-first service worker",
         "Sole operator on all systems: CI/CD, monitoring, on-call, infrastructure",
