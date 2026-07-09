@@ -98,7 +98,7 @@ export const resume: Resume = {
         "Mentored 2nd and 3rd batch of IGNITE interns on a partner portal web app (React, TypeScript, Spring Framework)",
         "Investigated and resolved integration issues for partners onboarded on Connect2OCBC API store",
         "Managed change/management tickets, improving team productivity",
-        "Assisted with digital certificate renewals for UAT server and implemented database housekeeping in UAT environment",
+        "Assisted with digital certificate renewals for UAT server, documented renewal practices and implemented database housekeeping in UAT environment",
       ],
     },
     {
