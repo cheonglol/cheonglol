@@ -4,10 +4,14 @@
  * - Say what's true. No marketing fluff, no filler.
  * - Write like you'd tell someone at a coffee shop.
  * - It's OK to be casual if it's honest.
+ *
+ * Resume data source: ./data/resume.ts
+ * Edit THAT file to update. This page renders from it.
  */
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionDivider from "../components/ui/SectionDivider.astro";
 import SelfieCarousel from "../components/home/SelfieCarousel.astro";
+import { resume } from "../data/resume";
 
 // Types
 interface Skill {
@@ -19,7 +23,7 @@ interface SkillCategory {
   [category: string]: Skill[];
 }
 
-// Skills data
+// Skills data (kept here — has proficiency levels that resume schema doesn't)
 const skillsData: SkillCategory = {
   "Languages & Frameworks": [
     { name: "TypeScript", level: 4 },
@@ -89,21 +93,19 @@ function getLevelClass(level: Skill["level"]): string {
   }
 }
 
-// Helper function to render skill bars
-function renderSkillBars(level: Skill["level"]): string {
-  return [1, 2, 3, 4, 5]
-    .map((i) => `<span class="bar ${i > level ? "dim" : ""}"></span>`)
-    .join("");
+function fmtDate(date?: string): string {
+  if (!date) return "";
+  const [y, m] = date.split("-");
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return `${months[parseInt(m)-1]} ${y}`;
 }
-
-const title = "Lester Cheong";
 ---
 
-<BaseLayout title={title} currentPage="profile">
+<BaseLayout title={resume.basics.name} currentPage="profile">
   <header class="header-grid">
     <div class="header-info">
-      <h1>Lester Cheong</h1>
-      <p class="text-muted">Full-Stack Engineer &amp; Builder · Singapore</p>
+      <h1>{resume.basics.name}</h1>
+      <p class="text-muted">{resume.basics.label} &middot; {resume.basics.location?.city}</p>
     </div>
     <div class="header-selfie">
       <SelfieCarousel />
@@ -114,72 +116,22 @@ const title = "Lester Cheong";
 
   <section>
     <h2>Summary</h2>
-    <p>
-      Left corporate banking because the gap between how systems <em>should</em>
-      serve people and how bureaucracy actually runs them was too frustrating.
-      Went freelance to build software for small businesses — where what you
-      ship actually reaches users and they talk to you directly.
-    </p>
-    <p>
-      Full-stack generalist. TypeScript-dominant. Runs everything on Railway
-      with Fastify + PostgreSQL. Lays groundwork for sustainable additions so
-      changes stay cheap. Fast feedback loops via PaaS, type safety, good linting,
-      and AI-assisted tooling. Learned the hard way that over-engineering kills
-      projects before they launch.
-    </p>
+    <p>{resume.basics.summary}</p>
   </section>
 
   <SectionDivider />
 
   <section>
     <h2>Experience</h2>
-
-    <article class="card">
-      <h3>Freelance Software Engineer</h3>
-      <p class="text-muted">Self-employed · Dec 2024 – Present</p>
-      <p>
-        3 paying clients. Delivered a Telegram-based order management system
-        (24–26 daily users, PostgreSQL, role-based access, CRON reports), an AI
-        photobooth for live events, and a restaurant PWA. Sole operator on all
-        systems: CI/CD, monitoring, on-call, infrastructure. All production
-        backends deployed on Railway (Fastify, PostgreSQL, health-checked
-        endpoints, zero-downtime deploys).
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>API Developer, Digital Channels &amp; OpenBanking</h3>
-      <p class="text-muted">OCBC Bank · Apr 2023 – Sep 2024</p>
-      <p>
-        OpenBanking API development. Owned the partner onboarding pipeline: spec
-        review, implementation, regression testing, production release. Managed
-        change tickets through banking-grade release gates. Zero rollback
-        incidents. Mentored Ignite apprentices on an internal portal (React,
-        Spring).
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>IGNITE Apprenticeship, OpenBanking &amp; Partnerships</h3>
-      <p class="text-muted">OCBC Bank · Mar 2022 – Mar 2023</p>
-      <p>
-        Built a Node.js CLI that parses Postman collections, auto-generates
-        assertion tests, and renders results on a dashboard. Replaced manual QA
-        for the team's API regression suite. Won Rookie of the Year. Taught
-        JavaScript to secondary school students via Code@OCBC.
-      </p>
-    </article>
-
-    <article class="card">
-      <h3>IoT Lock Technician</h3>
-      <p class="text-muted">SG Bike · Nov 2018 – Aug 2020</p>
-      <p>
-        Shared-mobility startup. Trained 3 interns, wrote the team's first
-        troubleshooting documentation. Reverse-engineered a competitor's lock
-        firmware acquired through M&A (no keys provided) to integrate into fleet
-        operations.
-      </p>
-    </article>
+    {
+      resume.work?.map((job) => (
+        <article class="card">
+          <h3>{job.position}</h3>
+          <p class="text-muted">{job.name} &middot; {fmtDate(job.startDate)} &ndash; {fmtDate(job.endDate) || "Present"}</p>
+          {job.highlights?.map((h) => <p>{h}</p>)}
+        </article>
+      ))
+    }
   </section>
 
   <SectionDivider />
@@ -334,6 +286,24 @@ const title = "Lester Cheong";
 
   <SectionDivider />
 
+  {
+    resume.education && resume.education.length > 0 && (
+      <section>
+        <h2>Education</h2>
+        {
+          resume.education.map((edu) => (
+            <article class="card">
+              <h3>{edu.institution}</h3>
+              <p class="text-muted">{edu.studyType}{edu.area ? `, ${edu.area}` : ""} &middot; {fmtDate(edu.startDate)} &ndash; {fmtDate(edu.endDate)}</p>
+            </article>
+          ))
+        }
+      </section>
+    )
+  }
+
+  <SectionDivider />
+
   <section>
     <h2>Notes & Extras</h2>
     <article class="card">
@@ -360,18 +330,13 @@ const title = "Lester Cheong";
   <section>
     <h2>Contact</h2>
     <ul>
-      <li><a href="https://github.com/cheonglol">GitHub</a></li>
-      <li>
-        <s
-          ><a href="https://sg.linkedin.com/in/lester-cheong-a29a4a209"
-            >LinkedIn</a
-          ></s
-        >
-        <span class="text-muted"> (deactivated)</span>
-      </li>
-      <li><a href="mailto:lestercheong70@outlook.com">Email</a></li>
+      {
+        resume.basics.profiles?.map((p) => (
+          <li><a href={p.url}>{p.network}</a></li>
+        ))
+      }
+      <li><a href={"mailto:" + resume.basics.email}>Email</a></li>
       <li><a href="/cheonglol/resume.pdf">Resume (PDF)</a></li>
-      <li><a href="/cheonglol/blog">Blog →</a></li>
     </ul>
   </section>
 </BaseLayout>

@@ -6,7 +6,7 @@
 import PDFDocument from "pdfkit";
 import { writeFileSync, readFileSync, mkdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
-import { resume, type Resume } from "./resume-data";
+import { resume, type Resume } from "../frontend/src/data/resume";
 
 const OUTPUT = join(
   import.meta.dirname,
