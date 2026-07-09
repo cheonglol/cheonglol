@@ -74,7 +74,7 @@ export const resume: Resume = {
       },
     ],
     summary:
-      "Full-stack generalist. Left corporate banking to build software for small businesses — where what you ship actually reaches users and they talk to you directly. TypeScript-dominant. Runs everything on Railway with Fastify + PostgreSQL. Lays groundwork for sustainable additions so changes stay cheap.",
+      "Engineer who operates systems end-to-end. Builds with TypeScript, PostgreSQL, and Railway. Serves small businesses directly — the same person who ships is the one on-call.",
   },
   work: [
     {
@@ -109,8 +109,7 @@ export const resume: Resume = {
       startDate: "2019-11",
       endDate: "2021-10",
       highlights: [
-        "Shared-mobility startup. Trained 3 interns on lock repairs and firmware upgrades",
-        "Wrote the team's first comprehensive troubleshooting documentation",
+        "Performed physical smart bike lock repairs and firmware upgrades, wrote troubleshooting documentation",
         "Reverse-engineered competitor's smart lock debugging software via dnspy decompilation — bypassed access restrictions, handed over as a cost-effective internal tool",
       ],
     },
