@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "frontend/**"
+      - "scripts/**"
       - "package.json"
       - "bun.lockb"
       - ".github/workflows/deploy-astro-to-pages.yml"
