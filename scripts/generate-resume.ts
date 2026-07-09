@@ -42,8 +42,8 @@ async function generate(resumeData: Resume): Promise<void> {
     doc.on("error", reject);
 
     const { basics, work, skills, projects } = resumeData;
-  const FONT = "Helvetica";
-  const FONT_BOLD = "Helvetica-Bold";
+  const FONT = "Times-Roman";
+  const FONT_BOLD = "Times-Bold";
   const FONT_SIZE_NAME = 22;
   const FONT_SIZE_SECTION = 12;
   const FONT_SIZE_BODY = 9;
