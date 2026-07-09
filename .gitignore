@@ -21,3 +21,6 @@ pnpm-lock.yaml
 /*.sqlite
 /*.db
 /.github/dependabot.yml
+
+# Generated artifacts
+/frontend/public/resume.pdf
