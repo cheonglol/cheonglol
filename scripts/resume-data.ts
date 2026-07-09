@@ -192,9 +192,10 @@ export const resume: Resume = {
     {
       name: "Themelios: AI Accounts Receivables Platform",
       description:
-        "AI-powered platform for invoice management, collections, and payment reconciliation. Temporal.io for durable workflow orchestration, Mastra AI agents, Xero/Stripe integrations.",
+        "AI-powered platform for invoice management, collections, and payment reconciliation. Temporal.io for durable workflow orchestration, Mastra AI agents, Xero/Stripe integrations. Startup attempt that failed — scrapped after partner fallout.",
       highlights: [
         "Over-engineered for the problem and never shipped. A lesson in scoping",
+        "Startup discontinued after co-founder fallout",
       ],
     },
   ],
