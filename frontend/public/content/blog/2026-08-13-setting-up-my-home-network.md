@@ -1,6 +1,9 @@
-# How I let an AI run my home network (and actually liked it)
-
-Posted: 2026-08-13
+---
+title: "How I let an AI run my home network (and actually liked it)"
+pubDate: 2026-08-13
+description: "I run my home infrastructure with an AI agent driving an open-source Docker manager. The setup, the rules, and the security thinking."
+categories: ["homelab", "ai"]
+---
 
 I run my home infrastructure on a small machine in my apartment. Docker containers,
 a web manager, a few game servers, some databases. Nothing special — except that I

@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { BlogPosts } from "../components/blog";
 
-const staticPosts = await Astro.glob("../../content/blog/*.md");
+const staticPosts = await Astro.glob("../../public/content/blog/*.md");
 const sortedPosts = staticPosts.sort(
   (a, b) =>
     new Date(b.frontmatter.pubDate).getTime() -
