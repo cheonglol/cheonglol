@@ -25,7 +25,7 @@ jobs:
   # Cleanup old caches before build
   cleanup:
     name: Cleanup old caches
-    runs-on: [self-hosted, Linux, X64]
+    runs-on: ubuntu-latest
     steps:
       - name: Cleanup old caches
         uses: actions/github-script@v8
@@ -55,7 +55,7 @@ jobs:
   build:
     name: Build frontend (Bun + Astro)
     needs: cleanup
-    runs-on: [self-hosted, Linux, X64]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -97,7 +97,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [self-hosted, Linux, X64]
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
