@@ -135,15 +135,14 @@ li {
   color: $accent;
 }
 
-// Chip/tag styles (for categories)
+// Tag pill (rendered as #tag, small, purple)
 .chip {
   display: inline-block;
-  padding: 0 $space-2;
+  padding: 2px $space-2;
   font-size: $font-size-xs;
   font-family: $font-mono;
-  background: $bg-tertiary;
-  color: $accent;
-  border: 1px solid $border;
+  background: rgba($accent, 0.1);
+  color: $purple-400;
   border-radius: $radius-full;
   margin-right: $space-1;
   margin-bottom: $space-1;
@@ -401,6 +400,16 @@ li {
   padding: $space-6;
   overflow: hidden; /* single scroll area: .modal-body */
   overscroll-behavior: contain;
+
+  // article is the flex column that fills the modal;
+  // without this, .modal-body's flex sizing never applies and it cannot scroll
+  article {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
 
   h2 {
     margin-top: 0;

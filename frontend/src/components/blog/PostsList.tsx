@@ -48,7 +48,7 @@ export default function PostsList({ className, limit, renderItem }: Props) {
                 <div>
                   {p.categories.map((c) => (
                     <span key={c} className="chip">
-                      {c}
+                      #{c}
                     </span>
                   ))}
                 </div>

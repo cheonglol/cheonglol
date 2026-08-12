@@ -43,7 +43,7 @@ export function PostModal({ post, onClose }: Props) {
           <div className="modal-tags">
             {post.categories.map((c) => (
               <span key={c} className="chip">
-                {c}
+                #{c}
               </span>
             ))}
           </div>

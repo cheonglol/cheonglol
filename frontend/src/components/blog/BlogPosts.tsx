@@ -37,7 +37,7 @@ function BlogPostsInner({ posts }: Props) {
               <div className="tags">
                 {post.categories.map((c) => (
                   <span key={c} className="chip">
-                    {c}
+                    #{c}
                   </span>
                 ))}
               </div>
