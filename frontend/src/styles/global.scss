@@ -378,27 +378,28 @@ li {
   inset: 0;
   background: rgba($black, 0.85);
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* not center: lets the overlay scroll if the modal is taller than the viewport */
   justify-content: center;
   z-index: 999;
   padding: $space-4;
   backdrop-filter: blur(4px);
-  overflow: hidden;
+  overflow-y: auto; /* instead of hidden: keep the top reachable when content is long */
 }
 
 .modal-content {
   position: relative;
+  margin: auto; /* centers when it fits; top-aligns and scrolls when it doesn't */
   background: $bg-secondary;
   border: 1px solid $border;
   border-radius: $radius-lg;
   max-width: 640px;
   width: 100%;
   max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem); /* mobile URL-bar safe */
   display: flex;
   flex-direction: column;
   padding: $space-6;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden; /* single scroll area: .modal-body */
   overscroll-behavior: contain;
 
   h2 {
@@ -423,6 +424,8 @@ li {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
+    overscroll-behavior: contain;
+    overflow-wrap: break-word;
     padding-right: $space-3;
     margin-right: -$space-2;
     min-height: 0;
@@ -436,6 +439,24 @@ li {
       background: $bg-tertiary;
       padding: 2px $space-1;
       border-radius: $radius-sm;
+    }
+
+    pre {
+      background: $bg-tertiary;
+      padding: $space-3;
+      border-radius: $radius-sm;
+      overflow-x: auto;
+      margin-bottom: $space-3;
+
+      code {
+        background: transparent;
+        padding: 0;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
     ul,
