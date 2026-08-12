@@ -2,12 +2,12 @@
 title: "oRPC: when your frontend and backend drift, TypeScript screams before you deploy"
 pubDate: 2025-07-15
 description: "Contract-first RPC that catches API mismatches at build time instead of runtime."
-categories: ["patterns", "typescript"]
+categories: ["typescript", "backend"]
 ---
 
-A REST API between two repos drifts. You change a response shape in the backend, forget to update the frontend, and nothing breaks until a user hits that endpoint in production. Or worse — nothing breaks, the data just goes missing silently.
+A REST API between two repos drifts. You change a response shape in the backend. You forget to update the frontend. Nothing breaks until a user hits that endpoint in production. Or worse — nothing breaks. The data just goes missing silently.
 
-oRPC solves this by making the contract **the single source of truth that both sides import from**. If they disagree, `tsc` fails the build. You know before deploying.
+oRPC fixes this. It makes the contract **the single source of truth that both sides import from**. If they disagree, `tsc` fails the build. You know before deploying.
 
 ## How it works
 
@@ -53,11 +53,11 @@ const result = await orpc.receivables.collections.listCollections({
 // result is typed: { collections: Collection[], totalCount: number }
 ```
 
-If the backend handler returns a wrong shape — say it forgets `totalCount` — TypeScript errors at compile time. If the frontend passes a wrong field name — same thing. The contract file is imported by both sides, so neither can drift.
+If the backend handler returns a wrong shape — say it forgets `totalCount` — TypeScript errors at compile time. If the frontend passes a wrong field name — same thing. Both sides import the contract file, so neither can drift.
 
 ## Why this matters for solo devs
 
-When you maintain both the frontend and backend alone, it's easy to miss a field rename or a type change. Tests catch some of it, but tests have to be written. oRPC catches it for free because the Zod schemas run at runtime *and* their inferred types run at compile time.
+When you maintain both the frontend and backend alone, it's easy to miss a field rename or a type change. Tests catch some of it, but tests have to be written. oRPC catches it for free. The Zod schemas run at runtime, and their inferred types run at compile time.
 
 It also means you can work on the frontend and backend independently — in separate repos, separate deploy cycles — and still know they'll fit together. The shared contract package is the interface.
 

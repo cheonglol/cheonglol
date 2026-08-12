@@ -2,7 +2,7 @@
 title: "A layered documentation system for AI-assisted development"
 pubDate: 2025-09-02
 description: "How to make AI assistants consistently follow your conventions — with a documentation system that loads the right rules at the right time."
-categories: ["patterns", "ai"]
+categories: ["ai", "patterns"]
 ---
 
 I got tired of AI assistants guessing my conventions wrong. Every project has different rules — backend patterns that evolved across six projects, database conventions that caught subtle bugs, frontend approaches I settled on after rewrites.
@@ -65,7 +65,7 @@ Before any code changes, the AI reads these to understand what the project is, h
 
 ## What this system enforces
 
-The documentation isn't just for the AI — it's for me. Writing down the rules forces clarity. If I can't describe a convention clearly, I probably don't have one and I'm just operating on instinct. That's fine until something breaks differently in two places because I applied the instinct inconsistently.
+The documentation isn't just for the AI — it's for me. Writing down the rules forces clarity. If I can't describe a convention clearly, I probably don't have one. I'm just operating on instinct. That's fine until something breaks differently in two places because I applied the instinct inconsistently.
 
 The layered approach also means rules are loaded at the right level of detail. The AI doesn't need 50 pages of backend standards when it's fixing a CSS bug. It gets the scoped instruction for that area, plus a pointer to the full rules if it needs depth.
 

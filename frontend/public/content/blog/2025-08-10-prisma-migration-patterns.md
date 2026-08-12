@@ -2,10 +2,10 @@
 title: "Two ways to handle Prisma migrations: accept data loss vs. don't be stupid"
 pubDate: 2025-08-10
 description: "The difference between `prisma db push --accept-data-loss` and a pre-deploy safety script — and when to use each."
-categories: ["patterns", "backend"]
+categories: ["prisma", "backend"]
 ---
 
-I've used Prisma on every project for the last two years. Across them, I've ended up with two distinct approaches to schema migrations. One is for moving fast when the database doesn't matter. The other is for when it does.
+I've used Prisma on every project for the last two years. Across them, I ended up with two distinct approaches to schema migrations. One is for moving fast when the database doesn't matter. The other is for when it does.
 
 ## Approach 1: accept data loss
 
