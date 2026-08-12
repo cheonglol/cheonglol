@@ -305,170 +305,83 @@ li {
   }
 }
 
-// Sticky sidebar navigation
-.sidebar-nav {
-  position: fixed;
-  right: $space-4;
-  left: auto;
-  bottom: $space-4;
-  top: auto;
-  transform: none;
-  display: flex;
-  flex-direction: column;
-  gap: $space-2;
-  background: $bg-secondary;
-  border: 1px solid $border-subtle;
-  border-radius: $radius-lg;
-  padding: $space-2;
+// Sticky top navigation bar
+.top-nav {
+  position: sticky;
+  top: 0;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  background: $bg-secondary;
+  border-bottom: 1px solid $border-subtle;
+  padding: $space-3 $space-4;
 
-  // Mobile: collapsed by default
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: $space-2;
-  }
-
-  &.open .nav-links {
-    display: flex;
-  }
-
-  // Hamburger toggle - mobile only
-  .nav-toggle {
+  .nav-brand {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    border-radius: $radius-md;
-    transition: background $transition-fast;
+    gap: $space-2;
+    text-decoration: none;
+    font-weight: 600;
+    color: $text-primary;
 
-    &:hover {
-      background: $bg-tertiary;
+    .nav-emoji {
+      font-size: 1.1rem;
+      line-height: 1;
     }
 
-    .hamburger {
-      position: relative;
-      width: 18px;
-      height: 2px;
-      background: $text-primary;
-      border-radius: 1px;
+    .nav-brand-text {
+      font-size: $font-size-base;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-left: auto;
+
+    a {
+      padding: $space-1 $space-3;
+      border-radius: $radius-md;
+      font-size: $font-size-base;
+      color: $text-secondary;
+      text-decoration: none;
       transition: all $transition-fast;
 
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 18px;
-        height: 2px;
-        background: $text-primary;
-        border-radius: 1px;
-        transition: all $transition-fast;
+      &:hover {
+        background: $bg-tertiary;
+        color: $text-primary;
       }
 
-      &::before {
-        top: -6px;
-      }
-
-      &::after {
-        top: 6px;
+      &.active {
+        background: $accent;
+        color: $text-primary;
       }
     }
   }
 
-  // Animate hamburger to X when open
-  &.open .nav-toggle .hamburger {
-    background: transparent;
-
-    &::before {
-      top: 0;
-      transform: rotate(45deg);
-    }
-
-    &::after {
-      top: 0;
-      transform: rotate(-45deg);
-    }
-  }
-
-  // Desktop: always show links, hide toggle
-  @media (min-width: 640px) {
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-
-    .nav-toggle {
-      display: none;
-    }
-
-    .nav-links {
-      display: flex;
-    }
-  }
-
-  a {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: $radius-md;
-    transition: all $transition-fast;
-    text-decoration: none;
-
-    &:hover {
-      background: $bg-tertiary;
-
-      .nav-tooltip {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(-50%) translateX(0);
-      }
-    }
-
-    &.active {
-      background: $accent;
-
-      .nav-emoji {
-        filter: brightness(1.2);
-      }
-    }
-  }
-
-  .nav-emoji {
-    font-size: 1.25rem;
-    line-height: 1;
-  }
-
-  .nav-tooltip {
-    position: absolute;
-    right: calc(100% + $space-2);
-    left: auto;
-    top: 50%;
-    transform: translateY(-50%) translateX(8px);
+  .nav-select {
+    display: none;
     background: $bg-tertiary;
+    color: $text-primary;
     border: 1px solid $border;
     border-radius: $radius-md;
     padding: $space-1 $space-2;
-    font-size: $font-size-sm;
-    color: $text-primary;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all $transition-fast;
-    pointer-events: none;
+    font-size: $font-size-base;
+    cursor: pointer;
   }
-}
 
-// Adjust container for sidebar (only when nav exists)
-@media (min-width: 900px) {
-  body.has-nav {
-    padding-left: 80px;
+  // Mobile: hide links, show dropdown select
+  @media (max-width: 639px) {
+    .nav-links {
+      display: none;
+    }
+
+    .nav-select {
+      display: block;
+      margin-left: auto;
+    }
   }
 }
 
