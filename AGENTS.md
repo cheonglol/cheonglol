@@ -1,0 +1,84 @@
+# AGENTS.md — cheonglol/cheonglol
+
+Writing and workflow rules for AI agents working in this repo.
+They apply to everything you generate, edit, or review here.
+
+## Writing style: plain language (ISO 24495-1)
+
+This repo follows the plain-language style used in the opencode agent
+configuration (ISO 24495-1). Write so the reader can find,
+understand, and use the information on first read.
+
+Rules:
+
+1. **Short sentences.** One idea per sentence. Aim for 15-20 words;
+   split anything longer.
+2. **Active voice.** "The API returns 404" — not "A 404 is returned
+   by the API". For instructions use the imperative: "Run the tests"
+   — not "The tests should be run".
+3. **Familiar words.** Prefer common words over jargon. Define a
+   technical term the first time it appears.
+4. **Result first.** Lead with the answer or outcome, then give
+   context. Titles and conclusions before detail.
+5. **Be specific.** Use concrete names, numbers, and steps. Avoid
+   vague fillers ("various", "several", "etc.").
+6. **No idioms or figurative language.** Write for readers who may
+   not be native English speakers.
+7. **Descriptive headings.** A heading states the section's content.
+   It does not state a verdict or a feeling.
+
+## Banned: typical LLM-style writing
+
+Do not use the rhetorical framing, filler, and essay moves that raw
+LLM output overuses. This repo has shipped real examples:
+
+- `## The honest part` — frontend/public/content/blog/2026-08-13-setting-up-my-home-network.md
+- `## The real win` — frontend/public/content/blog/2025-09-02-layered-documentation-system.md
+
+### Banned framing phrases
+
+- "The honest part", "To be honest", "Let's be honest",
+  "The honest truth", "The hard truth", "Real talk", "Let's be real"
+- "The real win", "The real takeaway"
+- "At the end of the day", "Here's the thing", "Trust me",
+  "Take my word for it"
+- "It's worth noting", "It's important to note",
+  "It should be noted that"
+- "In conclusion", "To summarize", "Overall," as a sentence opener
+- "Game changer", "Level up", "That's the tea", "No cap"
+
+### Banned filler verbs and buzzwords
+
+- delve, dive into, unlock, leverage, harness, unleash, supercharge,
+  turbocharge
+- seamlessly, robustly, cutting-edge, state-of-the-art, comprehensive
+- "in a nutshell", "on the flip side", "fast-forward", "plot twist",
+  "spoiler"
+
+### Banned essay moves
+
+- Emotional or abstract headings that sell a verdict instead of
+  describing content. Write what the section is about: "Tradeoffs",
+  "Results", "What this is not for".
+- Fake conversational asides: "you might be wondering",
+  "you'd think", "spoiler: no".
+- Dramatic buildup before the point. State the point first.
+
+### Before → after
+
+- "## The honest part" → "## Tradeoffs"
+- "## The real win" → "## Results"
+- "It is worth noting that the build is slow." → "The build is slow."
+- "Let's be honest: none of this is required reading." →
+  "None of this is required reading."
+- "Delve into the details" → "Read the details"
+
+## Scope and exceptions
+
+Applies to: blog posts (frontend/public/content/blog/), README, code
+comments, issues, PRs, and commit messages — written by humans or AI.
+
+Does NOT apply to: resume content and its pipeline
+(frontend/src/data/resume.ts, scripts/generate-resume.ts,
+scripts/gh-resume.ts, tests/resume.test.ts). The resume keeps its own
+style; it is excluded on purpose.

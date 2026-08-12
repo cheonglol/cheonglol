@@ -1,13 +1,13 @@
 ---
-title: "How I let an AI run my home network (and actually liked it)"
+title: "How I let an AI run my home network"
 pubDate: 2026-08-13
 description: "I run my home infrastructure with an AI agent driving an open-source Docker manager. The setup, the rules, and the security thinking."
 categories: ["homelab", "ai"]
 ---
 
 I run my home infrastructure on a small machine in my apartment. Docker containers,
-a web manager, a few game servers, some databases. Nothing special — except that I
-built and maintain it by talking to an AI agent instead of clicking through UIs.
+a web manager, a few game servers, some databases. Nothing special — except how I build
+and maintain it. I talk to an AI agent instead of clicking through UIs.
 
 This post is about the setup, the rules I ended up with, and the security
 thinking behind it.
@@ -22,7 +22,7 @@ A second machine connects to the hub through an Arcane agent. The agent dials ou
 no inbound ports needed. Both machines show up in the same manager, and I can
 control containers on either one from a single dashboard.
 
-The important part: the AI agent (opencode, running on the hub machine) talks to
+The AI agent (opencode, running on the hub machine) talks to
 Arcane's API directly. So it doesn't just edit config files — it creates projects,
 redeploys stacks, renames containers, and reads live state. One AI sitting on top
 of the manager can operate every machine underneath it.
@@ -82,9 +82,10 @@ live in gitignored `.env` files with committed `.env.example` placeholders.
 Plaintext credentials that slipped into compose files are on a cleanup list.
 
 **Public exposure.** Nothing is exposed yet. When the time comes, the plan is a
-Cloudflare tunnel (outbound pipe, no port forwarding) in front of a reverse proxy
-that is the only thing with a key to every internal network. The manager stays
-LAN-only forever — it is admin surface, not public surface.
+Cloudflare tunnel in front of a reverse proxy. The tunnel is an outbound pipe, so
+no port forwarding. The proxy is the only thing with a key to every internal
+network. The manager stays LAN-only forever — it is admin surface, not public
+surface.
 
 **The isolation model.** Each project gets its own Docker network. Containers in
 different networks cannot see each other. The reverse proxy is the only container
@@ -95,10 +96,10 @@ commits tokens. It diffs local copies against the repo before deleting anything 
 once, that caught a config drift that would otherwise have been lost. It signs
 every GitHub issue so I know what came from where.
 
-## The honest part
+## Tradeoffs
 
 None of this is required reading for most people. If you run three containers, use
-Portainer and move on. But if your setup is growing — multiple machines, a game
-server, a couple of sites, a plan for public services — the combination of a
-manager, a git repo as source of truth, and an AI agent that explains itself is
-genuinely pleasant. The machine does the remembering; I do the deciding.
+Portainer and move on. For a growing setup — multiple machines, a game server, a
+couple of sites, a plan for public services — the combination works: a manager, a
+git repo as source of truth, and an AI agent that explains itself. The machine
+does the remembering; I do the deciding.
