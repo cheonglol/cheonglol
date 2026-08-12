@@ -1,5 +1,5 @@
 ---
-title: "oRPC: when your frontend and backend drift, TypeScript screams before you deploy"
+title: "oRPC: when your frontend and backend drift, TypeScript fails the build before you deploy"
 pubDate: 2025-07-15
 description: "Contract-first RPC that catches API mismatches at build time instead of runtime."
 categories: ["typescript", "backend"]
@@ -57,12 +57,12 @@ If the backend handler returns a wrong shape — say it forgets `totalCount` —
 
 ## Why this matters for solo devs
 
-When you maintain both the frontend and backend alone, it's easy to miss a field rename or a type change. Tests catch some of it, but tests have to be written. oRPC catches it for free. The Zod schemas run at runtime, and their inferred types run at compile time.
+When you maintain both the frontend and backend alone, it's easy to miss a field rename or a type change. Tests catch some of it, but tests have to be written. oRPC catches it without extra work. The Zod schemas run at runtime, and their inferred types run at compile time.
 
-It also means you can work on the frontend and backend independently — in separate repos, separate deploy cycles — and still know they'll fit together. The shared contract package is the interface.
+You can also work on the frontend and backend independently — separate repos, separate deploy cycles. Because both sides import the contract, you know they fit together. The shared contract package is the interface.
 
 ## Tradeoffs
 
-oRPC is newer than tRPC. Smaller community, fewer examples, less battle-tested. The contract has to live in a shared package, which means either a monorepo or a publish step for the shared types. In themelios we used a monorepo with `shared-types` as a workspace — no publish step needed, just `pnpm install`.
+oRPC is newer than tRPC. Smaller community, fewer examples, less proven. The contract must live in a shared package. That means either a monorepo or a publish step for the shared types. In themelios we used a monorepo with `shared-types` as a workspace — no publish step needed, just `pnpm install`.
 
 For a single-person operation, the payoff is: **one less class of production bug**. No more "the API changed and I forgot to update the client." TypeScript handles it.

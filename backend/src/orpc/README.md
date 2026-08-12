@@ -45,7 +45,7 @@ backend/src/orpc/
 - **Handlers**: Pure business logic, no HTTP concerns, Prisma fallback to in-memory seed
 - **Routes**: Fastify route definitions, delegates to handlers
 
-## Quick Developer Flow
+## Development Workflow
 
 1. Define types/schemas in `contract.ts`
 2. Implement handlers in `handlers/`

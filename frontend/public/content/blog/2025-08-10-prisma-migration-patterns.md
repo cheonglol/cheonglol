@@ -75,4 +75,4 @@ Now `migrate deploy` works, the pre-deploy script uses migration mode, and `db p
 | product-info-service | `db push` on startup | Internal tool, data is regeneratable |
 | themelios | Pre-deploy safety script | Production, multi-tenant, can't lose data |
 
-Both are valid. The mistake is using one when you should be using the other. Rule of thumb: if you'd be upset losing the database, use approach 2.
+Both are valid. The mistake is using one when you should be using the other. General rule: if you'd be upset losing the database, use approach 2.

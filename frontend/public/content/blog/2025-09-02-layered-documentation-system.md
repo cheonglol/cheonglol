@@ -5,7 +5,7 @@ description: "How to make AI assistants consistently follow your conventions —
 categories: ["ai", "patterns"]
 ---
 
-I got tired of AI assistants guessing my conventions wrong. Every project has different rules — backend patterns that evolved across six projects, database conventions that caught subtle bugs, frontend approaches I settled on after rewrites.
+I got tired of AI assistants guessing my conventions wrong. Every project has different rules. Backend patterns evolved across six projects, database conventions caught subtle bugs, and frontend approaches came from rewrites.
 
 The solution: a four-layer documentation system. Each layer serves a different purpose and a different audience (human or AI).
 
@@ -69,6 +69,6 @@ The documentation isn't just for the AI — it's for me. Writing down the rules 
 
 The layered approach also means rules are loaded at the right level of detail. The AI doesn't need 50 pages of backend standards when it's fixing a CSS bug. It gets the scoped instruction for that area, plus a pointer to the full rules if it needs depth.
 
-## The real win
+## Results
 
 With enough structure in the docs, the AI's output is consistent without hand-holding. I don't have to correct it on conventions — they're already loaded. The bottleneck shifts from "can the AI write this code" to "is this actually what we need." That's where human attention should be.
