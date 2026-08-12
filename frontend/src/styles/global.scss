@@ -439,6 +439,28 @@ li {
     margin-right: -$space-2;
     min-height: 0;
 
+    // Markdown headings: normal case, readable in a narrow column
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-transform: none;
+      letter-spacing: normal;
+      color: $text-primary;
+    }
+
+    h2 {
+      font-size: $font-size-lg;
+      margin: $space-6 0 $space-2;
+    }
+
+    h3 {
+      font-size: $font-size-base;
+      margin: $space-4 0 $space-2;
+    }
+
     p {
       margin-bottom: $space-3;
     }
