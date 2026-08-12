@@ -4,7 +4,7 @@
  */
 export const siteConfig = {
   /** Show blog page and navigation link */
-  showBlog: false,
+  showBlog: true,
   /** Show docs page and navigation link */
   showDocs: false,
 } as const;

@@ -45,20 +45,6 @@ const showNav = navItems.length > 1;
   <body class:list={{ "has-nav": showNav }}>
     {showNav && (
       <nav class="top-nav" id="top-nav" aria-label="Main navigation">
-        <a href={base} class="nav-brand">
-          <span class="nav-emoji">🏠</span>
-          <span class="nav-brand-text">cheonglol</span>
-        </a>
-        <div class="nav-links">
-          {navItems.map((item) => (
-            <a
-              href={item.href}
-              class:list={[{ active: currentPage === item.page }]}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
         <select class="nav-select" id="nav-select" aria-label="Navigate to page">
           {navItems.map((item) => (
             <option
