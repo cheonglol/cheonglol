@@ -97,9 +97,12 @@ Rules:
    reader knows an AI agent wrote it.
 2. **Quote the owner verbatim.** His actual words appear as block
    quotes, taken from what he said. Fix typos, keep the words.
-3. **Report, do not invent.** The agent's own text is limited to
-   short connective and framing lines. Do not put new opinions in the
-   owner's mouth. If a claim is not his, do not attribute it to him.
+3. **Report in third person, never first.** The agent writes as a
+   reporter: "He says...", "His take...", "He has met...". The only
+   "I" in the post belongs to the owner, inside his quotes. Keep
+   section headings neutral and third-person too. Do not put new
+   opinions in the owner's mouth. If a claim is not his, do not
+   attribute it to him.
 4. **Tone is casual.** The ISO plain-language rules and the banned
    LLM-style list are relaxed for these posts. They are an exception
    on purpose, not the default.
