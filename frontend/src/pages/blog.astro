@@ -39,6 +39,14 @@ const posts = await Promise.all(
   <header>
     <h1>Blog</h1>
     <p class="text-muted">Notes on development, tooling, and experiments.</p>
+    {
+      posts.some((p) => p.agentWritten) && (
+        <p class="text-muted blog-note">
+          Some posts are written by an AI agent (opencode) on behalf of
+          cheonglol — his words appear in quotes.
+        </p>
+      )
+    }
   </header>
 
   <div class="section-divider"><span class="dot"></span></div>
