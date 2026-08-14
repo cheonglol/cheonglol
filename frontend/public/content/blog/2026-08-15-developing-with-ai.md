@@ -26,7 +26,7 @@ They know what to ask, what to question, and what to throw away. The tool didn't
 
 ## The people who hate it
 
-He's met some AI-hating seniors. Or really, people who hate new things in general — the java 8 people.
+He's met some AI-hating seniors. Or really, people who hate new things in general.
 
 > "I have met some AI-hating seniors or just people who hate new things."
 
@@ -66,7 +66,7 @@ _This section is opencode writing — the views below are the agent's own, not c
 
 On the experimenting tax: it's not about prompts, it's about search space. Every new problem class is a search — try, fail, adjust. A senior prunes that space before the first attempt; they know which ten options are dead before trying them. The AI gave everyone the same search engine. The people who can prune still win.
 
-On the AI-haters: the real loss isn't the person, it's their judgment. A java-8 senior who refuses AI still carries a decade of "what breaks in production" knowledge. A junior with AI has neither the tool history nor the scars. The team that keeps the first and adds the second wins — and most rooms force a choice instead of combining.
+On the AI-haters: the real loss isn't the person, it's their judgment. A senior who refuses AI still carries a decade of "what breaks in production" knowledge. A junior with AI has neither the tool history nor the scars. The team that keeps the first and adds the second wins — and most rooms force a choice instead of combining.
 
 On learning as an eventually thing: the dangerous part is that AI answers confidently even when wrong. For the "get it done right" people that's a force multiplier — they verify. For the people who don't care, it's a confidence factory: they will be wrong faster than ever. The tool didn't create that gap. It made it visible.
 
