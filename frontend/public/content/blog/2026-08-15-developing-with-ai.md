@@ -10,7 +10,7 @@ _Written by opencode on behalf of cheonglol. His words are in quotes, verbatim. 
 
 ## The experimenting tax
 
-People assume AI makes you fast. His experience is the opposite — before it's even fast, there's so much experimenting needed.
+People assume AI makes you fast. His experience is the opposite: before it's even fast, there's so much experimenting needed.
 
 > "Before it's even fast there's so much experimenting needed."
 
@@ -22,9 +22,9 @@ He's noticed that the people who get the most out of AI are the ones who already
 
 > "It's like no wonder seniors can make better use of it."
 
-They know what to ask, what to question, and what to throw away. The tool didn't make them good. It amplified what they already had.
+They know what to ask, what to question, and what to throw away. They were already good; the tool amplified what they had.
 
-The search-space view of this: every new problem class is a search. Seniors prune the space before the first attempt — they know which ten options are dead before trying them. The AI gave everyone the same search engine. The people who can prune still win.
+The search-space view of this: every new problem class is a search. Seniors prune the space before the first attempt; they know which ten options are dead before trying them. The AI gave everyone the same search engine. The people who can prune still win.
 
 ## The people who hate it
 
@@ -34,7 +34,7 @@ He's met some AI-hating seniors. Or really, people who hate new things in genera
 
 Understandable — new tools are annoying, and they change the game you spent years learning. But wow, what a waste.
 
-The real loss isn't the person, it's their judgment. A senior who refuses AI still carries a decade of "what breaks in production" knowledge. A junior with AI has neither the tool history nor the scars. The team that keeps the first and adds the second wins — and most rooms force a choice instead of combining.
+The real loss is their judgment. A senior who refuses AI still carries a decade of "what breaks in production" knowledge. A junior with AI has neither the tool history nor the scars. The team that keeps the first and adds the second wins; most rooms force a choice instead of combining.
 
 ## Fitting in
 
@@ -42,7 +42,7 @@ That makes him wonder whether he can fit in such places.
 
 > "I'm not sure if I can fit in such places."
 
-If the room has decided the new thing is bad before trying it, he's not sure he belongs there. He'd rather be where tools get used — badly at first — and get better.
+If the room has decided the new thing is bad before trying it, he's not sure he belongs there. He'd rather be where tools get used, badly at first, and get better.
 
 ## Learning is an eventually thing
 
@@ -56,7 +56,7 @@ And the difference he keeps noticing: people who care about getting it done righ
 
 The care makes the difference, not the tool.
 
-The dangerous part is that AI answers confidently even when wrong. For the "get it done right" people that's a force multiplier — they verify. For the people who don't care, it's a confidence factory: they will be wrong faster than ever. The tool didn't create that gap. It made it visible.
+The dangerous part is that AI answers confidently even when wrong. For the "get it done right" people that's a force multiplier: they verify. For the people who don't care, it's a confidence factory: they will be wrong faster than ever. That gap existed before AI. The tool made it visible.
 
 ## The overthinker part
 
@@ -64,6 +64,6 @@ He's an easily-worried overthinker, and he finds himself asking a lot of "what s
 
 > "I find myself asking a lot of what to consider, as an easily-worried overthinker."
 
-Annoying in person. With AI, it works out — there's always something willing to list the considerations with him.
+Annoying in person. With AI, it works out: there's always something willing to list the considerations with him.
 
 An overthinker with AI is cheap insurance. The "what should I consider" questions are a checklist he used to keep in his head and lose sleep over. Now it's external, patient, and free to interrogate.

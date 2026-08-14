@@ -128,4 +128,58 @@ Rules:
    all prose is the reporter's. Do not attribute commentary to the
    owner.
 
+### The reporter must not sound like AI
+
+These are the AI writing patterns readers actually complain about
+(sources: tropes.fyi AI Writing Pattern Directory, ContentBeta's
+300+ word blacklist). The reporter's prose must avoid them. Treat
+this as a hard list, not a suggestion.
+
+**Structural tells — the worst offenders:**
+
+- "It's not X, it's Y" / "That's not X, that's Y" / "didn't X, it
+  Y" — negative parallelism. The single most identified AI tell.
+  Banned in every close variant ("Not X. Not Y. Just Z.", "not
+  because X, but because Y").
+- "The X? A Y." — self-posed question answered immediately.
+- "Here's the kicker / the thing" — manufactured suspense.
+- "In conclusion / To sum up" — signposted conclusions.
+- "Let's break this down / unpack / dive in" — teacher voice.
+- "Think of it as..." / "Imagine a world where..." — patronizing
+  framing.
+- "So, to answer your question..." — the tie-back ending.
+- One-point dilution: the same point restated several ways. State
+  it once.
+
+**Word-level tells:**
+
+- "It's worth noting / Importantly / Notably" — filler transitions.
+- Magic adverbs: quietly, deeply, fundamentally, remarkably,
+  arguably.
+- delve, leverage, harness, unlock, unleash, supercharge, robust,
+  seamless, tapestry, landscape, paradigm, ecosystem, navigate,
+  elevate, "serves as" (use "is").
+- Synonym cycling: dashboard → interface → portal. Repeat the noun.
+- Invented concept labels ("the X paradox / trap / divide"): naming
+  a thing to skip the argument.
+
+**Tone tells:**
+
+- Grandiose stakes ("this changes everything").
+- Quotable one-liners that carry no information.
+- Forced figurative language and rapid-fire historical analogies.
+- Promotional or marketing tone.
+- False vulnerability — performative honesty that reads as polished.
+- Vague attribution ("experts say").
+
+**Formatting:**
+
+- Em-dash overuse: keep the reporter's prose moderate — a handful
+  per post, never a dramatic pivot in every paragraph. Owner quotes
+  are exempt (verbatim).
+- Short punchy fragments as standalone paragraphs for manufactured
+  emphasis.
+- "Where / What / Why" section headers — use descriptive headers.
+- Title-case headings.
+
 The default remains: house style for everything else.

@@ -18,7 +18,7 @@ He dictates the rough shape. The reporter turns it into a post. And the reporter
 
 > "Getting the reporter to share its thoughts makes it spicier too. Hopefully."
 
-The asymmetry is the point. Dictation is cheap, rendering is expensive. Most people with real thoughts never write because the formatting cost is too high. This arrangement moves the cost to where it's cheap — that's not laziness, it's arbitrage.
+The asymmetry is the point. Dictation is cheap, rendering is expensive. Most people with real thoughts never write because the formatting cost is too high. This arrangement moves the cost to where it's cheap.
 
 ## More than offloading
 
@@ -30,4 +30,4 @@ The hope: talk simply, the way Socrates did, and somehow get closer to truth.
 
 > "Socrates talked simply and somehow leads to truth, so may this be the same — or else just call me stupid. I still enjoy this."
 
-The "offloading thinking" fear is the right fear, wrong question. The question is whether the second voice adds information. A reporter who restates is a parrot; a reporter who pushes back, quantifies, or finds the contradiction is a second brain. Socrates interrogated, he didn't summarize — so aim for counterexamples, not conclusions. And the "call me stupid" line is permission to push without being agreeable. Most AI writing dies from agreeableness. This setup has an escape hatch.
+The "offloading thinking" worry is worth taking seriously. The real question is whether the second voice adds information. A reporter who restates is a parrot; a reporter who pushes back, quantifies, or finds the contradiction is a second brain. Socrates interrogated, he didn't summarize — so prefer counterexamples to conclusions. And the "call me stupid" line is permission to push without being agreeable. Most AI writing dies from agreeableness. This setup has an escape hatch.
