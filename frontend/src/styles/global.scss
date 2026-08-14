@@ -461,6 +461,31 @@ li {
     gap: $space-1;
     flex-wrap: wrap;
   }
+
+  // Reporter-style posts (written by an AI agent on behalf of the owner):
+  // distinct look so readers can tell them apart at a glance
+  &.agent-written {
+    border-left: 2px solid $accent;
+    background: rgba($accent, 0.04);
+
+    h3 {
+      margin-top: $space-2;
+    }
+  }
+}
+
+// Small badge marking reporter-style posts
+.reported-badge {
+  display: inline-block;
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  color: $accent;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba($accent, 0.4);
+  border-radius: $radius-full;
+  padding: 2px $space-2;
+  margin-bottom: $space-2;
 }
 
 

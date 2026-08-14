@@ -25,12 +25,15 @@ function BlogPostsInner({ posts }: Props) {
         {posts.map((post) => (
           <article
             key={post.slug}
-            className="card post-card"
+            className={`card post-card${post.agentWritten ? " agent-written" : ""}`}
             onClick={() => setSelectedPost(post)}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => e.key === "Enter" && setSelectedPost(post)}
           >
+            {post.agentWritten && (
+              <span className="reported-badge">Reported</span>
+            )}
             <h3>{post.title}</h3>
             <p className="text-muted">{post.date}</p>
             <p>{post.description}</p>
