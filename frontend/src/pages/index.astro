@@ -268,21 +268,38 @@ function fmtDate(date?: string): string {
     <h2>Notes & Extras</h2>
     <article class="card">
       <h3>Infrastructure & Homelab</h3>
-      <p>
-        This is my home cloud — a few machines at home running my own
-        services. Orchestrated through Arcane (open-source Docker manager),
-        with a git repo as the source of truth — tracked projects deploy via
-        git-sync. LLM agents fill defined roles — infrastructure, deployment,
-        security — that I engage directly: they propose, I review and approve,
-        then they apply. A Caddy reverse proxy is the single door: every
-        service sits in its own isolated Docker network, public services open
-        no inbound ports, admin surfaces stay LAN-only. Runs game servers
-        (Mindustry, Minecraft), a Postgres sandbox, and simple WordPress sites
-        for friends who need a website — free. I maintain router and network
-        devices manually. A self-hosted VPN provides secure access to the LAN.
-        Linux administration, Cloudflare DNS as supplementary edge. Railway
-        for cloud-hosted client work.
-      </p>
+      <ul>
+        <li>
+          This is my home cloud — a few machines at home running my own
+          services.
+        </li>
+        <li>
+          Orchestrated through Arcane (open-source Docker manager), with a git
+          repo as the source of truth — tracked projects deploy via git-sync.
+        </li>
+        <li>
+          LLM agents fill defined roles — infrastructure, deployment, security
+          — that I engage directly: they propose, I review and approve, then
+          they apply.
+        </li>
+        <li>
+          A Caddy reverse proxy is the single door: every service sits in its
+          own isolated Docker network, public services open no inbound ports,
+          admin surfaces stay LAN-only.
+        </li>
+        <li>
+          Runs game servers (Mindustry, Minecraft), a Postgres sandbox, and
+          simple WordPress sites for friends who need a website.
+        </li>
+        <li>
+          I maintain router and network devices manually. A self-hosted VPN
+          provides secure access to the LAN.
+        </li>
+        <li>
+          Linux administration, Cloudflare DNS as supplementary edge. Railway
+          for cloud-hosted client work.
+        </li>
+      </ul>
     </article>
 
     <article class="card">
