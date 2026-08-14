@@ -1,10 +1,17 @@
 ---
 import "../styles/global.scss";
 
+interface NavChild {
+  href: string;
+  label: string;
+}
+
 interface NavItem {
   href: string;
   label: string;
   page: string;
+  /** Optional subroutes. Renders as a hover/tap dropdown under the item. */
+  children?: NavChild[];
 }
 
 interface Props {
@@ -18,6 +25,14 @@ const base = import.meta.env.BASE_URL;
 const navItems: NavItem[] = [
   { href: `${base}`, label: "Profile", page: "profile" },
   { href: `${base}/blog`, label: "Blog", page: "blog" },
+  // Subpath example — add `children` to any item to give it a dropdown:
+  // {
+  //   href: `${base}/blog`, label: "Blog", page: "blog",
+  //   children: [
+  //     { href: `${base}/blog/tag/ai`, label: "AI" },
+  //     { href: `${base}/blog/tag/backend`, label: "Backend" },
+  //   ],
+  // },
 ];
 const showNav = navItems.length > 1;
 ---
@@ -39,30 +54,57 @@ const showNav = navItems.length > 1;
   <body class:list={{ "has-nav": showNav }}>
     {showNav && (
       <nav class="top-nav" id="top-nav" aria-label="Main navigation">
-        <select class="nav-select" id="nav-select" aria-label="Navigate to page">
-          {navItems.map((item) => (
-            <option
-              value={item.href}
-              selected={currentPage === item.page}
-            >
+        {navItems.map((item) => (
+          <div
+            class:list={[
+              "nav-item",
+              { "has-children": !!item.children, active: currentPage === item.page },
+            ]}
+          >
+            <a href={item.href} aria-haspopup={item.children ? "true" : undefined}>
               {item.label}
-            </option>
-          ))}
-        </select>
+            </a>
+            {item.children && (
+              <div class="nav-dropdown">
+                {item.children.map((child) => (
+                  <a href={child.href}>{child.label}</a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
       </nav>
     )}
     <main class="container">
       <slot />
     </main>
     <script>
-      const select = document.getElementById("nav-select");
-      if (select) {
-        select.addEventListener("change", () => {
-          if (select.value) {
-            window.location.href = select.value;
-          }
+      // Touch devices: first tap on a parent opens its dropdown instead of navigating.
+      const touch = window.matchMedia("(hover: none)").matches;
+      document.querySelectorAll(".nav-item.has-children > a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (!touch) return; // hover handles it on desktop
+          const item = link.parentElement;
+          const isOpen = item.classList.contains("open");
+          document.querySelectorAll(".nav-item.open").forEach((o) => {
+            if (o !== item) o.classList.remove("open");
+          });
+          if (!isOpen) e.preventDefault();
+          item.classList.toggle("open", !isOpen);
         });
-      }
+      });
+
+      // Close dropdowns on outside click or Escape.
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav-item")) {
+          document.querySelectorAll(".nav-item.open").forEach((o) => o.classList.remove("open"));
+        }
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          document.querySelectorAll(".nav-item.open").forEach((o) => o.classList.remove("open"));
+        }
+      });
     </script>
   </body>
 </html>
