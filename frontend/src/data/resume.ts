@@ -74,7 +74,7 @@ export const resume: Resume = {
       },
     ],
     summary:
-      "I'm a generalist: I work across the stack instead of deep in one area, and I use AI agents to cover the depth I don't have. Applied software — how things actually get built and used — interests me more than the computer science behind it. I care about the science too, and I've been going deeper as the years pass, but I'm not the math or CS-theory kind of person. I enjoy experimenting, and my homelab has been my favorite pastime since 2024. I serve small businesses end to end; the same person who ships is the one on-call.",
+      "I'm a generalist: I work across the stack instead of deep in one area, and I use AI agents to cover the depth I don't have. Applied software — how things actually get built and used — interests me more than the computer science behind it. I care about the science too, and I've been going deeper as the years pass, but I'm not the math or CS-theory kind of person. I haven't formally attended university, but that doesn't lower the bar: what I build must be smooth and serve its users well. I enjoy experimenting, and my homelab has been my favorite pastime since 2024. I serve small businesses end to end; the same person who ships is the one on-call.",
   },
   work: [
     {
