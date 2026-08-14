@@ -609,6 +609,23 @@ li {
       height: auto;
     }
 
+    blockquote {
+      border-left: 2px solid $accent;
+      background: rgba($accent, 0.05);
+      padding: $space-2 $space-4;
+      margin: 0 0 $space-3;
+      border-radius: $radius-sm;
+      color: $text-primary;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      p:first-child {
+        margin-top: 0;
+      }
+    }
+
     ul,
     ol {
       margin-bottom: $space-3;
