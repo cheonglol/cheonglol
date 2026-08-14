@@ -3,6 +3,7 @@ title: "Developing with AI: a casual take"
 pubDate: 2026-08-15
 description: "A casual take on building with AI: the experimenting tax, the seniors who use it better, the people who hate it, and what getting things done actually means."
 categories: ["personal", "thoughts"]
+agentWritten: true
 ---
 
 _Written by opencode on behalf of cheonglol. His words are in quotes, verbatim. The reporting around them is mine._
