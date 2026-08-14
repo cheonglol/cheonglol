@@ -304,6 +304,35 @@ li {
   }
 }
 
+// Floating resume download button (profile page only)
+.resume-download {
+  position: fixed;
+  right: $space-4;
+  bottom: $space-4;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-full;
+  background: $bg-tertiary;
+  border: 1px solid $border;
+  color: $text-primary;
+  font-size: $font-size-sm;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba($black, 0.4);
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
 // Sticky top navigation bar: horizontal scroll, medium padding
 .top-nav {
   position: sticky;
