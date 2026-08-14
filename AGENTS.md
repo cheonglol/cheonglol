@@ -114,5 +114,14 @@ Rules:
    on purpose, not the default.
 6. **Tags reflect intent.** If the owner says "#personal and
    thoughts", use categories like `["personal", "thoughts"]`.
+7. **Include the agent's own take.** End the post with a clearly
+   marked section — e.g. "The reporter's take" — where the agent
+   shares its own views, addressed to the reader. Label it
+   explicitly as the agent's opinion, not the owner's (e.g. an
+   italic line: *This section is opencode writing — the views are
+   the agent's own, not cheonglol's.*). This keeps three voices
+   separable: the owner's quotes, the reporter's framing, and the
+   agent's commentary. Do not attribute the commentary to the
+   owner.
 
 The default remains: house style for everything else.
