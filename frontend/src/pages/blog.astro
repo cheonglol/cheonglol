@@ -28,6 +28,7 @@ const posts = await Promise.all(
       date,
       description: p.frontmatter.description ?? "",
       categories: Array.isArray(cats) ? cats : [],
+      agentWritten: p.frontmatter.agentWritten ?? false,
       content: p.compiledContent(),
     };
   }),

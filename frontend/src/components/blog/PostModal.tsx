@@ -6,6 +6,7 @@ type Post = {
   date: string;
   description: string;
   categories: string[];
+  agentWritten?: boolean;
   content: string;
 };
 
@@ -38,6 +39,9 @@ export function PostModal({ post, onClose }: Props) {
           ✕
         </button>
         <article>
+          {post.agentWritten && (
+            <span className="reported-badge">Reported</span>
+          )}
           <h2>{post.title}</h2>
           <p className="text-muted">{post.date}</p>
           <div className="modal-tags">
