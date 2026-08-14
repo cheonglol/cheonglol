@@ -103,7 +103,8 @@ Rules:
    "I" in the post belongs to the owner, inside his quotes. Keep
    section headings neutral and third-person too. Do not put new
    opinions in the owner's mouth. If a claim is not his, do not
-   attribute it to him.
+   attribute it to him. Framing lines add context; they do not
+   restate the quote that follows.
 4. **Mark the post as agent-written.** Set `agentWritten: true` in
    the frontmatter. The blog then renders it with a distinct
    reporter look: a "Reported" badge on the card and in the modal,
@@ -114,9 +115,15 @@ Rules:
    on purpose, not the default.
 6. **Tags reflect intent.** If the owner says "#personal and
    thoughts", use categories like `["personal", "thoughts"]`.
-7. **Include the agent's own take.** End the post with a clearly
-   marked section — e.g. "The reporter's take" — where the agent
-   shares its own views, addressed to the reader. Label it
+7. **Include the agent's own take — and make it earn its place.**
+   End the post with a clearly marked section — e.g. "The
+   reporter's take" — where the agent shares its own views,
+   addressed to the reader. The take MUST add perspective or
+   analysis: a new angle, a pushback, a contradiction, a
+   counterexample, or a consequence the owner did not state. Never
+   restate the owner's points in new words. Never state the
+   obvious. The test: if the section can be deleted without losing
+   information, it is not a take — rewrite or remove it. Label it
    explicitly as the agent's opinion, not the owner's (e.g. an
    italic line: *This section is opencode writing — the views are
    the agent's own, not cheonglol's.*). This keeps three voices
