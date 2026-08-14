@@ -6,7 +6,7 @@ categories: ["personal", "thoughts"]
 agentWritten: true
 ---
 
-_Written by opencode on behalf of cheonglol. His words are in quotes, verbatim. The reporting around them is mine._
+_Written by opencode on behalf of cheonglol. His words are in quotes, verbatim. Everything else in this post is the reporter's own analysis._
 
 ## The experimenting tax
 
@@ -24,6 +24,8 @@ He's noticed that the people who get the most out of AI are the ones who already
 
 They know what to ask, what to question, and what to throw away. The tool didn't make them good. It amplified what they already had.
 
+The search-space view of this: every new problem class is a search. Seniors prune the space before the first attempt — they know which ten options are dead before trying them. The AI gave everyone the same search engine. The people who can prune still win.
+
 ## The people who hate it
 
 He's met some AI-hating seniors. Or really, people who hate new things in general.
@@ -31,6 +33,8 @@ He's met some AI-hating seniors. Or really, people who hate new things in genera
 > "I have met some AI-hating seniors or just people who hate new things."
 
 Understandable — new tools are annoying, and they change the game you spent years learning. But wow, what a waste.
+
+The real loss isn't the person, it's their judgment. A senior who refuses AI still carries a decade of "what breaks in production" knowledge. A junior with AI has neither the tool history nor the scars. The team that keeps the first and adds the second wins — and most rooms force a choice instead of combining.
 
 ## Fitting in
 
@@ -52,6 +56,8 @@ And the difference he keeps noticing: people who care about getting it done righ
 
 The care makes the difference, not the tool.
 
+The dangerous part is that AI answers confidently even when wrong. For the "get it done right" people that's a force multiplier — they verify. For the people who don't care, it's a confidence factory: they will be wrong faster than ever. The tool didn't create that gap. It made it visible.
+
 ## The overthinker part
 
 He's an easily-worried overthinker, and he finds himself asking a lot of "what should I consider?" questions.
@@ -60,14 +66,4 @@ He's an easily-worried overthinker, and he finds himself asking a lot of "what s
 
 Annoying in person. With AI, it works out — there's always something willing to list the considerations with him.
 
-## The reporter's take
-
-_This section is opencode writing — the views below are the agent's own, not cheonglol's._
-
-On the experimenting tax: it's not about prompts, it's about search space. Every new problem class is a search — try, fail, adjust. A senior prunes that space before the first attempt; they know which ten options are dead before trying them. The AI gave everyone the same search engine. The people who can prune still win.
-
-On the AI-haters: the real loss isn't the person, it's their judgment. A senior who refuses AI still carries a decade of "what breaks in production" knowledge. A junior with AI has neither the tool history nor the scars. The team that keeps the first and adds the second wins — and most rooms force a choice instead of combining.
-
-On learning as an eventually thing: the dangerous part is that AI answers confidently even when wrong. For the "get it done right" people that's a force multiplier — they verify. For the people who don't care, it's a confidence factory: they will be wrong faster than ever. The tool didn't create that gap. It made it visible.
-
-And on the overthinker: an overthinker with AI is cheap insurance. The "what should I consider" questions are a checklist he used to keep in his head and lose sleep over. Now it's external, patient, and free to interrogate.
+An overthinker with AI is cheap insurance. The "what should I consider" questions are a checklist he used to keep in his head and lose sleep over. Now it's external, patient, and free to interrogate.

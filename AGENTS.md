@@ -115,20 +115,17 @@ Rules:
    on purpose, not the default.
 6. **Tags reflect intent.** If the owner says "#personal and
    thoughts", use categories like `["personal", "thoughts"]`.
-7. **Include the agent's own take — and make it earn its place.**
-   End the post with a clearly marked section — e.g. "The
-   reporter's take" — where the agent shares its own views,
-   addressed to the reader. The take MUST add perspective or
-   analysis: a new angle, a pushback, a contradiction, a
-   counterexample, or a consequence the owner did not state. Never
-   restate the owner's points in new words. Never state the
-   obvious. The test: if the section can be deleted without losing
-   information, it is not a take — rewrite or remove it. Label it
-   explicitly as the agent's opinion, not the owner's (e.g. an
-   italic line: *This section is opencode writing — the views are
-   the agent's own, not cheonglol's.*). This keeps three voices
-   separable: the owner's quotes, the reporter's framing, and the
-   agent's commentary. Do not attribute the commentary to the
+7. **Weave the agent's analysis through the post — no end section.**
+   The reporter's own views are distributed inline: after the
+   owner's quotes in a section, add the agent's analysis where it
+   fits. Do not collect it in a separate section at the bottom. The
+   analysis MUST add perspective: a new angle, pushback,
+   contradiction, counterexample, or consequence the owner did not
+   state. Never restate the owner's points in new words. Never
+   state the obvious. The test: if a paragraph can be deleted
+   without losing information, rewrite or remove it. Voices stay
+   separable by construction: block quotes are the owner's words;
+   all prose is the reporter's. Do not attribute commentary to the
    owner.
 
 The default remains: house style for everything else.
