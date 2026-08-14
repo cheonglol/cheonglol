@@ -74,7 +74,7 @@ export const resume: Resume = {
       },
     ],
     summary:
-      "AI-augmented software engineer who operates systems end-to-end. Builds with TypeScript, PostgreSQL, and Railway. Serves small businesses directly — the same person who ships is the one on-call.",
+      "I'm a generalist: I work across the stack instead of deep in one area, and I use AI agents to cover the depth I don't have. Applied software — how things actually get built and used — interests me more than the computer science behind it. I care about the science too, and I've been going deeper as the years pass, but I'm not the math or CS-theory kind of person. I serve small businesses end to end; the same person who ships is the one on-call.",
   },
   work: [
     {
