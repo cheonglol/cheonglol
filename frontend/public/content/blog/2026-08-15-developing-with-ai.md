@@ -26,11 +26,11 @@ They know what to ask, what to question, and what to throw away. The tool didn't
 
 ## The people who hate it
 
-He's met some AI-hating seniors. Or really, people who hate new things in general.
+He's met some AI-hating seniors. Or really, people who hate new things in general — the java 8 people.
 
-> "I have met some AI-hating seniors or just people who hate new things (java 8 people) which is understandable but wow what a waste."
+> "I have met some AI-hating seniors or just people who hate new things."
 
-He gets it — new tools are annoying. They change the game you spent years learning. But wow, what a waste.
+Understandable — new tools are annoying, and they change the game you spent years learning. But wow, what a waste.
 
 ## Fitting in
 
