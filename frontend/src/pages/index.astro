@@ -102,15 +102,6 @@ function fmtDate(date?: string): string {
 ---
 
 <BaseLayout title={resume.basics.name} currentPage="profile">
-  <article class="pinned-note">
-    <p>
-      By design, this page is simple. No fancy or resource-heavy design —
-      just enough polish to feel acceptable to most people. I like it
-      purposefully done. The page renders from a single source of truth, so
-      content and presentation never drift.
-    </p>
-  </article>
-
   <header class="header-grid">
     <div class="header-info">
       <h1>{resume.basics.name}</h1>
@@ -345,18 +336,6 @@ function fmtDate(date?: string): string {
 
 <style lang="scss">
   @use "../styles/variables" as *;
-
-  .pinned-note {
-    border-left: 2px solid $accent;
-    background: rgba($accent, 0.05);
-    padding: $space-3 $space-4;
-    border-radius: $radius-sm;
-    margin-bottom: $space-6;
-
-    p {
-      margin-bottom: 0;
-    }
-  }
 
   .header-grid {
     display: flex;
