@@ -269,10 +269,18 @@ function fmtDate(date?: string): string {
     <article class="card">
       <h3>Infrastructure & Homelab</h3>
       <p>
-        Homelab with multiple machines. Docker, Portainer, Linux systems
-        administration. Railway deployment management. Publishes deployable
-        service templates for Railway (webtop jump server). Router and network
-        device management. Self-hosted VPN server. Cloudflare DNS configuration.
+        Homelab across multiple machines, orchestrated through Arcane
+        (open-source Docker manager), with a git repo as the source of truth —
+        tracked projects deploy via git-sync. LLM agents fill defined roles —
+        infrastructure, deployment, security — that I engage directly: they
+        propose, I review and approve, then they apply. A Caddy reverse proxy
+        is the single door: every service sits in its own isolated Docker
+        network, public services open no inbound ports, admin surfaces stay
+        LAN-only. Runs game servers (Mindustry, Minecraft), a Postgres
+        sandbox, and simple WordPress sites for friends who need a website —
+        free. Linux administration, self-hosted VPN, router and network
+        management, Cloudflare DNS as supplementary edge. Railway for
+        cloud-hosted client work.
       </p>
     </article>
 
