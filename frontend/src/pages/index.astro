@@ -102,6 +102,29 @@ function fmtDate(date?: string): string {
 ---
 
 <BaseLayout title={resume.basics.name} currentPage="profile">
+  <article class="pinned-note">
+    <span class="pinned-label">
+      <svg
+        viewBox="0 0 24 24"
+        width="12"
+        height="12"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"
+        />
+      </svg>
+      Pinned
+    </span>
+    <p>
+      By design, this page is simple. No fancy or resource-heavy design —
+      just enough polish to feel acceptable to most people. Everything here
+      must serve a purpose. The page renders from a single source of truth
+      (resume.ts), so content and presentation never drift.
+    </p>
+  </article>
+
   <header class="header-grid">
     <div class="header-info">
       <h1>{resume.basics.name}</h1>
@@ -337,6 +360,34 @@ function fmtDate(date?: string): string {
 
 <style lang="scss">
   @use "../styles/variables" as *;
+
+  .pinned-note {
+    border-left: 2px solid $accent;
+    background: rgba($accent, 0.05);
+    padding: $space-3 $space-4;
+    border-radius: $radius-sm;
+    margin-bottom: $space-6;
+
+    .pinned-label {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-1;
+      font-family: $font-mono;
+      font-size: $font-size-xs;
+      color: $text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: $space-2;
+
+      svg {
+        color: $accent;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
 
   .header-grid {
     display: flex;
