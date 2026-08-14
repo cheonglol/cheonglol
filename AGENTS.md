@@ -82,3 +82,28 @@ Does NOT apply to: resume content and its pipeline
 (frontend/src/data/resume.ts, scripts/generate-resume.ts,
 scripts/gh-resume.ts, tests/resume.test.ts). The resume keeps its own
 style; it is excluded on purpose.
+
+## AI-assisted personal posts (opt-in)
+
+When the owner asks for a post written "this way" — casual, personal,
+"quote me and you report" style — follow this pattern instead of the
+house style above. This is an explicit exception, like the resume.
+The owner does not want this every time; only when requested.
+
+Rules:
+
+1. **Declare the authorship at the top of the post.** Start with a
+   line like: "Written by opencode on behalf of cheonglol." — so the
+   reader knows an AI agent wrote it.
+2. **Quote the owner verbatim.** His actual words appear as block
+   quotes, taken from what he said. Fix typos, keep the words.
+3. **Report, do not invent.** The agent's own text is limited to
+   short connective and framing lines. Do not put new opinions in the
+   owner's mouth. If a claim is not his, do not attribute it to him.
+4. **Tone is casual.** The ISO plain-language rules and the banned
+   LLM-style list are relaxed for these posts. They are an exception
+   on purpose, not the default.
+5. **Tags reflect intent.** If the owner says "#personal and
+   thoughts", use categories like `["personal", "thoughts"]`.
+
+The default remains: house style for everything else.
