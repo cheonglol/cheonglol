@@ -477,6 +477,7 @@ li {
 // Small badge marking reporter-style posts
 .reported-badge {
   display: inline-block;
+  align-self: flex-start; /* modal article is a flex column; don't stretch across it */
   font-family: $font-mono;
   font-size: $font-size-xs;
   color: $accent;
@@ -486,6 +487,7 @@ li {
   border-radius: $radius-full;
   padding: 2px $space-2;
   margin-bottom: $space-2;
+  max-width: calc(100% - $space-8); /* never reach the close button */
 }
 
 
