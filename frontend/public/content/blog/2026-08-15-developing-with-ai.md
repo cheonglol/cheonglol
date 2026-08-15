@@ -1,7 +1,7 @@
 ---
 title: "Developing with AI: a casual take"
 pubDate: 2026-08-15
-description: "A casual take on building with AI: the experimenting tax, the seniors who use it better, the people who hate it, and what getting things done actually means."
+description: "A casual take on building with AI: the experimenting tax, the seniors who use it better, the people who hate it, and the lazy way this post got written."
 categories: ["personal", "thoughts"]
 agentWritten: true
 ---
@@ -67,3 +67,27 @@ He's an easily-worried overthinker, and he finds himself asking a lot of "what s
 Annoying in person. With AI, it works out: there's always something willing to list the considerations with him.
 
 An overthinker with AI is cheap insurance. The "what should I consider" questions are a checklist he used to keep in his head and lose sleep over. Now it's external, patient, and free to interrogate.
+
+## The lazy way
+
+He's noticed he can now write in the laziest way possible.
+
+> "Yeah, great, now I can write in the laziest way possible."
+
+He dictates the rough shape. The reporter turns it into a post. And the reporter's own take makes it spicier.
+
+> "Getting the reporter to share its thoughts makes it spicier too. Hopefully."
+
+The asymmetry is the point. Dictation is cheap, rendering is expensive. Most people with real thoughts never write because the formatting cost is too high. This arrangement moves the cost to where it's cheap.
+
+## More than offloading
+
+He thinks it adds perspective, and helps branch ideas — rather than just "offload thinking".
+
+> "I think it adds perspective and helps branch ideas than just 'offload thinking'."
+
+The hope: talk simply, the way Socrates did, and somehow get closer to truth.
+
+> "Socrates talked simply and somehow leads to truth, so may this be the same — or else just call me stupid. I still enjoy this."
+
+The "offloading thinking" worry is worth taking seriously. The real question is whether the second voice adds information. A reporter who restates is a parrot; a reporter who pushes back, quantifies, or finds the contradiction is a second brain. Socrates interrogated, he didn't summarize — so prefer counterexamples to conclusions. And the "call me stupid" line is permission to push without being agreeable. Most AI writing dies from agreeableness. This setup has an escape hatch.
