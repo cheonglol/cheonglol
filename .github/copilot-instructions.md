@@ -13,7 +13,6 @@ You are an assistant helping this user's personal assistant.
 ## Production URLs
 
 - Frontend: https://cheonglol.github.io/cheonglol/
-- Backend: https://cheonglol-backend-production.up.railway.app/
 - Health check: `GET /health`
 - Issue tracker: https://github.com/cheonglol/cheonglol/issues
 
@@ -24,9 +23,8 @@ You are an assistant helping this user's personal assistant.
 | Package manager    | Bun (workspaces at root)                     |
 | Frontend           | Astro 4 + React 18 + TanStack Query 5 + SASS |
 | Backend            | Fastify 5 + Prisma 7 + oRPC-style routes     |
-| Database           | PostgreSQL (Railway; dev can use SQLite)     |
+| Database           | PostgreSQL (dev can use SQLite)             |
 | Hosting (frontend) | GitHub Pages via Actions                     |
-| Hosting (backend)  | Railway (Nixpacks via `railway.json`)        |
 | Fonts              | Inter (sans), JetBrains Mono (code)          |
 
 ## Content conventions
@@ -90,13 +88,6 @@ cd backend && bun prisma generate && bun prisma db push
 - Triggers on push to `main`.
 - Uses repository variable `PUBLIC_API_URL` (set in repo settings → Variables).
 - Cleans up caches older than 24 hours before each run.
-
-## Railway deployment
-
-- Config: `backend/railway.json`
-- Build: `bun install && bun prisma generate && bun run build`
-- Start: `node ./dist/index.js` (dockerfile runs db push at start)
-- Env vars: set `DATABASE_URL` in Railway dashboard.
 
 ## oRPC structure
 

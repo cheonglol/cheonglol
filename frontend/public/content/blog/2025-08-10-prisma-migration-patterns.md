@@ -49,7 +49,7 @@ else
 fi
 ```
 
-The script auto-detects the environment from `RAILWAY_ENVIRONMENT_NAME`. Anything starting with "prod" is production, and production **never** gets `db push`. If no versioned migrations exist in production, the deploy hard-fails before any code runs.
+The script auto-detects the environment from the platform's environment variable. Anything starting with "prod" is production, and production **never** gets `db push`. If no versioned migrations exist in production, the deploy hard-fails before any code runs.
 
 **When to use this:**
 
