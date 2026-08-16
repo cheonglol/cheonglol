@@ -9,7 +9,6 @@ type Post = {
   description: string;
   categories: string[];
   agentWritten?: boolean;
-  content: string;
 };
 
 type Props = {

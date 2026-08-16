@@ -9,30 +9,28 @@ const sortedPosts = staticPosts.sort(
     new Date(a.frontmatter.pubDate).getTime(),
 );
 
-// Transform to props format with rendered HTML
-const posts = await Promise.all(
-  sortedPosts.map(async (p) => {
-    const cats = p.frontmatter.categories ?? p.frontmatter.category ?? [];
-    const date = new Date(p.frontmatter.pubDate).toLocaleDateString("en-SG", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-    const slug =
-      p.url?.split("/").pop() ??
-      p.file.split("/").pop()?.replace(".md", "") ??
-      "";
-    return {
-      slug,
-      title: p.frontmatter.title,
-      date,
-      description: p.frontmatter.description ?? "",
-      categories: Array.isArray(cats) ? cats : [],
-      agentWritten: p.frontmatter.agentWritten ?? false,
-      content: p.compiledContent(),
-    };
-  }),
-);
+// Metadata only. Content is fetched lazily by the modal on open
+// (see src/pages/blog/[slug].json.ts).
+const posts = sortedPosts.map((p) => {
+  const cats = p.frontmatter.categories ?? p.frontmatter.category ?? [];
+  const date = new Date(p.frontmatter.pubDate).toLocaleDateString("en-SG", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  const slug =
+    p.url?.split("/").pop() ??
+    p.file.split("/").pop()?.replace(".md", "") ??
+    "";
+  return {
+    slug,
+    title: p.frontmatter.title,
+    date,
+    description: p.frontmatter.description ?? "",
+    categories: Array.isArray(cats) ? cats : [],
+    agentWritten: p.frontmatter.agentWritten ?? false,
+  };
+});
 ---
 
 <BaseLayout title="Blog" currentPage="blog">

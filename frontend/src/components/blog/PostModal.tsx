@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type Post = {
   slug: string;
@@ -7,7 +7,6 @@ type Post = {
   description: string;
   categories: string[];
   agentWritten?: boolean;
-  content: string;
 };
 
 type Props = {
@@ -15,7 +14,27 @@ type Props = {
   onClose: () => void;
 };
 
+type ContentState =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "ready"; html: string }
+  | { status: "error" };
+
+/**
+ * Fetches the rendered HTML for a single post.
+ * The JSON file is generated at build time by /blog/[slug].json.ts.
+ */
+async function fetchPostContent(slug: string): Promise<string> {
+  const url = `${import.meta.env.BASE_URL}blog/${slug}.json`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to load post ${slug}`);
+  const data = (await res.json()) as { content: string };
+  return data.content;
+}
+
 export function PostModal({ post, onClose }: Props) {
+  const [content, setContent] = useState<ContentState>({ status: "idle" });
+
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -29,6 +48,26 @@ export function PostModal({ post, onClose }: Props) {
       window.removeEventListener("keydown", handleEsc);
     };
   }, [post, onClose]);
+
+  // Lazy-load the post content only when a post is opened.
+  useEffect(() => {
+    if (!post) {
+      setContent({ status: "idle" });
+      return;
+    }
+    let cancelled = false;
+    setContent({ status: "loading" });
+    fetchPostContent(post.slug)
+      .then((html) => {
+        if (!cancelled) setContent({ status: "ready", html });
+      })
+      .catch(() => {
+        if (!cancelled) setContent({ status: "error" });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [post]);
 
   if (!post) return null;
 
@@ -51,10 +90,24 @@ export function PostModal({ post, onClose }: Props) {
               </span>
             ))}
           </div>
-          <div
-            className="modal-body"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          {content.status === "loading" && (
+            <div className="modal-body" aria-busy="true">
+              <p className="text-muted">Loading post…</p>
+            </div>
+          )}
+          {content.status === "ready" && (
+            <div
+              className="modal-body"
+              dangerouslySetInnerHTML={{ __html: content.html }}
+            />
+          )}
+          {content.status === "error" && (
+            <div className="modal-body">
+              <p className="text-muted">
+                Failed to load this post. Close and try again.
+              </p>
+            </div>
+          )}
         </article>
       </div>
     </div>
