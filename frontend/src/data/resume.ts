@@ -177,6 +177,21 @@ export const resume: Resume = {
   ],
   projects: [
     {
+      name: "AI Coding Harness — Custom Configuration",
+      description:
+        "I maintain a personal configuration of an AI coding harness covering agents, routing, tooling, and documentation. I review every change, so the set stays small and deliberate. Recurring workflows are written as reusable instructions.",
+      highlights: [
+        "Maintain 30 agents across 7 categories, each with an explicit scope, output contract, and tone rules",
+        "Maintain the routing rules that match each task to the closest-fit agent: ties trigger one clarifying question, uncovered requests open a review for a new specialist, and work touching shared files goes to a coordinator instead of parallel edits",
+        "Maintain reusable skill modules for recurring, multi-step work — issue lifecycle, runtime discovery, platform onboarding — roughly 700 lines of step-by-step instructions that load only when the task matches",
+        "Maintain command entry points for repeated tasks: documentation lookup, diagram generation, and cross-repo alignment surveys",
+        "Keep project patterns as specs, so the scaffolding agents start from a known shape instead of a blank page",
+        "Keep tooling split by fit: MCP for external services that hold state, and a custom CLI for local and forge operations such as signed output and config management",
+        "Maintain a runtime registry and per-machine manifests, so the same setup runs on personal, office, and WSL machines",
+        "Run the harness daily in both personal and office work, not as a side experiment",
+      ],
+    },
+    {
       name: "Sales Consolidator: Order Pipeline",
       description:
         "Replaced manual spreadsheet workflow with a structured order pipeline. Salespersons submit orders via Telegram. PostgreSQL source of truth. Role-based admin flows, CRON-triggered daily summaries.",
