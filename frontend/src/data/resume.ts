@@ -53,6 +53,11 @@ export interface Resume {
     description: string;
     highlights?: string[];
     url?: string;
+    // Site-only fields. The PDF generator and llm.txt endpoint ignore these.
+    period?: string;
+    note?: string;
+    keywords?: string[];
+    siteDescription?: string;
   }[];
 }
 
@@ -180,6 +185,11 @@ export const resume: Resume = {
       name: "AI Coding Harness — Custom Configuration",
       description:
         "I maintain a personal configuration of an AI coding harness covering agents, routing, tooling, and documentation. I review every change, so the set stays small and deliberate. Recurring workflows are written as reusable instructions.",
+      period: "2025 – Present",
+      note: "Personal",
+      keywords: ["TypeScript", "MCP", "Bun", "Git"],
+      siteDescription:
+        "A personal configuration of an AI coding harness covering agents, routing, tooling, and documentation. Every change is reviewed, so the set stays small and deliberate. 30 agents across 7 categories, each with an explicit scope and output contract, plus reusable instruction modules for recurring workflows. Tooling splits by fit: MCP for external services that hold state, and a custom CLI for local and forge operations. The same setup runs on personal, office, and WSL machines.",
       highlights: [
         "Maintain 30 agents across 7 categories, each with an explicit scope, output contract, and tone rules",
         "Maintain the routing rules that match each task to the closest-fit agent: ties trigger one clarifying question, uncovered requests open a review for a new specialist, and work touching shared files goes to a coordinator instead of parallel edits",
@@ -195,6 +205,19 @@ export const resume: Resume = {
       name: "Sales Consolidator: Order Pipeline",
       description:
         "Replaced manual spreadsheet workflow with a structured order pipeline. Salespersons submit orders via Telegram. PostgreSQL source of truth. Role-based admin flows, CRON-triggered daily summaries.",
+      period: "2026 – Present",
+      note: "Deployed at live events",
+      keywords: [
+        "TypeScript",
+        "grammY",
+        "Fastify",
+        "PostgreSQL",
+        "LangChain",
+        "DeepSeek",
+        "Railway",
+      ],
+      siteDescription:
+        "Replaced manual spreadsheet workflow with a structured order pipeline. Salespersons submit orders via Telegram. PostgreSQL as source of truth. Role-based admin flows, CRON-triggered daily summaries, custom ESLint rules enforcing bot command consistency. Zero data loss since launch. Extended with an AI product catalog intake: upload transcripts and DeepSeek AI structures them into product rows for CSV export.",
       highlights: [
         "Zero data loss since launch",
         "AI product catalog intake: upload transcripts, DeepSeek AI structures them into product rows",
@@ -204,6 +227,23 @@ export const resume: Resume = {
       name: "Valentino Houseparty: AI Avatar & Interactive Arcade",
       description:
         "4-station beauty brand event activation. AI pixel art avatar (Replicate flux-kontext-pro), Snake game, video stations, prize claim system. Built as SvelteKit 5 SPA with Fastify 5 API.",
+      period: "2025 – Present",
+      note: "Deployed at live events",
+      keywords: [
+        "SvelteKit",
+        "Svelte 5",
+        "TypeScript",
+        "Fastify",
+        "Bun",
+        "Prisma",
+        "PostgreSQL",
+        "Redis",
+        "Replicate AI",
+        "QR Code",
+        "Railway",
+      ],
+      siteDescription:
+        "4-station beauty brand event activation with a retro 90s theme. AI pixel art avatar via Replicate (flux-kontext-pro), Snake game, video stations, QR-code-based navigation, prize claim system. Built as a SvelteKit 5 SPA with Fastify 5 API, Prisma + PostgreSQL, and Redis session cache. Retro Windows 98 UI with 98.css and pink palette. Deployed on Railway. Closest I've been to actual production users — client was happy, event ran live.",
       highlights: [
         "Deployed at live event. Client was happy, event ran live",
         "Retro Windows 98 UI with 98.css",
@@ -213,6 +253,23 @@ export const resume: Resume = {
       name: "Themelios: AI Accounts Receivables Platform",
       description:
         "AI-powered platform for invoice management, collections, and payment reconciliation. Temporal.io for durable workflow orchestration, Mastra AI agents, Xero/Stripe integrations. Startup attempt that failed — scrapped after partner fallout.",
+      period: "Jul 2024 – Jan 2025",
+      note: "Attempted startup (scrapped)",
+      keywords: [
+        "Fastify",
+        "Prisma",
+        "PostgreSQL",
+        "React 19",
+        "Temporal.io",
+        "Mastra AI",
+        "Xero",
+        "Stripe",
+        "oRPC",
+        "Azure AD",
+        "Railway",
+      ],
+      siteDescription:
+        "AI-powered platform for business owners to manage invoices, collections, and payment reconciliation. Built with Temporal.io for durable workflow orchestration, Mastra AI agents for email-based receivables conversations, Xero accounting API integration, Stripe payment processing, oRPC type-safe API contracts, and Azure AD authentication. Monorepo with React 19 + Redux Saga frontend, Fastify + Prisma + PostgreSQL backend, and dedicated Temporal worker service. Over-engineered for the problem and never shipped. A lesson in scoping.",
       highlights: [
         "Over-engineered for the problem and never shipped. A lesson in scoping",
         "Startup discontinued after co-founder fallout",

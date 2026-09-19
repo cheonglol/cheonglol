@@ -139,105 +139,33 @@ function fmtDate(date?: string): string {
   <section>
     <h2>Projects</h2>
 
-    <article class="card">
-      <h3>AI Coding Harness — Custom Configuration</h3>
-      <p class="text-muted">2025 – Present · Personal</p>
-      <p>
-        A personal configuration of an AI coding harness covering agents,
-        routing, tooling, and documentation. Every change is reviewed, so the
-        set stays small and deliberate. 30 agents across 7 categories, each
-        with an explicit scope and output contract, plus reusable instruction
-        modules for recurring workflows. Tooling splits by fit: MCP for
-        external services that hold state, and a custom CLI for local and
-        forge operations. The same setup runs on personal, office, and WSL
-        machines.
-      </p>
-      <ul class="project-tags">
-        <li>TypeScript</li>
-        <li>MCP</li>
-        <li>Bun</li>
-        <li>Git</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h3>Sales Consolidator: Order Pipeline</h3>
-      <p class="text-muted">
-        2026 – Present · Deployed at live events
-      </p>
-      <p>
-        Replaced manual spreadsheet workflow with a structured order pipeline.
-        Salespersons submit orders via Telegram. PostgreSQL as source of truth.
-        Role-based admin flows, CRON-triggered daily summaries, custom ESLint
-        rules enforcing bot command consistency. Zero data loss since launch.
-        Extended with an AI product catalog intake: upload transcripts and
-        DeepSeek AI structures them into product rows for CSV export.
-      </p>
-      <ul class="project-tags">
-        <li>TypeScript</li>
-        <li>grammY</li>
-        <li>Fastify</li>
-        <li>PostgreSQL</li>
-        <li>LangChain</li>
-        <li>DeepSeek</li>
-        <li>Railway</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h3>Valentino Houseparty: AI Avatar &amp; Interactive Arcade</h3>
-      <p class="text-muted">2025 – Present · Deployed at live events</p>
-      <p>
-        4-station beauty brand event activation with a retro 90s theme.
-        AI pixel art avatar via Replicate (flux-kontext-pro), Snake game,
-        video stations, QR-code-based navigation, prize claim system.
-        Built as a SvelteKit 5 SPA with Fastify 5 API, Prisma + PostgreSQL,
-        and Redis session cache. Retro Windows 98 UI with 98.css and pink
-        palette. Deployed on Railway. Closest I've been to actual production
-        users — client was happy, event ran live.
-      </p>
-      <ul class="project-tags">
-        <li>SvelteKit</li>
-        <li>Svelte 5</li>
-        <li>TypeScript</li>
-        <li>Fastify</li>
-        <li>Bun</li>
-        <li>Prisma</li>
-        <li>PostgreSQL</li>
-        <li>Redis</li>
-        <li>Replicate AI</li>
-        <li>QR Code</li>
-        <li>Railway</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h3>Themelios: AI Accounts Receivables Platform</h3>
-      <p class="text-muted">Jul 2024 – Jan 2025 · Attempted startup (scrapped)</p>
-      <p>
-        AI-powered platform for business owners to manage invoices, collections,
-        and payment reconciliation. Built with Temporal.io for durable workflow
-        orchestration, Mastra AI agents for email-based receivables
-        conversations, Xero accounting API integration, Stripe payment
-        processing, oRPC type-safe API contracts, and Azure AD authentication.
-        Monorepo with React 19 + Redux Saga frontend, Fastify + Prisma +
-        PostgreSQL backend, and dedicated Temporal worker service.
-        Over-engineered for the problem and never shipped. A lesson in scoping.
-      </p>
-      <ul class="project-tags">
-        <li>Fastify</li>
-        <li>Prisma</li>
-        <li>PostgreSQL</li>
-        <li>React 19</li>
-        <li>Temporal.io</li>
-        <li>Mastra AI</li>
-        <li>Xero</li>
-        <li>Stripe</li>
-        <li>oRPC</li>
-        <li>Azure AD</li>
-        <li>Railway</li>
-      </ul>
-    </article>
+    {
+      resume.projects?.map((project) => (
+        <article class="card">
+          <h3>{project.name}</h3>
+          {(project.period || project.note) && (
+            <p class="text-muted">
+              {[project.period, project.note].filter(Boolean).join(" · ")}
+            </p>
+          )}
+          <p>{project.siteDescription ?? project.description}</p>
+          {project.highlights?.length ? (
+            <ul class="project-highlights">
+              {project.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          ) : null}
+          {project.keywords?.length ? (
+            <ul class="project-tags">
+              {project.keywords.map((keyword) => (
+                <li>{keyword}</li>
+              ))}
+            </ul>
+          ) : null}
+        </article>
+      ))
+    }
   </section>
 
   <SectionDivider />
@@ -448,6 +376,25 @@ function fmtDate(date?: string): string {
       background: rgba($accent, 0.12);
       color: $accent;
       margin-bottom: 0;
+    }
+  }
+
+  .project-highlights {
+    list-style: none;
+    padding-left: 0;
+    margin-top: $space-1;
+
+    li {
+      position: relative;
+      padding-left: $space-2;
+      margin-bottom: $space-1;
+
+      &::before {
+        content: "–";
+        position: absolute;
+        left: 0;
+        color: $text-muted;
+      }
     }
   }
 
