@@ -148,7 +148,7 @@ function fmtDate(date?: string): string {
               {[project.period, project.note].filter(Boolean).join(" · ")}
             </p>
           )}
-          <p>{project.siteDescription ?? project.description}</p>
+          <p>{project.description}</p>
           {project.highlights?.length ? (
             <ul class="project-highlights">
               {project.highlights.map((highlight) => (
