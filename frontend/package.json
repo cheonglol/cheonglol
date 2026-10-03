@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "format": "prettier --write \"**/*.{ts,tsx,md,astro,css,json}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,astro,scss,css,json}\""
   },
   "dependencies": {
     "astro": "^4",

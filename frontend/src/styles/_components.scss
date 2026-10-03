@@ -1,0 +1,500 @@
+// Shared component styles.
+//
+// Colors go through var(--color-*) so they stay themeable. Alpha tints
+// keep the SCSS color functions (rgba($accent, …)), which need the raw
+// color value.
+
+@use "tokens" as *;
+
+// Tag pill (rendered as #tag, small, purple)
+.chip {
+  display: inline-block;
+  padding: 2px var(--space-2);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  background: rgba($accent, 0.1);
+  color: var(--color-accent-hover);
+  border-radius: var(--radius-full);
+  margin-right: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+// Skills: category groups with a simple list layout
+.skill-category {
+  margin-bottom: var(--space-6);
+
+  h3 {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4) var(--space-12);
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+
+  .skill-name {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-text);
+  }
+
+  .skill-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+
+    .bar {
+      width: 4px;
+      background: currentColor;
+      border-radius: 1px 1px 0 0;
+
+      &:nth-child(1) {
+        height: 4px;
+      }
+      &:nth-child(2) {
+        height: 7px;
+      }
+      &:nth-child(3) {
+        height: 10px;
+      }
+      &:nth-child(4) {
+        height: 13px;
+      }
+      &:nth-child(5) {
+        height: 16px;
+      }
+
+      &.dim {
+        opacity: 0.15;
+      }
+    }
+  }
+
+  &.proficient .skill-bars {
+    color: var(--color-accent);
+  }
+  &.working .skill-bars {
+    color: var(--color-accent-hover);
+  }
+  &.foundational .skill-bars {
+    color: var(--color-text-muted);
+  }
+}
+
+// Card
+.card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+
+  &:hover {
+    border-color: var(--color-border);
+  }
+}
+
+// Section divider: thin line with a centered dot
+.section-divider {
+  display: flex;
+  align-items: center;
+  margin: var(--space-12) 0;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-accent);
+    opacity: 0.4;
+  }
+
+  &::after {
+    margin-left: var(--space-3);
+  }
+
+  &::before {
+    margin-right: var(--space-3);
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+}
+
+// Floating resume download button (profile page only)
+.resume-download {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba($black, 0.4);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+// Sticky top navigation bar: horizontal scroll, medium padding
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--space-2) var(--space-4);
+  overflow-x: auto; /* scrolls when routes overflow the viewport */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .nav-item {
+    position: relative;
+    flex-shrink: 0;
+
+    > a {
+      display: inline-block;
+      white-space: nowrap;
+      padding: var(--space-2) var(--space-4); /* medium padding per route */
+      border-radius: var(--radius-md);
+      color: var(--color-text-secondary);
+      font-size: var(--text-base);
+      text-decoration: none;
+      transition: background var(--transition-fast), color var(--transition-fast);
+
+      &:hover {
+        background: var(--color-bg-tertiary);
+        color: var(--color-text);
+      }
+    }
+
+    &.active > a {
+      background: rgba($accent, 0.12);
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    &.has-children > a::after {
+      content: " ▾";
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + var(--space-1));
+      left: 0;
+      min-width: 180px;
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-1);
+      box-shadow: 0 8px 24px rgba($black, 0.35);
+      z-index: 120;
+
+      a {
+        display: block;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-sm);
+        color: var(--color-text-secondary);
+        white-space: nowrap;
+        text-decoration: none;
+
+        &:hover {
+          background: var(--color-bg-tertiary);
+          color: var(--color-text);
+        }
+      }
+    }
+
+    /* Show dropdown on hover (desktop), keyboard focus, or .open (touch tap) */
+    &.has-children:hover .nav-dropdown,
+    &.has-children:focus-within .nav-dropdown,
+    &.has-children.open .nav-dropdown {
+      display: block;
+    }
+  }
+}
+
+// Blog posts list
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.post-card {
+  cursor: pointer;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  h3 {
+    margin-bottom: var(--space-1);
+    color: var(--color-text);
+  }
+
+  .post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-2);
+  }
+
+  .tags {
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+  }
+
+  // Reporter-style posts (written by an AI agent on behalf of the owner):
+  // distinct look so readers can tell them apart at a glance
+  &.agent-written {
+    border-left: 2px solid var(--color-accent);
+    background: rgba($accent, 0.04);
+
+    h3 {
+      margin-top: var(--space-2);
+    }
+  }
+}
+
+// Small badge marking reporter-style posts
+.reported-badge {
+  display: inline-block;
+  align-self: flex-start; /* modal article is a flex column; don't stretch across it */
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba($accent, 0.4);
+  border-radius: var(--radius-full);
+  padding: 2px var(--space-2);
+  margin-bottom: var(--space-2);
+  max-width: calc(100% - var(--space-8)); /* never reach the close button */
+}
+
+// Modal overlay
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba($black, 0.85);
+  display: flex;
+  align-items: flex-start; /* not center: lets the overlay scroll if the modal is taller than the viewport */
+  justify-content: center;
+  z-index: 999;
+  padding: var(--space-4);
+  backdrop-filter: blur(4px);
+  overflow-y: auto; /* instead of hidden: keep the top reachable when content is long */
+}
+
+.modal-content {
+  position: relative;
+  margin: auto; /* centers when it fits; top-aligns and scrolls when it doesn't */
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  width: 100%;
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem); /* mobile URL-bar safe */
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  overflow: hidden; /* single scroll area: .modal-body */
+  overscroll-behavior: contain;
+
+  // article is the flex column that fills the modal;
+  // without this, .modal-body's flex sizing never applies and it cannot scroll
+  article {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  h2 {
+    margin-top: 0;
+    font-size: var(--text-xl);
+    color: var(--color-text);
+    flex-shrink: 0;
+    padding-right: var(--space-8);
+  }
+
+  .modal-tags {
+    margin: var(--space-2) 0 var(--space-4);
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  .modal-body {
+    // Long-form reading: the serif face carries the prose.
+    font-family: var(--font-serif);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    overflow-wrap: break-word;
+    padding-right: var(--space-3);
+    margin-right: calc(-1 * var(--space-2));
+    min-height: 0;
+
+    // Markdown headings: normal case, readable in a narrow column
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-sans);
+      text-transform: none;
+      letter-spacing: normal;
+      color: var(--color-text);
+    }
+
+    h2 {
+      font-size: var(--text-lg);
+      margin: var(--space-6) 0 var(--space-2);
+    }
+
+    h3 {
+      font-size: var(--text-base);
+      margin: var(--space-4) 0 var(--space-2);
+    }
+
+    p {
+      margin-bottom: var(--space-3);
+    }
+
+    code {
+      font-family: var(--font-mono);
+      background: var(--color-bg-tertiary);
+      padding: 2px var(--space-1);
+      border-radius: var(--radius-sm);
+    }
+
+    pre {
+      background: var(--color-bg-tertiary);
+      padding: var(--space-3);
+      border-radius: var(--radius-sm);
+      overflow-x: auto;
+      margin-bottom: var(--space-3);
+
+      code {
+        background: transparent;
+        padding: 0;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    blockquote {
+      border-left: 2px solid var(--color-accent);
+      background: rgba($accent, 0.05);
+      padding: var(--space-2) var(--space-4);
+      margin: 0 0 var(--space-3);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+
+      p {
+        margin-bottom: 0;
+      }
+
+      p:first-child {
+        margin-top: 0;
+      }
+    }
+
+    ul,
+    ol {
+      margin-bottom: var(--space-3);
+    }
+  }
+
+  .modal-footer {
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border-subtle);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text);
+  }
+}

@@ -1,0 +1,12 @@
+// Single stylesheet entrypoint. Imported once, from BaseLayout.astro.
+//
+// Order matters: tokens and root publish the CSS custom properties,
+// reset normalizes, base styles elements, then layout, utilities, and
+// components build on them.
+
+@use "root";
+@use "reset";
+@use "base";
+@use "layout";
+@use "utilities";
+@use "components";

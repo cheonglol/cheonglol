@@ -1,0 +1,11 @@
+// Layout primitives.
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 12em 2vw;
+
+  @media (min-width: 640px) {
+    padding: 12em 5.75em;
+  }
+}

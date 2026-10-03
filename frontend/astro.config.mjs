@@ -6,4 +6,12 @@ export default defineConfig({
   base: '/cheonglol',
   output: 'static',
   integrations: [react()],
+  // Use Dart Sass's modern JS API (the legacy API is deprecated).
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: { api: 'modern' },
+      },
+    },
+  },
 });

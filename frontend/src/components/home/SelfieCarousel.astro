@@ -15,24 +15,11 @@
     display: block;
   }
 
-  .selfie-caption {
-    text-align: center;
-    font-size: 0.75rem;
-    font-family: "JetBrains Mono", monospace;
-    color: #888;
-    margin-top: 6px;
-    margin-bottom: 0;
-  }
-
-  .selfie-caption.aura-mode {
-    color: #8b5cf6;
-  }
-
   .selfie {
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     transition:
       filter 0.5s ease-in-out,
       box-shadow 0.5s ease-in-out,
@@ -43,20 +30,8 @@
   }
 
   @media (hover: hover) {
-    .selfie:hover:not(.fading-out) {
-      border-color: #8b5cf6;
+    .selfie:hover {
+      border-color: var(--color-accent);
     }
-  }
-
-  .selfie.fading-out {
-    filter: brightness(5) saturate(0);
-    box-shadow: 0 0 40px 20px rgba(255, 255, 255, 0.7);
-    border-color: #ffffff;
-  }
-
-  .selfie.fading-in {
-    filter: brightness(1) saturate(1);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    border-color: transparent;
   }
 </style>

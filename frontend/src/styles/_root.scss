@@ -1,0 +1,55 @@
+// Publishes the semantic tokens as CSS custom properties.
+// Imported once, from main.scss. Do not import from page or component
+// styles: that would duplicate the :root block in every bundle.
+
+@use "tokens" as *;
+
+:root {
+  color-scheme: dark;
+
+  --color-bg: #{$bg-primary};
+  --color-bg-secondary: #{$bg-secondary};
+  --color-bg-tertiary: #{$bg-tertiary};
+
+  --color-text: #{$text-primary};
+  --color-text-secondary: #{$text-secondary};
+  --color-text-muted: #{$text-muted};
+
+  --color-accent: #{$accent};
+  --color-accent-hover: #{$accent-hover};
+  --color-accent-active: #{$accent-active};
+
+  --color-border: #{$border};
+  --color-border-subtle: #{$border-subtle};
+
+  --font-sans: #{$font-sans};
+  --font-serif: #{$font-serif};
+  --font-mono: #{$font-mono};
+
+  --text-xs: #{$font-size-xs};
+  --text-sm: #{$font-size-sm};
+  --text-base: #{$font-size-base};
+  --text-lg: #{$font-size-lg};
+  --text-xl: #{$font-size-xl};
+  --text-2xl: #{$font-size-2xl};
+  --text-3xl: #{$font-size-3xl};
+
+  --space-1: #{$space-1};
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-6: #{$space-6};
+  --space-8: #{$space-8};
+  --space-12: #{$space-12};
+  --space-16: #{$space-16};
+
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-full: #{$radius-full};
+
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+
+  --container-width: #{$container-width};
+}
