@@ -25,7 +25,9 @@ type ContentState =
  * The JSON file is generated at build time by /blog/[slug].json.ts.
  */
 async function fetchPostContent(slug: string): Promise<string> {
-  const url = `${import.meta.env.BASE_URL}blog/${slug}.json`;
+  // BASE_URL may or may not end in a slash; normalize before joining.
+  const base = import.meta.env.BASE_URL.replace(/\/+$/, "");
+  const url = `${base}/blog/${slug}.json`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to load post ${slug}`);
   const data = (await res.json()) as { content: string };
