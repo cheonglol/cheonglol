@@ -80,7 +80,7 @@ comments, issues, PRs, and commit messages — written by humans or AI.
 
 Does NOT apply to: resume content and its pipeline
 (frontend/src/data/resume.ts, scripts/generate-resume.ts,
-scripts/gh-resume.ts, tests/resume.test.ts). The resume keeps its own
+tests/resume.test.ts). The resume keeps its own
 style; it is excluded on purpose.
 
 ## AI-assisted personal posts (opt-in)

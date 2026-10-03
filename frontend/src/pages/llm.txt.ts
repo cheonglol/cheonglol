@@ -7,7 +7,6 @@ import type { APIRoute } from "astro";
 import { resume, type Resume } from "../data/resume";
 
 const SITE = "https://cheonglol.github.io/cheonglol";
-const BACKEND = "https://cheonglol-backend-production.up.railway.app";
 
 const MONTHS = [
   "Jan",
@@ -105,8 +104,6 @@ function render(r: Resume): string {
   lines.push(`- Portfolio: ${SITE}`);
   lines.push(`- Blog: ${SITE}/blog`);
   lines.push(`- Resume (PDF): ${SITE}/resume.pdf`);
-  lines.push(`- Backend API: ${BACKEND}`);
-  lines.push(`- Health check: ${BACKEND}/health`);
   lines.push("");
 
   lines.push("## Source");

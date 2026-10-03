@@ -3,23 +3,19 @@
   "private": true,
   "version": "0.0.0",
   "workspaces": [
-    "frontend",
-    "backend"
+    "frontend"
   ],
   "scripts": {
-    "bootstrap": "bun install && bun --cwd backend prisma generate",
-    "dev": "docker compose up --build --watch",
-    "dev:frontend": "bun --cwd frontend dev",
-    "dev:backend": "bun --cwd backend run dev",
+    "bootstrap": "bun install",
+    "dev": "bun --cwd frontend dev",
     "generate:resume": "bun run scripts/generate-resume.ts",
     "test": "bun test tests/",
-    "build": "bun run generate:resume && bun run test && bun --cwd frontend build && (bun --cwd backend build || true)",
+    "build": "bun run generate:resume && bun run test && bun --cwd frontend build",
     "preview": "bun --cwd frontend preview",
     "smoke": "bun --cwd frontend build && test -d frontend/dist"
   },
   "files": [
-    "frontend",
-    "backend"
+    "frontend"
   ],
   "packageManager": "bun@1.3.9",
   "dependencies": {

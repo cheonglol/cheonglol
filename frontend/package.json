@@ -7,17 +7,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "format": "prettier --write \"**/*.{ts,tsx,md,astro,css,json}\"",
-    "lint": "echo \"no linter configured\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,astro,css,json}\""
   },
   "dependencies": {
     "astro": "^4",
     "@astrojs/react": "^3",
     "react": "^18",
     "react-dom": "^18",
-    "@tanstack/react-query": "^5",
-    "@orpc/react-query": "^1",
-    "@orpc/contract": "^1"
+    "@tanstack/react-query": "^5"
   },
   "devDependencies": {
     "sass": "^1",

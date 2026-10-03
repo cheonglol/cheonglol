@@ -68,16 +68,8 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Prisma generate (if present)
-        run: |
-          if [ -f backend/prisma/schema.prisma ]; then
-            bun --cwd backend prisma generate || true
-          fi
-
-      - name: Type-check (backend contract parity)
-        run: |
-          bun x tsc -p backend --noEmit || true
-          bun x tsc -p frontend --noEmit || true
+      - name: Type-check (frontend)
+        run: bun x tsc -p frontend --noEmit
 
       - name: Generate and test resume PDF
         run: |
@@ -85,8 +77,6 @@ jobs:
           bun test tests/resume.test.ts
 
       - name: Build frontend (Astro)
-        env:
-          PUBLIC_API_URL: ${{ vars.PUBLIC_API_URL }}
         run: |
           bun --cwd frontend build
 

@@ -1,36 +1,38 @@
 # cheonglol
 
-Personal site with a profile and a blog. The frontend is Astro 4 + React, deployed to GitHub Pages. The backend is Fastify + Prisma, deployed to Railway.
+Personal site with a profile and a blog. The frontend is Astro 4 + React. It builds to static files and deploys to GitHub Pages.
 
-## Monorepo layout
+## Layout
 
 | Directory   | Contents                                                        |
 |-------------|-----------------------------------------------------------------|
 | `frontend/` | Astro site. Blog posts live in `frontend/public/content/blog/`. |
-| `backend/`  | Fastify API with oRPC-style routes.                             |
-| `docker/`   | Dockerfiles for frontend and backend (dev and production).      |
-| `scripts/`  | Resume generation scripts.                                      |
+| `scripts/`  | Resume PDF generator.                                           |
+| `tests/`    | Tests for the resume generator.                                 |
 
-The repo uses Bun workspaces. The root `package.json` manages both `frontend/` and `backend/`.
+The repo uses Bun workspaces under the root `package.json`.
+
+## Content sources
+
+- `frontend/src/data/resume.ts` — profile and resume data. The profile page, the resume PDF, and `/llm.txt` all render from this one file.
+- `frontend/public/content/blog/*.md` — blog posts.
 
 ## Links
 
 - Site: https://cheonglol.github.io/cheonglol/
-- Backend: https://cheonglol-backend-production.up.railway.app/
-- Health check: https://cheonglol-backend-production.up.railway.app/health
+- Resume: https://cheonglol.github.io/cheonglol/resume.pdf
+- Plain text: https://cheonglol.github.io/cheonglol/llm.txt
 
 ## Commands
 
 Run these from the repo root.
 
-| Command                 | What it does                                                    |
-|-------------------------|-----------------------------------------------------------------|
-| `bun install`           | Install all workspace dependencies.                             |
-| `bun run dev`           | Start frontend and backend with Docker Compose.                 |
-| `bun run dev:frontend`  | Start the Astro dev server.                                     |
-| `bun run dev:backend`   | Start the backend with hot reload.                              |
-| `bun run build`         | Generate the resume, run tests, build frontend and backend.     |
-| `bun test`              | Run the test suite.                                             |
-| `bun run preview`       | Preview the built frontend.                                     |
-| `bun run smoke`         | Build the frontend and check that `frontend/dist` exists.       |
-| `bun run generate:resume` | Regenerate the resume PDF.                                    |
+| Command                   | What it does                                              |
+|---------------------------|-----------------------------------------------------------|
+| `bun install`             | Install workspace dependencies.                           |
+| `bun run dev`             | Start the Astro dev server.                               |
+| `bun run build`           | Generate the resume, run tests, build the frontend.       |
+| `bun test`                | Run the test suite.                                       |
+| `bun run preview`         | Preview the built frontend.                               |
+| `bun run smoke`           | Build the frontend and check that `frontend/dist` exists. |
+| `bun run generate:resume` | Regenerate the resume PDF.                                |

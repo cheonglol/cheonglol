@@ -6,7 +6,7 @@
     "jsx": "react-jsx",
     "strict": false,
     "skipLibCheck": true,
-    "types": ["astro/client", "node"],
+    "types": ["astro/client"],
     "resolveJsonModule": true
   },
   "include": ["src/**/*", "content/**/*"]
