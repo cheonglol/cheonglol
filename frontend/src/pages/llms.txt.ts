@@ -59,6 +59,9 @@ export const GET: APIRoute = () => {
   }
 
   lines.push("");
+  lines.push("## Optional");
+  lines.push(`- [Everything in one file](${base}/llms-full.txt)`);
+  lines.push("");
 
   return new Response(lines.join("\n"), {
     headers: { "Content-Type": "text/plain; charset=utf-8" },

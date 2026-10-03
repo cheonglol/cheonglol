@@ -67,3 +67,16 @@ export function getPostHtml(slug: string): string | null {
   if (!path) return null;
   return modules[path].compiledContent?.() ?? null;
 }
+
+// Raw Markdown, for the full-corpus file. Same source files, read as text.
+const rawModules = import.meta.glob("../../public/content/blog/*.md", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+}) as Record<string, string>;
+
+/** Original Markdown for one post, or null when the slug is unknown. */
+export function getPostMarkdown(slug: string): string | null {
+  const path = Object.keys(rawModules).find((p) => slugFromPath(p) === slug);
+  return path ? rawModules[path] : null;
+}
