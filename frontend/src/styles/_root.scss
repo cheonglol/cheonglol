@@ -57,5 +57,7 @@
   --tilt-x: 0;
   --tilt-y: 0;
   --tilt-rot: 14deg; // max rotation at full tilt
+  --tilt-dir-x: -1; // flip to 1 to reverse the left-right response
+  --tilt-dir-y: -1; // flip to 1 to reverse the front-back response
   --tilt-lift: 0px; // hover lift, composes with the tilt transform
 }

@@ -33,7 +33,7 @@ function BlogPostsInner({ posts }: Props) {
             {post.agentWritten && (
               <span className="reported-badge">Reported</span>
             )}
-            <h3 className="tilt-z-2">{post.title}</h3>
+            <h3>{post.title}</h3>
             <p className="text-muted">{post.date}</p>
             <p>{post.description}</p>
             <div className="post-card-footer">

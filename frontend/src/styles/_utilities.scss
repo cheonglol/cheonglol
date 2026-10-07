@@ -27,11 +27,12 @@
 .tilt {
   position: relative;
   transform-style: preserve-3d;
-  // Signs are inverted on purpose: the card counter-rotates so it reads as
-  // level against the world while the phone moves, like a window.
+  // The card counter-rotates so it reads as level against the world while the
+  // phone moves, like a window. Flip --tilt-dir-x/y in _root.scss to reverse
+  // either axis.
   transform: perspective(600px)
-    rotateY(calc(var(--tilt-x) * var(--tilt-rot) * -1))
-    rotateX(calc(var(--tilt-y) * var(--tilt-rot)))
+    rotateY(calc(var(--tilt-x) * var(--tilt-rot) * var(--tilt-dir-x)))
+    rotateX(calc(var(--tilt-y) * var(--tilt-rot) * var(--tilt-dir-y)))
     translateY(var(--tilt-lift));
 }
 
