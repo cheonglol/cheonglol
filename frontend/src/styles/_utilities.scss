@@ -26,23 +26,25 @@
 // device; children at different translateZ depths then parallax.
 .tilt {
   transform-style: preserve-3d;
-  transform: perspective(900px)
-    rotateY(calc(var(--tilt-x) * var(--tilt-rot)))
-    rotateX(calc(var(--tilt-y) * var(--tilt-rot) * -1))
+  // Signs are inverted on purpose: the card counter-rotates so it reads as
+  // level against the world while the phone moves, like a window.
+  transform: perspective(700px)
+    rotateY(calc(var(--tilt-x) * var(--tilt-rot) * -1))
+    rotateX(calc(var(--tilt-y) * var(--tilt-rot)))
     translateY(var(--tilt-lift));
 }
 
 // Depth planes: bigger Z travels further.
 .tilt-z-1 {
-  transform: translateZ(12px);
+  transform: translateZ(20px);
 }
 
 .tilt-z-2 {
-  transform: translateZ(24px);
+  transform: translateZ(40px);
 }
 
 .tilt-z-b {
-  transform: translateZ(-16px);
+  transform: translateZ(-30px);
 }
 
 @media (prefers-reduced-motion: reduce) {

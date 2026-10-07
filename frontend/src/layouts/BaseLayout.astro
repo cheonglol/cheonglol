@@ -79,7 +79,6 @@ const showNav = navItems.length > 1;
     <main class="container">
       <slot />
     </main>
-    <button id="tilt-enable" class="tilt-enable" hidden>Enable tilt</button>
     <script>
       // Touch devices: first tap on a parent opens its dropdown instead of navigating.
       const touch = window.matchMedia("(hover: none)").matches;
@@ -109,25 +108,8 @@ const showNav = navItems.length > 1;
       });
     </script>
     <script>
-      import { initTilt, requestTiltPermission } from "../scripts/tilt";
+      import { initTilt } from "../scripts/tilt";
       initTilt();
-
-      // iOS 13+ hides motion sensors behind a user gesture. Show the button
-      // only where a permission prompt exists and the user has not been asked.
-      const tiltBtn = document.getElementById("tilt-enable") as HTMLButtonElement | null;
-      const DOE = (window as any).DeviceOrientationEvent;
-      if (
-        tiltBtn &&
-        typeof DOE?.requestPermission === "function" &&
-        matchMedia("(pointer: coarse)").matches &&
-        !sessionStorage.getItem("tiltAsked")
-      ) {
-        tiltBtn.hidden = false;
-        tiltBtn.addEventListener("click", async () => {
-          sessionStorage.setItem("tiltAsked", "1");
-          if (await requestTiltPermission()) tiltBtn.hidden = true;
-        });
-      }
     </script>
   </body>
 </html>

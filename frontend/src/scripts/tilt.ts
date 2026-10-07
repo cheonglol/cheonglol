@@ -16,7 +16,7 @@
 const docEl = document.documentElement;
 
 const EASE = 0.12; // smoothing per frame; higher follows the sensor faster
-const RANGE = 25; // degrees of device tilt that map to full travel
+const RANGE = 16; // degrees of device tilt that map to full travel
 const SETTLE = 0.001; // snap threshold, stops the values chasing tiny deltas
 
 const clamp = (v: number) => Math.max(-1, Math.min(1, v));
@@ -122,24 +122,26 @@ export function initTilt() {
     }
   }).observe(document.body, { childList: true, subtree: true });
 
+  armSensors();
   sync();
 }
 
 /**
- * iOS 13+ only hands over motion data after a user gesture. Call this from a
- * click handler. Returns true when the sensor is usable.
+ * iOS 13+ withholds motion data until a user gesture. Ask on the first
+ * interaction instead of showing an enable button. Android and desktop have
+ * no such gate, so this is a no-op there.
  */
-export async function requestTiltPermission(): Promise<boolean> {
-  const DOE = (
-    window as unknown as {
-      DeviceOrientationEvent?: { requestPermission?: () => Promise<string> };
-    }
-  ).DeviceOrientationEvent;
-
-  if (typeof DOE?.requestPermission !== "function") return true; // Android and desktop have no gate
-  try {
-    return (await DOE.requestPermission()) === "granted";
-  } catch {
-    return false;
-  }
+function armSensors() {
+  document.addEventListener(
+    "pointerdown",
+    () => {
+      const DOE = (
+        window as unknown as {
+          DeviceOrientationEvent?: { requestPermission?: () => Promise<string> };
+        }
+      ).DeviceOrientationEvent;
+      if (typeof DOE?.requestPermission === "function") void DOE.requestPermission();
+    },
+    { once: true },
+  );
 }
