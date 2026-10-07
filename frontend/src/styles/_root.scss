@@ -56,6 +56,6 @@
   // Phone-tilt parallax. Runtime values, written by scripts/tilt.ts.
   --tilt-x: 0;
   --tilt-y: 0;
-  --tilt-rot: 8deg; // max rotation at full tilt
+  --tilt-rot: 14deg; // max rotation at full tilt
   --tilt-lift: 0px; // hover lift, composes with the tilt transform
 }

@@ -16,7 +16,7 @@
 const docEl = document.documentElement;
 
 const EASE = 0.12; // smoothing per frame; higher follows the sensor faster
-const RANGE = 16; // degrees of device tilt that map to full travel
+const RANGE = 12; // degrees of device tilt that map to full travel
 const SETTLE = 0.001; // snap threshold, stops the values chasing tiny deltas
 
 const clamp = (v: number) => Math.max(-1, Math.min(1, v));

@@ -25,26 +25,48 @@
 // Phone-tilt parallax. Add .tilt to any element to make it lean with the
 // device; children at different translateZ depths then parallax.
 .tilt {
+  position: relative;
   transform-style: preserve-3d;
   // Signs are inverted on purpose: the card counter-rotates so it reads as
   // level against the world while the phone moves, like a window.
-  transform: perspective(700px)
+  transform: perspective(600px)
     rotateY(calc(var(--tilt-x) * var(--tilt-rot) * -1))
     rotateX(calc(var(--tilt-y) * var(--tilt-rot)))
     translateY(var(--tilt-lift));
 }
 
+// Sheen: a soft highlight that sweeps across the surface as the phone moves,
+// as if a light sat in the room. It paints inside the element's own box, so it
+// never spills past the rounded corners and never needs overflow: hidden,
+// which would flatten the 3D layers underneath.
+.tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.14) 47%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 72%
+  );
+  background-size: 220% 220%;
+  background-position: calc(50% + var(--tilt-x) * 60%) calc(50% + var(--tilt-y) * 60%);
+}
+
 // Depth planes: bigger Z travels further.
 .tilt-z-1 {
-  transform: translateZ(20px);
+  transform: translateZ(28px);
 }
 
 .tilt-z-2 {
-  transform: translateZ(40px);
+  transform: translateZ(56px);
 }
 
 .tilt-z-b {
-  transform: translateZ(-30px);
+  transform: translateZ(-44px);
 }
 
 @media (prefers-reduced-motion: reduce) {
