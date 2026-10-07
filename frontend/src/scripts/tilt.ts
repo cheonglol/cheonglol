@@ -1,22 +1,22 @@
 /**
  * Phone-tilt parallax.
  *
- * One sensor, published as two custom properties on <html>:
+ * Off by default. The user turns it on with the "Enable tilt" button, and the
+ * choice is remembered in localStorage. When on, one sensor publishes two
+ * custom properties on <html>:
  *   --tilt-x   -1 (left)  .. 1 (right)
  *   --tilt-y   -1 (up)    .. 1 (down)
  *
- * Any element with class "tilt" leans with them. Give child layers depth
- * with .tilt-z-1 / .tilt-z-2 / .tilt-z-b to get parallax between them.
- *
- * The loop only runs while a .tilt element is on screen, and the whole
- * thing is inert when the user prefers reduced motion. No sensor, no JS,
- * or a reduced-motion preference leaves the page exactly as it renders today.
+ * Elements with class "tilt" lean with them and show a sheen. The loop runs
+ * only while a .tilt element is on screen. Reduced motion disables the whole
+ * thing and the button is not offered.
  */
 
 const docEl = document.documentElement;
 
+const STORAGE_KEY = "tilt";
 const EASE = 0.12; // smoothing per frame; higher follows the sensor faster
-const RANGE = 12; // degrees of device tilt that map to full travel
+const RANGE = 18; // degrees of device tilt that map to full travel
 const SETTLE = 0.001; // snap threshold, stops the values chasing tiny deltas
 
 const clamp = (v: number) => Math.max(-1, Math.min(1, v));
@@ -28,6 +28,7 @@ let y = 0;
 let raf = 0;
 let hasSensor = false;
 let reduced = false;
+let active = false;
 
 const onScreen = new Set<Element>();
 const observed = new WeakSet<Element>();
@@ -78,7 +79,7 @@ function frame() {
 
 /** Run the loop only while a tilt target is visible and the tab is awake. */
 function sync() {
-  const shouldRun = !reduced && !document.hidden && onScreen.size > 0;
+  const shouldRun = active && !document.hidden && onScreen.size > 0;
   if (shouldRun && !raf) {
     raf = requestAnimationFrame(frame);
   } else if (!shouldRun && raf) {
@@ -95,17 +96,10 @@ function observe(scope: ParentNode) {
   });
 }
 
-let started = false;
-
-/** Wire the sensor and start watching for .tilt elements. Safe to call once. */
-export function initTilt() {
-  if (started) return;
-  started = true;
-
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    reduced = true;
-    return; // CSS also pins the variables at 0
-  }
+function start() {
+  if (active || reduced) return;
+  active = true;
+  docEl.classList.add("tilt-on");
 
   window.addEventListener("deviceorientation", onOrient, true);
   window.addEventListener("pointermove", onPointer, { passive: true });
@@ -122,26 +116,64 @@ export function initTilt() {
     }
   }).observe(document.body, { childList: true, subtree: true });
 
-  armSensors();
   sync();
 }
 
+async function requestSensorPermission(): Promise<boolean> {
+  const DOE = (
+    window as unknown as {
+      DeviceOrientationEvent?: { requestPermission?: () => Promise<string> };
+    }
+  ).DeviceOrientationEvent;
+
+  if (typeof DOE?.requestPermission !== "function") return true; // no gate off iOS
+  try {
+    return (await DOE.requestPermission()) === "granted";
+  } catch {
+    return false;
+  }
+}
+
+let started = false;
+
 /**
- * iOS 13+ withholds motion data until a user gesture. Ask on the first
- * interaction instead of showing an enable button. Android and desktop have
- * no such gate, so this is a no-op there.
+ * Called on every page load. Starts the effect if the user already enabled it
+ * on a previous visit. Returns true when it is running.
  */
-function armSensors() {
-  document.addEventListener(
-    "pointerdown",
-    () => {
-      const DOE = (
-        window as unknown as {
-          DeviceOrientationEvent?: { requestPermission?: () => Promise<string> };
-        }
-      ).DeviceOrientationEvent;
-      if (typeof DOE?.requestPermission === "function") void DOE.requestPermission();
-    },
-    { once: true },
-  );
+export function initTilt(): boolean {
+  if (started) return active;
+  started = true;
+
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    reduced = true;
+    return false;
+  }
+
+  let remembered = false;
+  try {
+    remembered = localStorage.getItem(STORAGE_KEY) === "on";
+  } catch {
+    remembered = false; // storage blocked; stay off until asked
+  }
+
+  if (remembered) start();
+  return active;
+}
+
+/**
+ * Turn the effect on. Must be called from a click handler: iOS only hands over
+ * motion data inside a user gesture. Returns true when it is running after.
+ */
+export async function enableTilt(): Promise<boolean> {
+  if (reduced) return false;
+  if (!(await requestSensorPermission())) return false;
+
+  try {
+    localStorage.setItem(STORAGE_KEY, "on");
+  } catch {
+    /* private mode: run anyway, just do not remember it */
+  }
+
+  start();
+  return active;
 }

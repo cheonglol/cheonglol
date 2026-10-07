@@ -37,10 +37,10 @@
 }
 
 // Sheen: a soft highlight that sweeps across the surface as the phone moves,
-// as if a light sat in the room. It paints inside the element's own box, so it
-// never spills past the rounded corners and never needs overflow: hidden,
-// which would flatten the 3D layers underneath.
-.tilt::after {
+// as if a light sat in the room. Only shown once the user enables the effect.
+// It paints inside the element's own box, so it never spills past the rounded
+// corners and never needs overflow: hidden, which would flatten the 3D layers.
+.tilt-on .tilt::after {
   content: "";
   position: absolute;
   inset: 0;

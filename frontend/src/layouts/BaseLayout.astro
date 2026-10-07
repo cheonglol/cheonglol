@@ -79,6 +79,7 @@ const showNav = navItems.length > 1;
     <main class="container">
       <slot />
     </main>
+    <button id="tilt-enable" class="tilt-enable" type="button" hidden>Enable tilt</button>
     <script>
       // Touch devices: first tap on a parent opens its dropdown instead of navigating.
       const touch = window.matchMedia("(hover: none)").matches;
@@ -108,8 +109,21 @@ const showNav = navItems.length > 1;
       });
     </script>
     <script>
-      import { initTilt } from "../scripts/tilt";
-      initTilt();
+      import { initTilt, enableTilt } from "../scripts/tilt";
+
+      // Tilt is off by default. Offer the button unless the effect is already
+      // running (remembered from a past visit) or reduced motion forbids it.
+      const running = initTilt();
+      const tiltBtn = document.getElementById("tilt-enable") as HTMLButtonElement | null;
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (tiltBtn && !running && !reduced) {
+        tiltBtn.hidden = false;
+        tiltBtn.addEventListener("click", async () => {
+          if (await enableTilt()) tiltBtn.hidden = true;
+          else tiltBtn.textContent = "Tilt unavailable";
+        });
+      }
     </script>
   </body>
 </html>
