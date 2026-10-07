@@ -21,3 +21,33 @@
   white-space: nowrap;
   border: 0;
 }
+
+// Phone-tilt parallax. Add .tilt to any element to make it lean with the
+// device; children at different translateZ depths then parallax.
+.tilt {
+  transform-style: preserve-3d;
+  transform: perspective(900px)
+    rotateY(calc(var(--tilt-x) * var(--tilt-rot)))
+    rotateX(calc(var(--tilt-y) * var(--tilt-rot) * -1))
+    translateY(var(--tilt-lift));
+}
+
+// Depth planes: bigger Z travels further.
+.tilt-z-1 {
+  transform: translateZ(12px);
+}
+
+.tilt-z-2 {
+  transform: translateZ(24px);
+}
+
+.tilt-z-b {
+  transform: translateZ(-16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --tilt-x: 0;
+    --tilt-y: 0;
+  }
+}

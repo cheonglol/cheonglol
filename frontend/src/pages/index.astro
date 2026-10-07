@@ -125,7 +125,7 @@ function fmtDate(date?: string): string {
     <h2>Experience</h2>
     {
       resume.work?.map((job) => (
-        <article class="card">
+        <article class="card tilt">
           <h3>{job.position}</h3>
           <p class="text-muted">{job.name} &middot; {fmtDate(job.startDate)} &ndash; {fmtDate(job.endDate) || "Present"}</p>
           {job.highlights?.map((h) => <p>{h}</p>)}
@@ -141,7 +141,7 @@ function fmtDate(date?: string): string {
 
     {
       resume.projects?.map((project) => (
-        <article class="card">
+        <article class="card tilt">
           <h3>{project.name}</h3>
           {(project.period || project.note) && (
             <p class="text-muted">
@@ -201,7 +201,7 @@ function fmtDate(date?: string): string {
         <h2>Education</h2>
         {
           resume.education.map((edu) => (
-            <article class="card">
+            <article class="card tilt">
               <h3>{edu.institution}</h3>
               <p class="text-muted">{edu.studyType}{edu.area ? `, ${edu.area}` : ""} &middot; {fmtDate(edu.startDate)} &ndash; {fmtDate(edu.endDate)}</p>
             </article>
@@ -215,7 +215,7 @@ function fmtDate(date?: string): string {
 
   <section>
     <h2>Notes & Extras</h2>
-    <article class="card">
+    <article class="card tilt">
       <h3>Infrastructure & Homelab</h3>
       <p>
         This is my home cloud — a few machines at home running my own
@@ -235,7 +235,7 @@ function fmtDate(date?: string): string {
       </p>
     </article>
 
-    <article class="card">
+    <article class="card tilt">
       <h3>Events</h3>
       <p>
         SuperAI Next 2025: full-stack TypeScript submission, 24-hour build.
@@ -324,6 +324,11 @@ function fmtDate(date?: string): string {
 
     p:last-child {
       margin-bottom: 0;
+    }
+
+    // lift the heading off the card face so it parallaxes with the tilt
+    &.tilt > h3 {
+      transform: translateZ(20px);
     }
   }
 

@@ -268,11 +268,11 @@
 
 .post-card {
   cursor: pointer;
-  transition: border-color var(--transition-fast), transform var(--transition-fast);
+  transition: border-color var(--transition-fast);
 
   &:hover {
     border-color: var(--color-accent);
-    transform: translateY(-2px);
+    --tilt-lift: -2px; // composes with .tilt instead of replacing its transform
   }
 
   h3 {
@@ -496,5 +496,36 @@
   &:hover {
     background: var(--color-bg-tertiary);
     color: var(--color-text);
+  }
+}
+
+// iOS-only affordance: motion sensors need a tap before they report.
+// Shown by BaseLayout.astro where requestPermission exists and is unasked.
+.tilt-enable {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-4);
+  transform: translateX(-50%);
+  z-index: 210;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 40%);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  // [hidden] must win over the flex display above
+  &:not([hidden]) {
+    display: inline-flex;
   }
 }

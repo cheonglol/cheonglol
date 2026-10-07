@@ -2,7 +2,7 @@
 
 ---
 
-<div class="selfie-carousel">
+<div class="selfie-carousel tilt">
   <img
     src="https://avatars.githubusercontent.com/u/82318965"
     alt="selfie"
@@ -20,6 +20,7 @@
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: var(--radius-lg);
+    transform: translateZ(18px); /* sits proud of its frame; parallaxes on tilt */
     transition:
       filter 0.5s ease-in-out,
       box-shadow 0.5s ease-in-out,
